@@ -1,11 +1,24 @@
 {
-  "name": "globalpeacead",
+  "name": "adfinder",
   "version": "1.0.0",
-  "description": "Global Peace Ad Serach",
+  "description": "gp ad finder",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
-  "author": "charles fortes - renan zozimo",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chalkmaster/adFinder.git"
+  },
+  "author": "charles.fortes-renan.zozimo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chalkmaster/adFinder/issues"
+  },
+  "homepage": "https://github.com/chalkmaster/adFinder#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mocha": "^3.4.2",
+    "sqlite": "^2.8.0"
+  }
 }
