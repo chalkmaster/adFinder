@@ -5,3 +5,4 @@
 3. a partir de dentro da pasta src execute:
 - npm install
 - node index.js
+- acesse por http://localhost:8081/
