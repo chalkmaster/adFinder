@@ -14,5 +14,7 @@
     {
       "url": "heroku/nodejs"
     }
-  ]
+  ],
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
 }
