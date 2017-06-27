@@ -1,7 +1,7 @@
 const ArRepository = require('./AdRepository').AdRepository;
 const express = require('express');
 const app = express();
-const port = 443;
+const port = (process.env.PORT || 5000);
 
 app.use(express.static('public'));
 
