@@ -1,0 +1,69 @@
+.structure {
+    display: flex;
+    flex-flow: column;
+
+    &:not(.no-rounded) > *:first-child {
+        @include border-top-radius($radiusUnity);
+    }
+    &:not(.no-rounded) > *:last-child {
+        @include border-bottom-radius($radiusUnity);
+    }
+}
+.structure {
+    @extend .full-height;
+    @extend .relative;
+}
+.structure-header, .structure-footer {
+    @extend .justify-children;
+}
+.structure-header {
+    @extend .pd-tp-15;
+    @extend .pd-rt-15;
+    @extend .pd-bt-15;
+    @extend .pd-lt-30;
+}
+.structure-footer {
+    @extend .pd-15;
+}
+.structure-body {
+
+    overflow: hidden;
+
+    @extend .full-height;
+    @extend .pd-rt-30;
+    @extend .pd-lt-30;
+
+    .overflow-limiter {
+        padding-right: $scrollbarSize + $spacing;
+        margin-right: ($scrollbarSize + $spacing) * -1;
+
+        @extend .full-height;
+        @extend .pd-tp-15;
+
+        &:not(.multidirectional) {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        &.multidirectional {
+            overflow: auto;
+        }
+    }
+}
+//BORDERS
+.structure-header, .structure-sub-header, .structure-footer {
+    &:not(.no-border):not(:only-child) {
+        border-style: solid;
+    }
+}
+.structure-header, .structure-sub-header {
+    border-width: 0 0 1px;
+}
+.structure-footer {
+    border-width: 1px 0 0;
+}
+
+//CHROME SCROLLBAR
+.overflow-limiter::-webkit-scrollbar {
+    width: 5px;
+}

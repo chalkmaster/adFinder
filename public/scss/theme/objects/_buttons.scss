@@ -1,0 +1,96 @@
+//RAISED BUTTONS
+.btn {
+    &:not(.type-flat) {
+        color: $textPrimaryWhite;
+        //DEFAULT
+        &:not([class*="color-"]) {
+            @include button-variant($primary);
+        }
+        //COLORED BUTTONS
+        &.color-accent {
+            @include button-variant($accent);
+        }
+        &.color-complementary {
+            @include button-variant($complementary);
+        }
+        &.color-transparent {
+            @include button-variant(transparent, transparent);
+        }
+        &.color-white {
+            @include button-variant($white, $greyscale200);
+        }
+        &.color-transparent, &.color-white {
+            color: $textSecondaryBlack;
+        }
+        &.disabled,
+        &[disabled] {
+            color: rgba($black, 0.26);
+            background-color: rgba($black, 0.12);
+        }
+    }
+}
+//FLAT BUTTONS
+.btn {
+    &.type-flat {
+        //DEFAULT
+        &:not([class*="color-"]) {
+            @include flat-button-variant($textSecondaryBlack);
+        }
+        //COLORED BUTTONS
+        &.color-primary {
+            @include flat-button-variant($primary);
+        }
+        &.color-accent {
+            @include flat-button-variant($accent);
+        }
+        &.color-complementary {
+            @include flat-button-variant($complementary);
+        }
+        &.color-white {
+            @include flat-button-variant($white, rgba($white, 0.1));
+        }
+        &.disabled,
+        &[disabled] {
+            color: rgba($black, 0.26);
+        }
+        &[class*="color-"] {
+            &.hover-primary:hover {
+                color: darken($primary, 7%);
+            }
+            &.hover-accent:hover {
+                color: darken($accent, 7%);
+            }
+            &.hover-complementary:hover {
+                color: darken($complementary, 7%);
+            }
+        }
+        &:not([class*="color-"]) {
+            &.hover-primary:hover {
+                color: $primary;
+            }
+            &.hover-accent:hover {
+                color: $accent;
+            }
+            &.hover-complementary:hover {
+                color: $complementary;
+            }
+        }
+    }
+}
+.fab-content {
+    background-color: $white;
+}
+
+.btn-group {
+    &.attached button {
+        border-color: rgba($black,0.1);
+    }
+}
+.btn {
+    &.launcher {
+        &::before {
+            border-color: rgba(0,0,0,0.6) transparent transparent transparent;
+            background-color: transparent;
+        }
+    }
+}

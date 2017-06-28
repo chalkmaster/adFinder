@@ -1,0 +1,59 @@
+//JUSTIFY CHILDREN
+.justify-children {
+
+    @extend .space-between;
+
+    & > * {
+        min-width: 0;
+        &.-webkit-pd-bt-after-hack {
+            -webkit-padding-after: 15px;
+        }
+        &:only-child {
+            @extend .full-width;
+        }
+    }
+    & > .left {
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 0;
+        // display: flex;
+        @extend .v-align-children;
+
+        > *:first-child:not(.texts) {
+            @extend .mg-rt-15;
+        }
+    }
+    & > .right {
+        // display: flex;
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: table;
+
+        @extend .v-align-children;
+        @extend .text-nowrap;
+        @extend .text-right;
+    }
+    .texts {
+        max-width: 100%;
+
+        @extend .pd-rt-5;
+
+        > * {
+            @extend .text-ellipsis;
+        }
+        > i.headline-align-adjustment {
+            margin-top: 3px;
+        }
+    }
+    *:not(img) + .texts {
+        max-width: calc(100% - 48px);//48px -> image size
+    }
+    img + .texts {
+        max-width: calc(100% - 65px);//48px from img + 15px from spacing -> image size
+    }
+    .texts:not([class*='v-align']) > * {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: -4px;
+    }
+}

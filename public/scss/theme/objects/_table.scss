@@ -1,0 +1,75 @@
+//
+// Tables
+// --------------------------------------------------
+table {
+    background-color: $body-bg;
+    .structure-body & {
+        background-color: transparent;
+    }
+    &.table-striped {
+        tr:nth-of-type(odd):not(.active) {
+            background-color: $greyscale100;
+        }
+        tr:nth-of-type(even):not(.active) {
+            background-color: $body-bg;
+        }
+    }
+}
+caption {
+    color: $textSecondaryBlack;
+}
+tr {
+    &:not(.active):hover {
+        background-color: $greyscale300;
+        .table-striped &:nth-of-type(n) {
+            background-color: $greyscale300
+        }
+        .table-striped &:nth-of-type(2n) {
+            background-color: $greyscale300
+        }
+    }
+    .table-card & {
+        @media (max-width: $screen-xssm-max + px) {
+            background-color: #fff !important;
+        }
+    }
+    &.active {
+        background-color: $white;
+        td * {
+            color: $primary;
+        }
+    }
+}
+th {
+    color: $textPrimaryBlack;
+    border-bottom-color: $greyscale200;
+    background-color: $white;
+}
+td {
+    .table-card tbody & {
+        @media (max-width: $screen-xssm-max + px) {
+            &.pivot {
+                color: $primary;
+            }
+            &:not(.pivot)::before {
+                color: $primary;
+            }
+        }
+    }
+}
+> td,
+> th {
+   border-top-color: $greyscale200;
+}
+@include table-row-variant( 'success', lighten($success, 30));
+@include table-row-variant( 'info', lighten($info, 30));
+@include table-row-variant( 'warning', lighten($warning, 30));
+@include table-row-variant( 'error', lighten($error, 30));
+.laucher {
+    &::after {
+        border-top-color: $black;
+    }
+}
+.table-responsive {
+    border-color: rgba($black,0.1);
+}

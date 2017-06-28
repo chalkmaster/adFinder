@@ -1,0 +1,36 @@
+.content-toolbar {
+    .form-group {
+        margin: 0;
+        min-height: auto;
+    }
+    &.fixed {
+        @include shadow(0);
+        top: 0;
+        left: 0;
+        z-index: $zindex-tooltip;
+
+        @extend .full-width;
+        @extend .affix;
+        @extend .pd-lt-15;
+        @extend .pd-rt-15;
+
+        @media (min-width: $screen-md-min + px) {
+            padding-left: $bodyPaddingMenuResponse;
+        }
+        + .content-toolbar-backup {
+            display: block;
+        }
+    }
+    .toolbar-title {
+        max-width: calc(100% - 80px);
+        @media (min-width: $screen-xssm-min + px) {
+            max-width: calc(100% - 130px);
+        }
+    }
+}
+.content-toolbar-backup {
+    display: none;
+}
+.content-toolbar, .content-toolbar-backup {
+    min-height: 42px;
+}

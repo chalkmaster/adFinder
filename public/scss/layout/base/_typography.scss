@@ -1,0 +1,37 @@
+h3, .title, h4, .subheading, h5, .body-2, h6, .caption {
+    font-weight: 500;
+    &.fw-300 {
+        font-weight: 300;
+    }
+}
+
+h1, .heading, h2, .headline {
+    font-weight: 400;
+    &.fw-300 {
+        font-weight: 300;
+    }
+}
+
+h1, .heading {
+    font-size: 26px;
+}
+h2, .headline {
+    font-size: 24px;
+}
+h3, .title {
+    font-size: 20px;
+}
+h4, .subheading {
+    font-size: 16px;
+}
+h5, .body-2 {
+    font-size: 14px;
+}
+h6, .caption {
+    font-size: 12px;
+}
+body,
+p {
+    font-size: 14px;
+    font-weight: 400;
+}

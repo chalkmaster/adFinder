@@ -1,0 +1,113 @@
+.select-input,
+input {
+    &[type="checkbox"],
+    &[type="radio"] {
+        &:active,
+        &:focus {
+            + div {
+                color: $primary;
+            }
+        }
+    }
+    //STATUS and STATE
+    &, & select {
+        border-color: rgba($black,0.1);
+        box-shadow: 0 0 transparent;
+    }
+    &[type="email"],
+    &[type="password"],
+    &[type="text"],
+    &[type="number"],
+    &[type="date"],
+    &[type="datetime"],
+    &[type="datetime-local"],
+    &[type="tel"],
+    &[type="time"] {
+        & {
+            background-color: $inputBgColor;
+        }
+        &[disabled], &:disabled {
+            background-color: rgba(0,0,0,0.03);
+        }
+    }
+}
+.select-input:not(.disabled) {
+    background-color: $inputBgColor;
+
+}
+select[disabled], select:disabled {
+    background-color: rgba(0,0,0,0.03);
+}
+textarea {
+    border-color: rgba($black,0.1);
+    .form-group.is-focused & {
+        border-bottom-color: $primary;
+    }
+}
+input[disabled] {
+    + .checkbox-icons i {
+        color: $textDivadersBlack;
+    }
+}
+
+$contrast: 5% !default;
+[type=range] {
+    -webkit-appearance: none;
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-slider-runnable-track {
+        background: $primary300;
+    }
+    &::-webkit-slider-thumb {
+        border-color: rgba(0,0,0,0.2);
+        background: $primary;
+    }
+    &:focus::-webkit-slider-runnable-track {
+        background: lighten($primary300, $contrast);
+    }
+    &::-moz-range-track {
+        background: $primary300;
+    }
+    &::-moz-range-thumb {
+        border-color: rgba(0,0,0,0.2);
+        background: $primary;
+    }
+    &::-ms-track {
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+    &::-ms-fill-lower {
+        background: darken($primary300, $contrast);
+    }
+    &::-ms-fill-upper {
+        background: $primary300;
+    }
+    &::-ms-thumb {
+        border-color: rgba(0,0,0,0.2);
+        background: $primary;
+    }
+    &:focus::-ms-fill-lower {
+        background: $primary300;
+    }
+    &:focus::-ms-fill-upper {
+        background: lighten($primary300, $contrast);
+    }
+}
+
+::-webkit-input-placeholder {
+   color: $textSecondaryBlack;
+}
+
+:-moz-placeholder {
+   color: $textSecondaryBlack;
+}
+
+::-moz-placeholder {
+   color: $textSecondaryBlack;
+}
+
+:-ms-input-placeholder {
+   color: $textSecondaryBlack;
+}

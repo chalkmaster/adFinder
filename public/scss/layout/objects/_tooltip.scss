@@ -1,0 +1,82 @@
+//
+// Tooltips
+// --------------------------------------------------
+// Base class
+.tooltip {
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    opacity: 0;
+    font-size: 80%;
+
+    &.in {
+        opacity: 1;
+    }
+    &.top {
+        margin-top: -3px;
+        padding: 5px 0;
+    }
+    &.right {
+        margin-left: 3px;
+        padding: 0 5px;
+    }
+    &.bottom {
+        margin-top: 3px;
+        padding: 5px 0;
+    }
+    &.left {
+        margin-left: -3px;
+        padding: 0 5px;
+    }
+}
+// Wrapper for the tooltip content
+.tooltip-inner {
+    max-width: 200px;
+    padding: 7px 10px;
+    text-align: center;
+    border-radius: $radius;
+    @include shadow(0);
+}
+// Arrows
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip {
+    &.top {
+        .tooltip-arrow {
+            bottom: 0;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px 5px 0;
+        }
+    }
+    &.right {
+        .tooltip-arrow {
+            top: 50%;
+            left: 0;
+            margin-top: -5px;
+            border-width: 5px 5px 5px 0;
+        }
+    }
+    &.left {
+        .tooltip-arrow {
+            top: 50%;
+            right: 0;
+            margin-top: -5px;
+            border-width: 5px 0 5px 5px;
+        }
+    }
+    &.bottom {
+        .tooltip-arrow {
+            top: 0;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 0 5px 5px;
+        }
+    }
+}

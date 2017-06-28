@@ -1,0 +1,5 @@
+@import "tools/material-colors"; //mixin with all colors
+
+@include themeColor(); //mixin to get material design colors
+
+@import "theme-base";

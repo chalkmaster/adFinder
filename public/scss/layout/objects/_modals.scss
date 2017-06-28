@@ -1,0 +1,59 @@
+.modal {
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    @extend .pd-15;
+    @extend .fixed-total-size;
+}
+.modal-dialog {
+
+    @extend .relative;
+
+    &:not(.modal-sm) {
+        height: 100%; //do not use @extend .full-height
+        @media (min-width: $screen-md-min + px) {
+            height: 90%;
+        }
+    }
+    &.modal-sm {
+        height: auto;
+        .modal-content {
+            height: auto;
+            width: 290px;
+        }
+    }
+
+}
+.modal-content {
+
+    @include shadow(2);
+
+    border-radius: $radius + 2;
+    background-clip: padding-box;
+    margin: 0 auto;
+    max-height: 100%;
+
+    @extend .relative;
+    @extend .full-height;
+
+    > * {
+        @extend .full-height;
+    }
+
+    & {
+        width: 100%;
+
+        @media (min-width: $screen-sm-min + px) {
+            width: ($screen-sm-min - ($spacing * 2 + 0.1));
+        }
+        @media (min-width: $screen-md-min + px) {
+            width: ($screen-md-min - ($spacing * 2 + 0.1));
+        }
+        @media (min-width: $screen-lg-min + px) {
+            width: ($screen-lg-min - ($spacing * 2 + 0.1));
+        }
+    }
+}
+.modal-backdrop {
+    @extend .fixed-total-size;
+}

@@ -1,0 +1,26 @@
+//-----------------------------------------//
+// SETTINGS: Grid global variables related //
+//-----------------------------------------//
+
+
+$gridColumns: 12;
+
+$breakPoints: (xs 0 30) (xssm 480 30) (sm 600 30) (md 720 30) (lg 960 30) (xlg 1440 30); // sizeName, maxSizeValue, space
+
+//MANUAL VARIABLES
+//Due to technical limitations, it is not possible to generate variables dynamically. These variables are generated manually when we add or remove $breakPoints
+
+$screen-xssm-min: nth(nth($breakPoints, 2), 2);
+$screen-sm-min: nth(nth($breakPoints, 3), 2);
+$screen-md-min: nth(nth($breakPoints, 4), 2);
+$screen-lg-min: nth(nth($breakPoints, 5), 2);
+$screen-xlg-min: nth(nth($breakPoints, 6), 2);
+
+$screen-xs-max: nth(nth($breakPoints, 2), 2) - 0.1;
+$screen-xssm-max: nth(nth($breakPoints, 3), 2) - 0.1;
+$screen-sm-max: nth(nth($breakPoints, 4), 2) - 0.1;
+$screen-md-max: nth(nth($breakPoints, 5), 2) - 0.1;
+$screen-lg-max: nth(nth($breakPoints, 6), 2) - 0.1;
+
+$lastBreakPoint: 0;
+$i: 1;

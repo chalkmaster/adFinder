@@ -1,0 +1,17 @@
+body {
+  color: $text-color;
+  background-color: $body-bg;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+*::selection {
+  background: $selection-bg;
+  color: $selection-text-color;
+}
+*::-moz-selection {
+  background: $selection-bg;
+  color: $selection-text-color;
+}

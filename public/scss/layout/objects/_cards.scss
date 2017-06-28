@@ -1,0 +1,49 @@
+.card {
+    transition: all 300ms ease-in-out 0s;
+    border-radius: $radius;
+    margin-bottom: $spacing * 2;
+
+    &:not(.interactive) {
+        @include shadow(0);
+    }
+
+    &.interactive {
+        @include shadow(1);
+        @extend .cursor-pointer;
+    }
+}
+
+.card-header, .card-footer {
+    border-width: 1px 0;
+
+    @extend .pd-15;
+    @extend .justify-children;
+}
+
+.bordered {
+    &.card-header {
+        border-bottom-style: solid;
+    }
+    &.card-footer {
+        border-top-style: solid;
+    }
+}
+
+.card-body {
+    //image
+    img {
+        max-width: 100%;
+    }
+    &:first-child img {
+        @include border-top-radius($radiusUnity);
+    }
+    .image-container {
+        overflow: hidden;
+        background-color: rgba(0,0,0,0.05);
+    }
+
+    //content
+    .content {
+        @extend .pd-15;
+    }
+}

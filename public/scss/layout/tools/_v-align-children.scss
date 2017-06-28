@@ -1,0 +1,29 @@
+@mixin v-align-children($align) {
+    @if ($align == middle) {
+        .v-align-children {
+            > * {
+                vertical-align: middle;
+                display: inline-block;
+            }
+        }
+        .v-align-all-children {
+            * {
+                vertical-align: middle;
+                display: inline-block;
+            }
+        }
+    } @else {
+        .v-align-children-#{$align} {
+            > * {
+                vertical-align: $align;
+                display: inline-block;
+            }
+        }
+        .v-align-all-children-#{$align} {
+            * {
+                vertical-align: $align;
+                display: inline-block;
+            }
+        }
+    }
+}

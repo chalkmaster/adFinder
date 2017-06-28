@@ -1,0 +1,52 @@
+@import "../tools/material-colors";
+
+$primary:                   $primary500 !default;
+$primaryDark:               $primary800 !default;
+$primaryLight:              $primary200 !default;
+
+$accent:                    $accentA400 !default;
+$accentDark:                $accentA700 !default;
+$accentLight:               $accentA100 !default;
+
+$complementary:             $complementary500 !default;
+$complementaryDark:         $complementary800 !default;
+$complementaryLight:        $complementary200 !default;
+
+$black:                   #000000 !default;
+$white:                   #ffffff !default;
+
+$textPrimaryBlack:        rgba($black, 0.77) !default;
+$textSecondaryBlack:      rgba($black, 0.44) !default;
+$textDisabledBlack:       rgba($black, 0.24) !default;
+$textDivadersBlack:       rgba($black, 0.12) !default;
+
+$textPrimaryWhite:        rgba($white, 1) !default;
+$textSecondaryWhite:      rgba($white, 0.7) !default;
+$textDisabledWhite:       rgba($white, 0.5) !default;
+$textDivadersWhite:       rgba($white, 0.12) !default;
+
+$link-color:                $accent !default;
+$link-hover-color:          darken($accent, 10%) !default;
+
+$success:                 #5cb85c !default;
+$info:                    #5bc0de !default;
+$warning:                 #f0ad4e !default;
+$error:                   #d9534f !default;
+
+$text-color:                $textPrimaryBlack !default;
+$body-bg:                 #efefef !default;
+$selection-bg:              $accent !default;
+$selection-text-color:      $white !default;
+
+$greyscale50:             #FAFAFA !default;
+$greyscale100:            #F5F5F5 !default;
+$greyscale200:            #EEEEEE !default;
+$greyscale300:            #E0E0E0 !default;
+$greyscale400:            #BDBDBD !default;
+$greyscale500:            #9E9E9E !default;
+$greyscale600:            #757575 !default;
+$greyscale700:            #616161 !default;
+$greyscale800:            #424242 !default;
+$greyscale900:            #212121 !default;
+
+$inputBgColor:              $white;

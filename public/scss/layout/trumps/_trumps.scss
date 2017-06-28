@@ -1,0 +1,283 @@
+//UTILITIES
+.full-width {
+    width: 100%;
+}
+.full-width-sm-down {
+    @media (max-width: $screen-sm-max + px) {
+        width: 100%;
+    }
+}
+.full-height {
+    height: 100%;
+}
+.clearfix {
+    @include clearfix;
+}
+.block {
+    display: block;
+}
+.center-block {
+    @extend .block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.center-block-force {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.img-responsive {
+  @include img-responsive;
+}
+.img-circle, .fully-rounded {
+  border-radius: 50%;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.reset-box-shadow {
+    box-shadow: 0 0 transparent;
+}
+
+//WRITING
+.separated-by-commas {
+    &:after {
+        content: ",";
+        margin-right: 3px;
+    }
+    &:last-child:after, &:last-of-type:after {
+        content: "";
+        margin-right: 0;
+    }
+}
+.line-background-title {
+    position: relative;
+    z-index: 1;
+    &::before {
+        border-top-width: 1px;
+        border-top-style: solid;
+        content: "";
+        left: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        z-index: -1;
+    }
+    span {
+        padding: 0 15px;
+    }
+}
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @extend .text-nowrap;
+}
+
+//FLEX BOX
+.space-between, .space-around, .flex-start {
+    display: flex;
+
+    //ALIGN
+    &.center {
+        align-items: center;
+    }
+    &.top {
+        align-items: flex-start;
+    }
+    &.bottom {
+        align-items: flex-end;
+    }
+
+    //WRAP
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    //icon buttons default min-width
+    .icon-38 {
+        min-width: 38px;
+    }
+}
+.space-between {
+    justify-content: space-between;
+}
+.space-around {
+    justify-content: space-around;
+}
+.flex-start {
+    justify-content: flex-start;
+}
+
+//CLASSES TO CONFIGURE MAX-WIDTH IN ELEMENTS NEXT TO .BTN.ICON-24
+[class*="reacts-"] {
+    word-wrap: break-word;
+}
+.reacts-btn-icon-24 {
+    width: calc(100% - #{$btn-icon-24-size - 10px});
+}
+.reacts-btn-icon-24-2x {
+    width: calc(100% - #{$btn-icon-24-size * 2 - 10px});
+}
+.reacts-btn-icon-24-3x {
+    width: calc(100% - #{$btn-icon-24-size * 3 - 10px});
+}
+
+//CLASSES TO CONFIGURE MAX-WIDTH IN ELEMENTS NEXT TO AVATARS IMAGES (48px)
+.reacts-image-48 {
+    width: calc(100% - 48px - 15px);
+}
+
+//NOTIFICATION COUNTER
+.icon-badge {
+    border-radius: 50%;
+
+    text-align: center;
+    font-size: 9px;
+
+    position: absolute;
+
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+
+    &:empty {
+        display: none;
+    }
+}
+i + .icon-badge {
+    left: -5px;
+    top: -5px;
+}
+.icon-badge-container {
+    @extend .pd-5;
+    @extend .relative;
+}
+
+//DIVIDERS
+.divider-v-30 {
+    border-right: 1px solid;
+    height: 30px;
+    opacity: 0.2;
+    position: relative;
+}
+
+//AVATAR LETTER
+.avatar-character {
+    font-size: 23px;
+    font-weight: 300;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 48px;
+}
+
+//BORDER RADIUS
+.border-top-radius {
+    @include border-top-radius($radius);
+}
+.border-right-radius {
+    @include border-right-radius($radius);
+}
+.border-bottom-radius {
+    @include border-bottom-radius($radius);
+}
+.border-left-radius {
+    @include border-left-radius($radius);
+}
+
+//Takes on total size based on parent
+.absolute-total-size {
+    position: absolute;
+    @extend .total-size;
+}
+.fixed-total-size {
+    @extend .affix;
+    @extend .total-size;
+}
+.total-size {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+//VERTICAL-ALIGN
+@include v-align-children(middle);
+@include v-align-children(top);
+@include v-align-children(bottom);
+@include v-align-children(sub);
+
+
+//RESPONSIVE TRUMPS
+@include responsive-trumps( '.pull-right', 'float', 'right');
+@include responsive-trumps( '.pull-left', 'float', 'left');
+
+@include responsive-trumps( '.hidden', 'display', 'none');
+
+@include responsive-trumps( '.text-center', 'text-align', 'center');
+
+@include simple-trumps( '.text-left', 'text-align', 'left');
+@include simple-trumps( '.text-right', 'text-align', 'right');
+@include simple-trumps( '.text-justify', 'text-align', 'justify');
+@include simple-trumps( '.text-bold', 'font-weight', 'bold');
+
+@include simple-trumps( '.invisible', 'visibility', 'hidden');
+@include simple-trumps( '.hide', 'display', 'none');
+@include simple-trumps( '.show', 'display', 'block');
+@include simple-trumps( '.show-inline', 'display', 'inline-block');
+
+@include simple-trumps( '.affix', 'position', 'fixed');
+@include simple-trumps( '.absolute', 'position', 'absolute');
+@include simple-trumps( '.relative', 'position', 'relative');
+
+@include simple-trumps( '.text-nowrap', 'white-space', 'nowrap');
+@include simple-trumps( '.text-whitespace-reset', 'white-space', 'normal');
+
+@include simple-trumps( '.text-lowercase', 'text-transform', 'lowercase');
+@include simple-trumps( '.text-uppercase', 'text-transform', 'uppercase');
+@include simple-trumps( '.text-capitalize', 'text-transform', 'capitalize');
+
+// MARGIN ---------------
+@include responsive-trumps( '.mg-0', 'margin', '0');
+@include responsive-trumps( '.mg-5', 'margin', '5px');
+@include responsive-trumps( '.mg-15', 'margin', '15px');
+
+@include responsive-trumps( '.mg-tp-0', 'margin-top', '0');
+@include responsive-trumps( '.mg-tp-5', 'margin-top', '5px');
+@include responsive-trumps( '.mg-tp-15', 'margin-top', '15px');
+@include responsive-trumps( '.mg-tp-30', 'margin-top', '30px');
+
+@include responsive-trumps( '.mg-rt-5', 'margin-right', '5px');
+@include responsive-trumps( '.mg-rt-15', 'margin-right', '15px');
+@include responsive-trumps( '.mg-rt-30', 'margin-right', '30px');
+
+@include responsive-trumps( '.mg-bt-0', 'margin-bottom', '0');
+@include responsive-trumps( '.mg-bt-5', 'margin-bottom', '5px');
+@include responsive-trumps( '.mg-bt-15', 'margin-bottom', '15px');
+@include responsive-trumps( '.mg-bt-30', 'margin-bottom', '30px');
+
+@include responsive-trumps( '.mg-lt-5', 'margin-left', '5px');
+@include responsive-trumps( '.mg-lt-15', 'margin-left', '15px');
+@include responsive-trumps( '.mg-lt-30', 'margin-left', '30px');
+
+@include responsive-trumps( '.pd-0', 'padding', '0');
+@include responsive-trumps( '.pd-5', 'padding', '5px');
+@include responsive-trumps( '.pd-15', 'padding', '15px');
+
+@include responsive-trumps( '.pd-tp-5', 'padding-top', '5px');
+@include responsive-trumps( '.pd-tp-15', 'padding-top', '15px');
+@include responsive-trumps( '.pd-tp-30', 'padding-top', '30px');
+
+@include responsive-trumps( '.pd-rt-5', 'padding-right', '5px');
+@include responsive-trumps( '.pd-rt-15', 'padding-right', '15px');
+@include responsive-trumps( '.pd-rt-30', 'padding-right', '30px');
+
+@include responsive-trumps( '.pd-bt-5', 'padding-bottom', '5px');
+@include responsive-trumps( '.pd-bt-15', 'padding-bottom', '15px');
+@include responsive-trumps( '.pd-bt-30', 'padding-bottom', '30px');
+
+@include responsive-trumps( '.pd-lt-5', 'padding-left', '5px');
+@include responsive-trumps( '.pd-lt-15', 'padding-left', '15px');
+@include responsive-trumps( '.pd-lt-30', 'padding-left', '30px');

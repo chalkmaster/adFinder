@@ -1,0 +1,166 @@
+
+
+// Document
+html {
+    box-sizing: border-box; // Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+    font-family: sans-serif; // Change the default font family in all browsers.
+    line-height: 1.15; // Correct the line height in all browsers.
+    -ms-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+    -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+    -ms-overflow-style: scrollbar; // Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+}
+* {
+    @include box-sizing(border-box);
+
+    &:after,
+    &:before {
+        @include box-sizing(border-box);
+    }
+}
+body {
+  margin: 0;
+}
+
+//Reset fonts for relevant elements
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    outline: 0;
+    border: 0;
+}
+
+//Links
+a {
+    text-decoration: none;
+    @extend .cursor-pointer;
+}
+a,
+button {
+    &:hover, &:active, &:focus {
+        outline: 0;
+    }
+}
+
+//Type
+b,
+strong {
+  font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
+}
+small {
+  font-size: 75%; // Add the correct font size in all browsers
+  font-weight: 500;
+}
+
+//Table
+table {
+    border-collapse: collapse; // Prevent double borders
+    border-spacing: 0;
+    &:active,
+    &:focus {
+        outline: 0 none;
+    }
+    &:-moz-focusring {
+        text-shadow: 0 0 0 #000;
+    }
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+td,
+th {
+    padding: 0;
+}
+
+//Divider
+hr {
+    box-sizing: content-box; // Add the correct box sizing in Firefox.
+    height: 0; // Add the correct box sizing in Firefox.
+    overflow: visible; // Show the overflow in Edge and IE.
+    border-bottom-width: 0;
+}
+
+//Figures
+figure {
+    // Apply a consistent margin strategy (matches our type styles).
+    margin: 0 0 1rem;
+}
+
+//Code
+code,
+kbd,
+pre,
+samp {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+pre {
+    // Don't allow content to break outside
+    overflow: auto;
+}
+
+// iOS "clickable elements" fix for role="button"
+//
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+[role="button"] {
+    @extend .cursor-pointer;
+}
+
+// Images and content
+img {
+  vertical-align: middle;
+  border-style: none; // Remove the border on images inside links in IE 10-.
+}
+svg:not(:root) {
+  overflow: hidden; // Hide the overflow in IE
+}
+
+// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+//
+// In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
+// DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
+// However, they DO support removing the click delay via `touch-action: manipulation`.
+// See:
+// * https://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// * http://caniuse.com/#feat=css-touch-action
+// * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+textarea {
+    margin: 0;
+    box-shadow: 0 0 transparent;
+}
+
+// Remove inner padding and border in Firefox 4+.
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+//Lists
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}

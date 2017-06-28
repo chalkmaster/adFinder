@@ -1,0 +1,45 @@
+table {
+    width: 100%;
+    max-width: 100%;
+
+    col[class*="col-"] {
+        position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
+        float: none;
+        display: table-column;
+    }
+}
+
+td,
+th {
+    line-height: $line-height-base;
+    vertical-align: middle;
+    border-top-style: solid;
+    word-wrap: break-word;
+
+    &[class*="col-"] {
+        position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
+        float: none;
+        display: table-cell;
+    }
+
+    table:not(.table-card) & {
+        padding: 15px;
+    }
+}
+
+th {
+    text-align: left;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    position: relative;
+    height: 70px;
+}
+
+td {
+    border-top-width: 0;
+}
+
+sortable {
+    white-space: nowrap;
+}

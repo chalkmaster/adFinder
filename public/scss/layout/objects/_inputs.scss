@@ -1,0 +1,129 @@
+textarea {
+    padding: 8px ($validate-icon-font-size + 10 + 17) $spacing $spacing;
+    transition: border 0.2s ease 0s;
+    border-bottom-width: 2px;
+
+    @extend .full-width;
+
+    .form-group.is-focused & {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+    }
+}
+input {
+    &[type="checkbox"],
+    &[type="radio"] {
+        @extend .full-height;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+
+        @extend .full-width;
+        @extend .cursor-pointer;
+        + div {
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+            transition: color 375ms ease 0s;
+            white-space: nowrap;
+            width: 24px;
+            i {
+                overflow: hidden;
+                position: absolute;
+                transition: width 300ms ease 0s;
+                &:last-child {
+                    width: 0;
+                }
+            }
+        }
+        &:checked + div i:last-child {
+            width: 24px;
+        }
+    }
+    //STATUS and STATE
+    &:invalid {
+        box-shadow: unset;
+    }
+    &:valid {
+        box-shadow: usent;
+    }
+}
+.checkbox-multiple,
+.radio {
+    width: 100%; //not use @extend, it prevents media querie operation
+    @media (min-width: $screen-sm-min + px) {
+        & {
+            width: auto;
+        }
+    }
+    label {
+        max-width: calc(100% - 30px);
+        @media (min-width: $screen-sm-min + px) {
+            & {
+                max-width: none;
+            }
+        }
+    }
+    .content {
+        @extend .mg-bt-15;
+
+        @extend .relative;
+        @extend .v-align-children;
+        @extend .cursor-pointer;
+
+        &:only-child {
+            margin-bottom: 0;
+        }
+    }
+    &.inline {
+        @extend .v-align-children;
+
+        .content {
+
+            width: 100%; //not use @extend, it prevents media querie operation
+            @extend .mg-rt-15;
+            @media (min-width: $screen-sm-min + px) {
+                & {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+.checkbox .content {
+    @extend .v-align-children;
+}
+.select-input select {
+    .form-group:not(.no-feedback-validation) & {
+        padding-right: $select-caret-font-size + $validate-icon-font-size + 20;
+    }
+    .form-group.no-feedback-validation & {
+        padding-right: $select-caret-font-size + 20;
+    }
+}
+.select-input {
+    border-width: 0;
+    position: relative;
+    border-radius: $radius;
+    z-index: 1;
+
+    @extend .full-width;
+    select {
+        background-color: transparent;
+        padding-left: (($spacing / 3) * 2);
+        text-overflow: ellipsis;
+
+        @extend .text-ellipsis;
+        @extend .full-width;
+    }
+    i.caret {
+        position: absolute;
+        right: 5px;
+        top: round($inputHeight/2);
+        font-size: $select-caret-font-size;
+        margin-top: round($select-caret-font-size/2 * -1);
+        z-index: -1;
+    }
+}

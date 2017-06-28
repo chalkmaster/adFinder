@@ -1,0 +1,8 @@
+hr {
+    &:not([class*="color-"]) {
+        border-top-color: $textDivadersBlack;
+    }
+    .color-white {
+        border-top-color: $textDivadersWhite;
+    }
+}

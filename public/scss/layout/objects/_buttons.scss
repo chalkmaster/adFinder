@@ -1,0 +1,330 @@
+.btn {
+    &:not(button):not([class*="text-"]) {
+        @extend .text-center;
+    }
+    & {
+        font-weight: 500;
+        // overflow: hidden;
+        z-index: 1;
+
+        @extend .relative;
+        &:not(.disabled):not([disabled]) {
+            @extend .cursor-pointer;
+        }
+    }
+    //raised and fab
+    &:not(.type-flat) {
+        @include shadow(1);
+    }
+    //raised and flat
+    &:not(.type-fab) {
+        & {
+            transition: box-shadow 0.1s cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+        }
+        &:not(.loading) {
+            &::after {
+                border-radius: $radius;
+            }
+        }
+        &, &::before {
+            border-radius: $radius;
+        }
+        &:not([class*="icon-"]) {
+            text-transform: uppercase;
+            font-size: 14px;
+            line-height: 2.6;
+            @extend .v-align-children;
+            &:not(.mini) {
+                min-width: 88px;
+            }
+            &:not(.line-break) {
+                @extend .text-nowrap;
+                > * {
+                    // margin-top: -4px;
+                    @extend .text-nowrap;
+                }
+            }
+            &.line-break > * {
+                line-height: 1.5;
+                @extend .full-width;
+                @extend .block;
+            }
+        }
+    }
+    //raised
+    &:not([class*="type-"]) {
+        &:not([class*="icon-"]) {
+            @extend .pd-lt-15;
+            @extend .pd-rt-15;
+        }
+    }
+    //flat
+    &.type-flat:not([class*="icon-"]) {
+        padding-right: round($spacing / 3 * 2);
+        padding-left: round($spacing / 3 * 2);
+    }
+    //icon-buttons
+    &[class*="icon-"] {
+        @extend .pd-0;
+        > * {
+            @extend .block;
+        }
+    }
+    &:not([class*="icon-"]) {
+        &.mini {
+            min-width: 34px;
+        }
+    }
+}
+//BUTTON GROUP
+.btn:not([class*="mg-"]):not([class*="type-"]) {
+    .btn-group:not(.attached):not([class*="text-"]) & {
+        @extend .mg-rt-5;
+    }
+    .btn-group:not(.attached).text-right & {
+        @extend .mg-lt-5;
+    }
+    .btn-group:not(.attached).text-center & {
+        margin-left: floor($spacing / 3);
+        margin-right: floor($spacing / 3);
+    }
+}
+.btn-group {
+    @extend .v-align-children;
+    & > * {
+        display: inline-block;
+    }
+    &.attached {
+        padding-left: 1px;
+        .btn {
+            & {
+                margin-left: -1px;
+                @include box-sizing(content-box);
+            }
+            &, &::before, &::after {
+                border-radius: 0;
+            }
+            &[class*="type-"] {
+                border-width: 1px 0 1px 1px;
+                border-style: solid;
+            }
+            &:first-child {
+                @include border-left-radius($radiusUnity);
+
+                &::before, &::after {
+                    @include border-left-radius($radiusUnity);
+                }
+            }
+            &:last-child {
+                border-right-width: 1px;
+                @include border-right-radius($radiusUnity);
+
+                &::before, &::after {
+                    @include border-right-radius($radiusUnity);
+                }
+            }
+        }
+    }
+}
+//FAB (FLOATING ACTION BUTTON)
+.btn {
+    &.type-fab {
+        height: 56px;
+        width: 56px;
+        padding: 0;
+        transition: box-shadow 0.1s cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+
+        &, &::before, &::after {
+            @extend .fully-rounded;
+        }
+        > i {
+            line-height: 56px;
+            text-align: center;
+            width: 56px;
+        }
+    }
+    @include iconButtonsSize(18);
+    @include iconButtonsSize(24);
+    @include iconButtonsSize(36);
+    @include iconButtonsSize(48);
+
+    //icon-button to input-group
+    &.icon-38 {
+        width: 38px;
+        height: 38px;
+    }
+}
+//fab-group
+.fab-group {
+    & {
+        right: $spacing;
+        z-index: $zindex-fab;
+
+        @extend .affix;
+    }
+    &[class*="bottom-"] {
+        bottom: 38px;
+    }
+    &[class*="top-"] {
+        top: $topBarNavigationHeight + 15;
+    }
+    &[class*="on-"] .btn:nth-child(1) {
+        z-index: 2;
+        transform: scale(1.1);
+    }
+    &.bottom-to-top, &.top-to-bottom {
+        .fab-content-toggle.active {
+            transform: translateX(30px);
+            opacity: 0;
+        }
+    }
+    &.bottom-to-left, &.top-to-left {
+        .fab-content-toggle.active {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+    }
+    i.click-fab-icon {
+        @extend .pull-left;
+
+        transition: all 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+        &.close {
+            opacity: 0;
+            transform: translateY(-56px);
+        }
+    }
+    &.active .click-fab-icon {
+        &.open {
+            opacity: 0;
+            transform: rotate(-180deg);
+        }
+        &.close {
+            opacity: 1;
+            transform: rotate(-180deg) translateY(56px);
+        }
+    }
+    .type-fab {
+        position: absolute;
+        transition: box-shadow 0.1s cubic-bezier(0.0, 0.0, 0.2, 1) 0s, bottom 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 150ms, right 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 150ms, top 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 150ms, transform 0.2s cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s, opacity 0.2s cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s;
+        &.fab-content-toggle.active {
+            transition: box-shadow 0.1s cubic-bezier(0.0, 0.0, 0.2, 1) 0s, bottom 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 150ms, right 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 150ms, top 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 150ms, transform 0.2s cubic-bezier(0.0, 0.0, 0.2, 1) 0s, opacity 0.2s cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+        }
+    }
+    @include FabGroupButtons(4, bottom, top);
+    @include FabGroupButtons(4, bottom, left);
+    @include FabGroupButtons(4, top, bottom);
+    @include FabGroupButtons(4, top, left);
+}
+//BUTTON MOUSE OVER
+.btn:not(.loading) {
+    &:not(.launcher)::before, &::after {
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+    &::after {
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+    }
+    &:not(.no-bg-hover) {
+        &:hover, &.active {
+            &::after {
+                opacity: 1;
+            }
+        }
+        &:not(.no-active-feedback) {
+            &:active, &:focus {
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+//FAB CONTENT
+.fab-content {
+    & {
+        width: 100%;
+        height: 100%;
+
+        @media (min-width: $screen-xssm-min + px) {
+            width: 320px;
+            height: 480px;
+        }
+    }
+    & {
+        @include shadow(0);
+
+        transition: right 0s cubic-bezier(0.0, 0.0, 0.2, 1) 0.2s, z-index 0s cubic-bezier(0.0, 0.0, 0.2, 1) 0.2s, opacity 0.2s cubic-bezier(0.0, 0.0, 0.2, 1) 0s, transform 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) 0.2s;
+        right: -320px;
+        opacity: 0;
+        transform: translateX(350px);
+        z-index: -1;
+
+        @extend .affix;
+    }
+    &.active {
+        transition: right 0s cubic-bezier(0.0, 0.0, 0.2, 1) 0s, z-index 0s cubic-bezier(0.0, 0.0, 0.2, 1) 0s, opacity 0.3s cubic-bezier(0.0, 0.0, 0.2, 1) 0.3s, transform 0.5s cubic-bezier(0.0, 0.0, 0.2, 1) 0.1s;
+        opacity: 1;
+        transform: translateX(0);
+        right: 0;
+        z-index: $zindex-fab;
+
+        @media (min-width: $screen-sm-min + px) {
+            right: $spacing;
+        }
+    }
+    &.bottom {
+        bottom: 0;
+        @media (min-width: $screen-sm-min + px) {
+            bottom: $spacing;
+        }
+    }
+    &.top {
+        top: 0;
+        @media (min-width: $screen-sm-min + px) {
+            top: 100px;
+        }
+    }
+}
+//DISABLED BUTTON
+.btn {
+    &.disabled,
+    &[disabled] {
+        @extend .reset-box-shadow;
+
+        &::before, &::after {
+            @extend .hidden;
+        }
+    }
+}
+//TRUMPS
+.btn {
+    &.no-bg-hover {
+        &:after {
+            @extend .hidden;
+        }
+    }
+    &.launcher {
+        &::before {
+            content: "";
+            border-style: solid;
+            border-width: 10px 0 0 10px;
+            border-radius: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: opacity 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s, transform 275ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+            opacity: 0;
+            transform: translateY(-5px);
+        }
+        &:hover::before {
+            opacity: 0.5;
+            transform: translateY(0);
+        }
+    }
+}

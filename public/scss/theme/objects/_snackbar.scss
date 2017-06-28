@@ -1,0 +1,8 @@
+.snackbar {
+    background-color: $greyscale800;
+    color: $white;
+    &.light {
+        background-color: $greyscale200, 1;
+        color: $textSecondaryBlack;
+    }
+}

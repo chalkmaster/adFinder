@@ -1,0 +1,18 @@
+@mixin button-variant($color, $hover: darken($color, 7%)) {
+    &.loading {
+        background-color: $color;
+    }
+    &:not(.loading)::before {
+        background-color: $color;
+    }
+    &:not(.loading)::after {
+        background-color: $hover;
+    }
+}
+
+@mixin flat-button-variant($color, $hover: rgba($greyscale500, 0.2)) {
+    color: $color;
+    &:not(.loading)::after {
+        background-color: $hover;
+    }
+}

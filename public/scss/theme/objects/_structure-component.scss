@@ -1,0 +1,9 @@
+.structure > * {
+    border-color: $textDivadersBlack;
+}
+.overflow-limiter::-webkit-scrollbar-track {
+    background-color: $greyscale100;
+}
+.overflow-limiter::-webkit-scrollbar-thumb {
+    background-color: $greyscale300;
+}

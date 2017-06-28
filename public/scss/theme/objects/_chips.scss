@@ -1,0 +1,10 @@
+.chip {
+    background-color: $greyscale300;
+    color: $textSecondaryBlack;
+    &::before {
+        background-color: $black;
+    }
+    .label:not(.color) {
+        color: rgba(0,0,0,0.54);
+    }
+}

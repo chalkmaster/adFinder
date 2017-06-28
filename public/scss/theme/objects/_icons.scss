@@ -1,0 +1,7 @@
+.diamond-bg-icon-parent {
+	i.material-icons, i.icons {
+        &::after {
+            background-color: rgba(0,0,0,0.1);
+        }
+    }
+}

@@ -1,0 +1,237 @@
+//
+// Tables
+// --------------------------------------------------
+table {
+    &.table-card {
+        @media (max-width: $screen-xssm-max + px) {
+            display: block;
+            thead {
+                display: none;
+            }
+            tfoot {
+                display: block;
+                width: 100%;
+                word-wrap: break-word;
+            }
+            tbody {
+                display: block;
+                width: 100%;
+            }
+        }
+        @media (max-width: $screen-xssm-max + px) {
+            .overflow-limiter & {
+                padding-left: 3px;
+            }
+        }
+    }
+    &.tr-active {
+        td > * {
+            max-width: calc(100vw - 700px);
+            overflow: hidden;
+        }
+    }
+}
+
+tr {
+    transition: background-color 200ms;
+    &.active {
+        @include shadow(0);
+    }
+    .table-card & {
+        @media (max-width: $screen-xssm-max + px) {
+            @include shadow(0);
+            display: block;
+            margin-bottom: 15px;
+            padding: 15px 0 5px;
+        }
+    }
+}
+td,
+th {
+
+    @media (min-width: $screen-sm-min + px) {
+        table.table-card & {
+            padding: 15px;
+        }
+        .showing-filter & {
+            &:not(.pivot):not(.filterable) {
+                display: none;
+            }
+            &.actions {
+                display: none;
+            }
+        }
+        .mezzanine-active & {
+            &:not(.pivot) {
+                display: none;
+            }
+        }
+    }
+    .uib-datepicker & {
+        padding: 0 !important;
+        height: auto !important;
+    }
+}
+th {
+
+    .sortable-column-icon {
+        opacity: 0;
+        position: relative;
+        top: -5px;
+        transition: opacity 0.3s ease-in-out 0s, top 0.2s ease-in-out 0s;
+        tr:hover & {
+            opacity: 1;
+            top: 0;
+        }
+    }
+    &:not([class*="text-"]){
+        @extend .text-left;
+    }
+}
+td {
+
+    .form-group {
+        margin: 0;
+    }
+    @media (min-width: $screen-sm-min + px) {
+        .obfuscated-icons & {
+            &:not(.no-obfuscated) i {
+                opacity: 0.2;
+                transition: opacity 300ms ease-in-out 0s;
+            }
+        }
+        tr.active &:not(.no-obfuscated) i,
+        tr:hover &:not(.no-obfuscated) i {
+            opacity: 1;
+        }
+    }
+    .table-card tbody & {
+        @media (max-width: $screen-xssm-max + px) {
+            &:not(.pivot)[data-th]::before {
+                content: attr(data-th);
+                display: inline-block;
+                font-size: 12px;
+                font-weight: bold;
+                margin-right: 5px;
+                text-transform: uppercase;
+                vertical-align: bottom;
+            }
+        }
+    }
+    .table-card & {
+        @media (max-width: $screen-xssm-max + px) {
+            display: block;
+            padding: 5px 15px;
+            max-width: unset !important;
+            &:empty {
+                display: none;
+            }
+            &.pivot {
+                font-size: 20px;
+                padding-top: 0;
+                padding-bottom: 10px;
+            }
+            &.text-center,
+            &.text-right {
+                text-align: left;
+            }
+            button.btn.icon-24 {
+                height: 48px;
+                width: 48px;
+            }
+        }
+    }
+    &.actions {
+        white-space: nowrap;
+    }
+}
+.table-responsive {
+    border-style: solid;
+    width: 100%;
+
+    th, td {
+        white-space: nowrap;
+    }
+    @media (max-width: $screen-xssm-max + px) {
+        table.table-card {
+            th, td {
+                white-space: normal;
+            }
+        }
+    }
+    &:not(.no-overflow) {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    &.no-overflow, .mezzanine-active & {
+        overflow: visible;
+    }
+    &:not(.no-border) {
+        border-width: 1px;
+    }
+    @media (max-width: $screen-xssm-max + px) {
+        &.table-card-parent {
+            overflow: visible;
+            border-width: 0;
+        }
+    }
+}
+// FILTER
+.filter-content {
+    padding: 0 30px;
+    @include shadow(0);
+}
+.short-filter {
+    div:not(.content) > label.control-label {
+        @extend .body-2;
+    }
+    .v-align-children > * {
+        float: none;
+    }
+    > .row > div {
+        margin-bottom: 15px;
+    }
+    .checkbox {
+        display: inline-block;
+        margin-right: 30px;
+    }
+}
+.filter {
+    .structure-body {
+        padding-top: 0;
+    }
+    h3 {
+        margin-top: 0;
+    }
+}
+// -------------------------------------------------------------
+// hack
+table {
+    &:active,
+    &:focus {
+        outline: 0 none;
+    }
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+sortable {
+    white-space: nowrap;
+}
+
+.string-size-limier-25vw {
+    @extend .text-ellipsis;
+    @media (min-width: $screen-sm-max + px) {
+        max-width: 25vw;
+    }
+}
+.string-size-limier-40vw {
+    @extend .text-ellipsis;
+    @media (min-width: $screen-sm-max + px) {
+        max-width: 40vw;
+    }
+}

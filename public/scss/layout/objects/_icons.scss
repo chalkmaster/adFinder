@@ -1,0 +1,24 @@
+.material-icons, .icons {
+    &.sz-18 {
+        font-size: 18px;
+    }
+    &.sz-36 {
+        font-size: 36px;
+    }
+    &.sz-48 {
+        font-size: 48px;
+    }
+}
+.icons {
+    direction: ltr;
+    display: inline-block;
+    font-size: 24px;
+    letter-spacing: normal;
+    white-space: nowrap;
+    word-wrap: normal;
+    vertical-align: middle;
+    &::before {
+        display: inline-block;
+        vertical-align: text-top;
+    }
+}

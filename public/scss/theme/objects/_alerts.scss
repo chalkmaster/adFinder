@@ -1,0 +1,20 @@
+.alert {
+    //DEFAULT ALERT
+    &:not([class*="color-"]) {
+        background-color: $white;
+        border-color: rgba($black, 0.1);
+    }
+    //COLORED ALERTS
+    &.color-success {
+        background-color: lighten($success, 37%);
+        border-color: lighten($success, 22%) lighten($success, 22%) lighten($success, 22%) $success;
+    }
+    &.color-error {
+        background-color: lighten($error, 37%);
+        border-color: lighten($error, 27%) lighten($error, 27%) lighten($error, 27%) $error;
+    }
+    &.color-warning {
+        background-color: lighten($warning, 33%);
+        border-color: lighten($warning, 20%) lighten($warning, 20%) lighten($warning, 20%) $warning;
+    }
+}

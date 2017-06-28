@@ -1,0 +1,73 @@
+@mixin simple-trumps ($class, $property, $value) {
+    #{$class} {
+        #{$property}: #{$value};
+    }
+};
+
+
+@mixin responsive-trumps ($class, $property, $value) {
+
+    $lastBreakPoint: 0;
+    $i: 1;
+
+    @each $bPoint in $breakPoints {
+
+        $nbp: if($i < length($breakPoints), $i + 1, $i);
+        $nextBreakPoint: nth(nth($breakPoints, $nbp), 2);
+
+        $sizeName: nth($bPoint, 1);
+        $sizeValue: nth($bPoint, 2);
+        $space: nth($bPoint, 3) / 2;
+
+        $breakPoint: $sizeValue;
+
+        @if $i == 1 {
+            #{$class} {
+                #{$property}: #{$value};
+            }
+            #{$class}-force {
+                #{$property}: #{$value} !important;
+            }
+        }
+
+        @media (min-width: #{$breakPoint}px)  {
+            #{$class}-#{$sizeName}-up {
+                #{$property}: #{$value};
+            }
+            #{$class}-#{$sizeName}-up-force {
+                #{$property}: #{$value} !important;
+            }
+        }
+
+        @if $i < length($breakPoints) {
+            @media (min-width: #{$breakPoint}px) and (max-width: #{$nextBreakPoint - 0.1}px) {
+                #{$class}-#{$sizeName}-only {
+                    #{$property}: #{$value};
+                }
+                #{$class}-#{$sizeName}-only-force, #{$class}-#{$sizeName}-force {
+                    #{$property}: #{$value} !important;
+                }
+            }
+            @media (max-width: #{$nextBreakPoint - 0.1}px) {
+                #{$class}-#{$sizeName}-down {
+                    #{$property}: #{$value};
+                }
+                #{$class}-#{$sizeName}-down-force {
+                    #{$property}: #{$value} !important;
+                }
+            }
+        } @else {
+            @media (min-width: #{$breakPoint}px)  {
+                #{$class}-#{$sizeName}-only {
+                    #{$property}: #{$value};
+                }
+                #{$class}-#{$sizeName}-only-force {
+                    #{$property}: #{$value} !important;
+                }
+            }
+        }
+
+        $i: $i + 1;
+    }
+
+};

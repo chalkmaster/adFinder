@@ -1,0 +1,46 @@
+@mixin iconButtonsSize($size) {
+    $sizeButton: $size + 10;
+    &.icon-#{$size} {
+        width: #{$sizeButton + px};
+        height: #{$sizeButton  + px};
+    }
+}
+
+@mixin FabGroupButtons($amount, $position, $direction) {
+
+    $directionValue: 0;
+    $staticProperty: right;
+    $dynamicProperty: $position;
+
+    @if ($direction == left) {
+        $dynamicProperty: right;
+        @if ($position == top) {
+            $staticProperty: top;
+        } @else if ($position == bottom) {
+            $staticProperty: bottom;
+        }
+    }
+
+    &.#{$position}-to-#{$direction}[class*="on-"] .type-fab.btn {
+        #{$staticProperty}: 0;
+        #{$dynamicProperty}: 0;
+    }
+
+    @for $i from 1 through $amount {
+
+        //DEFAULT
+        &.#{$position}-to-#{$direction}:not([class*="on-"]) .type-fab.btn:nth-child(#{$i}) {
+            #{$staticProperty}: 0;
+            #{$dynamicProperty}: $directionValue + px;
+        }
+        //ON-CLICK and ON-HOVER
+        &.#{$position}-to-#{$direction}.active .type-fab.btn:nth-child(#{$i}) {
+            #{$dynamicProperty}: $directionValue + px;
+        }
+        &.#{$position}-to-#{$direction}.on-hover:hover .type-fab.btn:nth-child(#{$i}) {
+            #{$dynamicProperty}: $directionValue + px;
+        }
+
+        $directionValue: $directionValue + 56 + 15;
+    }
+}

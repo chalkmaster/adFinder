@@ -1,0 +1,43 @@
+.tabs {
+    overflow: hidden;
+    height: 47px;
+
+    .nav-tabs {
+        margin-bottom: 0;
+        overflow: auto;
+
+        @extend .pd-0;
+        @extend .text-nowrap;
+        @extend .v-align-children;
+
+        li {
+
+
+            transition: color 0.3s ease 0s;
+
+            @extend .pd-tp-15;
+            @extend .pd-rt-30;
+            @extend .pd-bt-15;
+            @extend .pd-lt-30;
+            @extend .text-center;
+            @extend .relative;
+            @extend .cursor-pointer;
+
+            &::after {
+                content: "";
+                left: 0;
+                bottom: 0;
+                height: 5px;
+                opacity: 0.4;
+                position: absolute;
+                transition: transform 375ms;
+                transform: scaleX(0);
+
+                @extend .full-width;
+            }
+            &.active::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+}

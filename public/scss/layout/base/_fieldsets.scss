@@ -1,0 +1,8 @@
+fieldset {
+    border-width: 1px 0 0;
+    @extend .pd-0;
+    @extend .mg-0;
+}
+legend {
+    @extend .pd-rt-15;
+}

@@ -1,0 +1,71 @@
+// The dropdown menu (ul)
+.dropdown-menu {
+    &:not(.accent):not(.primary) {
+        background-color: $white;
+        &::before, &::after {
+            background-color: $white;
+        }
+        .divider {
+            background-color: $textDivadersBlack;
+        }
+        > li > a {
+            color: $textSecondaryBlack;
+            &:not(.no-bg-hover){
+                &:focus,
+                &:hover {
+                    background-color: $greyscale100;
+                }
+            }
+        }
+    }
+    &.primary {
+        background-color: $primary;
+        &::before, &::after {
+            background-color: $primary;
+        }
+        .divider {
+            background-color: $textDivadersWhite;
+        }
+        > li > a {
+            color: $textSecondaryWhite;
+            &:focus,
+            &:hover {
+                color: $textPrimaryWhite;
+                background-color: darken($primary, 2%);
+            }
+        }
+    }
+    &.accent {
+        background-color: $accent;
+        &::before, &::after {
+            background-color: $accent;
+        }
+        .divider {
+            background-color: $textDivadersWhite;
+        }
+        > li > a {
+            color: $textSecondaryWhite;
+            &:focus,
+            &:hover {
+                color: $textPrimaryWhite;
+                background-color: darken($accent, 2%);
+            }
+        }
+    }
+}
+// Active state
+.dropdown-menu > .active > a {
+    &,
+    &:focus,
+    &:hover {
+        background-color: $greyscale200;
+    }
+}
+// Disabled state
+.dropdown-menu > .disabled > a {
+    &,
+    &:focus,
+    &:hover {
+        color: $textDisabledBlack;
+    }
+}

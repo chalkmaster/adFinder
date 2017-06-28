@@ -1,0 +1,96 @@
+//
+// Tooltips
+// --------------------------------------------------
+// Wrapper for the tooltip content
+.tooltip-inner {
+    color: $body-bg;
+    background-color: $greyscale800;
+    .primary > & {
+        background-color: $primary;
+    }
+    .accent > & {
+        background-color: $accent;
+    }
+    .complementary > & {
+        background-color: $complementary;
+    }
+    .light > & {
+        background-color: #efefef;
+        color: $textSecondaryBlack;
+    }
+}
+// Arrows
+.tooltip-arrow {
+    border-color: transparent;
+}
+// Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
+.tooltip {
+    &.top {
+        .tooltip-arrow {
+            border-top-color: $greyscale800;
+        }
+        &.primary .tooltip-arrow{
+            border-top-color: $primary;
+        }
+        &.accent .tooltip-arrow {
+            border-top-color: $accent;
+        }
+        &.complementary .tooltip-arrow {
+            border-top-color: $complementary;
+        }
+        &.light .tooltip-arrow {
+            border-top-color: #efefef;
+        }
+    }
+    &.right {
+        .tooltip-arrow {
+            border-right-color: $greyscale800;
+        }
+        &.primary .tooltip-arrow{
+            border-right-color: $primary;
+        }
+        &.accent .tooltip-arrow {
+            border-right-color: $accent;
+        }
+        &.complementary .tooltip-arrow {
+            border-right-color: $complementary;
+        }
+        &.light .tooltip-arrow {
+            border-right-color: #efefef;
+        }
+    }
+    &.left {
+        .tooltip-arrow {
+            border-left-color: $greyscale800;
+        }
+        &.primary .tooltip-arrow{
+            border-left-color: $primary;
+        }
+        &.accent .tooltip-arrow {
+            border-left-color: $accent;
+        }
+        &.complementary .tooltip-arrow {
+            border-left-color: $complementary;
+        }
+        &.light .tooltip-arrow {
+            border-left-color: #efefef;
+        }
+    }
+    &.bottom {
+        .tooltip-arrow {
+            border-bottom-color: $greyscale800;
+        }
+        &.primary .tooltip-arrow{
+            border-bottom-color: $primary;
+        }
+        &.accent .tooltip-arrow {
+            border-bottom-color: $accent;
+        }
+        &.complementary .tooltip-arrow {
+            border-bottom-color: $complementary;
+        }
+        &.light .tooltip-arrow {
+            border-bottom-color: #efefef;
+        }
+    }
+}

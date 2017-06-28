@@ -1,0 +1,77 @@
+.chip {
+    margin-left: 5px;
+    margin-top: 5px;
+    transform: translateY(-5px) translateX(-5px);
+    
+    transition: all 375ms ease-in-out 0s;
+    display: inline-block;
+
+    @extend .caption;
+    @extend .relative;
+    @extend .pd-tp-5;
+    @extend .pd-bt-5;
+    @extend .pd-rt-15;
+    @extend .pd-lt-15;
+
+    > * {
+        display: inline-block;
+    }
+
+    &::before {
+        content: "";
+        transition: opacity 375ms ease 0s;
+        opacity: 0;
+
+        @extend .absolute-total-size;
+    }
+    &:not(.no-hover):hover::before {
+        opacity: 0.1;
+    }
+}
+.chip {
+
+    &:not(.rounded) {
+        border-radius: $radius;
+        &:before {
+            border-radius: $radius;
+        }
+    }
+    &.rounded {
+        border-radius: 20px;
+        &:before {
+            border-radius: 20px;
+        }
+        .btn {
+            &, &:after, &:before {
+                @extend .fully-rounded;
+            }
+        }
+    }
+    & .temporarily-off {
+        opacity: 0.3;
+    }
+    &.interactive {
+        @extend .cursor-pointer;
+    }
+}
+.chip {
+    .label {
+        @extend .mg-rt-5;
+    }
+    span {
+        line-height: 28px;
+    }
+    .btn-group:first-child {
+        margin-left: -10px;
+    }
+    .btn-group:last-child {
+        margin-right: -10px;
+    }
+    i {
+        transition: opacity 375ms ease 0s;
+        opacity: 0.3;
+    }
+    &:hover i {
+        opacity: 1;
+    }
+}

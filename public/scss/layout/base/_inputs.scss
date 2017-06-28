@@ -1,0 +1,109 @@
+select, input, textarea {
+    background-color: transparent;
+    outline: 0;
+    z-index: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: $radius;
+    &:active,
+    &:focus {
+        outline: 0 none;
+    }
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+select, input {
+    height: $inputHeight;
+    line-height: 36px;
+}
+select {
+    appearance: none;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+}
+input {
+    padding: 0 ($validate-icon-font-size + 10) 0 $spacing;
+    &[type="range"] {
+        border-width: 0;
+    }
+    &[type="email"],
+    &[type="password"],
+    &[type="text"],
+    &[type="number"],
+    &[type="date"],
+    &[type="datetime"],
+    &[type="datetime-local"],
+    &[type="tel"],
+    &[type="time"] {
+        @extend .full-width;
+    }
+    &[type=range] {
+        -webkit-appearance: none;
+        &:focus {
+            outline: none;
+        }
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: $range-track-height;
+            transition: all 0.2s ease;
+            border: $range-track-border-width solid;
+            cursor: pointer;
+        }
+        &::-webkit-slider-thumb {
+            border-width: 1px;
+            border-style: solid;
+            height: $range-thumb-height;
+            width: $range-thumb-width;
+            border-radius: 50%;
+            -webkit-appearance: none;
+            margin-top: ((-$range-track-border-width * 2 + $range-track-height) / 2) - ($range-thumb-height / 2);
+            cursor: pointer;
+        }
+        &::-moz-range-track {
+            width: 100%;
+            height: $range-track-height;
+            transition: all 0.2s ease;
+            border: $range-track-border-width solid;
+            cursor: pointer;
+        }
+        &::-moz-range-thumb {
+            border-width: 1px;
+            border-style: solid;
+            height: $range-thumb-height;
+            width: $range-thumb-width;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        &::-ms-track {
+            width: 100%;
+            height: $range-track-height;
+            transition: all 0.2s ease;
+            background: transparent;
+            border-color: transparent;
+            border-width: $range-thumb-width 0;
+            cursor: pointer;
+        }
+        &::-ms-fill-lower {
+            border: $range-track-border-width solid;
+        }
+        &::-ms-fill-upper {
+            border: $range-track-border-width solid;
+        }
+        &::-ms-thumb {
+            border-width: 1px;
+            border-style: solid;
+            height: $range-thumb-height;
+            width: $range-thumb-width;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+}
+textarea {
+    resize: vertical;
+}

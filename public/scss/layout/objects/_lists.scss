@@ -1,0 +1,79 @@
+.list,
+.list-group {
+    @extend .mg-0;
+    &.raised {
+        @include shadow(0);
+    }
+}
+.list.raised {
+    @extend .pd-tp-15;
+    @extend .pd-bt-15;
+}
+.list {
+    @extend .pd-15;
+}
+.list-group {
+    &:not(.dropdown-menu) {
+        @extend .pd-15;
+    }
+    @extend .list-unstyled;
+}
+button.list-item {
+    @extend .full-width;
+    @extend .cursor-pointer;
+}
+a.list-item,
+button.list-item {
+    transition: background-color 300ms ease-in-out 0s;
+}
+.list-item {
+
+    @extend .relative;
+    @extend .full-width;
+
+    &:not(.text-nowrap) {
+        word-wrap: break-word;
+    }
+
+    &:not([class*='small-']):not([class*='divider']) {
+        @extend .pd-15;
+    }
+    &.small-v {
+        @extend .pd-tp-5;
+        @extend .pd-bt-5;
+        @extend .pd-rt-15;
+        @extend .pd-lt-15;
+    }
+
+    /*NOT TO FLEX ITEMS*/
+    .list-group &:not([class*="space-"]) {
+        @extend .block;
+    }
+    &[class*='divider'] {
+        margin: (($line-height-computed / 2) - 1) 0;
+    }
+    &.dashed-divider {
+        border-bottom-width: 1px;
+        border-bottom-style: dashed;
+    }
+    &.solid-divider {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+    }
+    &:last-child {
+        border-bottom-width: 0;
+    }
+    // Disabled state
+    &.disabled {
+        cursor: auto;
+    }
+    // Active class on item itself, not parent
+    &.active,
+    &.active:focus,
+    &.active:hover {
+        z-index: 2; // Place active items above their siblings for proper border styling
+    }
+}
+.list-unstyled {
+    @include list-unstyled;
+}

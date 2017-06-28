@@ -1,0 +1,11 @@
+html {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); // Change the default tap highlight to be completely transparent in iOS.
+}
+button {
+    background-color: transparent;
+}
+table {
+    &:-moz-focusring {
+        color: transparent;
+    }
+}

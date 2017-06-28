@@ -1,0 +1,47 @@
+//--------------------------------------//
+// TOOLS: Default mixins anda functions //
+//--------------------------------------//
+
+// GENERATE OFFSET, PULL AND PUSH
+@mixin make-secondary-grids($size, $type, $i, $prop, $grid) {
+    .col-#{$size}-#{$type}-#{$i} {
+        #{$prop}: (100% / $gridColumns) * $i;
+    }
+}
+
+// GENERATE ALL GRIDS
+@mixin make-all-grid($sizeName, $sizeValue, $space){
+
+    %columns-#{$sizeName} {
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-left: #{$space}px;
+        padding-right: #{$space}px;
+    }
+
+    .col-#{$sizeName}-0 {
+        width: auto;
+    }
+
+    @for $i from 1 through $gridColumns {
+        .col-#{$sizeName}-#{$i} {
+            @extend %columns-#{$sizeName};
+            width: (100% / $gridColumns) * $i;
+        }
+    }
+
+
+    @for $i from 1 through $gridColumns {
+        @include make-secondary-grids($sizeName, unquote("offset"), $i, unquote("margin-left"), $gridColumns);
+    }
+
+    @for $i from 1 through $gridColumns {
+        @include make-secondary-grids($sizeName, unquote("push"), $i, unquote("left"), $gridColumns);
+    }
+
+    @for $i from 1 through $gridColumns {
+        @include make-secondary-grids($sizeName, unquote("pull"), $i, unquote("right"), $gridColumns);
+    }
+
+}

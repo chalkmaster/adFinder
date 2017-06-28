@@ -1,0 +1,88 @@
+.form-group {
+    @extend .relative;
+
+    .structure-header &, .structure-footer & {
+        @extend .mg-0-force;
+    }
+
+    &:not([class*="mg-bt"]) {
+        margin-bottom: 30px;
+    }
+
+    .material-input {
+        margin-top: -2px;
+        position: absolute;
+        top: $inputHeight;
+        left: 0;
+        border-bottom: 2px solid;
+        transition: transform 0.2s ease 0.1s;
+        transform: scaleX(0);
+        z-index: 2;
+
+        @extend .full-width;
+    }
+    &.is-focused .material-input {
+        transform: scaleX(1);
+    }
+}
+.help-block{
+    &:not(i) {
+        font-size: 80%;
+        line-height: 1.5;
+
+        @extend .mg-tp-5;
+        @extend .block;
+        & + .max-lenght-counter {
+            float: right;
+            width: 35%;
+        }
+    }
+    input[maxlength] + &:not(i):not(.max-lenght-counter), textarea[maxlength] + &:not(i):not(.max-lenght-counter) {
+        float: left;
+        width: 65%;
+    }
+}
+i.help-block {
+    top: round($inputHeight/2);
+    position: absolute;
+    right: 6px;
+
+    font-size: $validate-icon-font-size;
+    margin-top: round($validate-icon-font-size/2 * -1);
+
+    .select-input & {
+        right: $select-caret-font-size + 12;
+    }
+}
+.control-label {
+
+    @extend .block;
+    @extend .v-align-children;
+
+    .form-group:not([class*="checkbox"]):not(.radio) & {
+        @extend .pd-bt-5;
+    }
+
+    &.required {
+        span {
+            &:after {
+                content: "*";
+                @extend .mg-lt-5;
+            }
+        }
+    }
+}
+
+fieldset {
+    @extend .mg-bt-30;
+    @extend .pd-tp-15;
+    @extend .pd-bt-15;
+
+    &:first-of-type {
+        border-width: 0;
+    }
+}
+
+textarea.no-resize {
+    resize: none;
+}

@@ -1,0 +1,47 @@
+.list-group {
+    &.raised {
+        background-color: $white;
+    }
+}
+a.list-item,
+button.list-item {
+    // Hover state
+    &:focus,
+    &:hover {
+        background-color: $greyscale100;
+    }
+}
+.list-item {
+    border-color: rgba(0,0,0,0.1);
+    // Disabled state
+    &.disabled {
+        color: $textDisabledBlack;
+        &.text-primary-white,
+        .text-primary-white {
+            color: $textDisabledWhite;
+        }
+        .list-item-heading {
+            color: inherit;
+        }
+    }
+    &.disabled:focus,
+    &.disabled:hover {
+        background-color: transparent;
+    }
+    // Active class on item itself, not parent
+    &.active,
+    &.active:focus,
+    &.active:hover {
+        color: $white;
+        background-color: $primary;
+        // Force color to inherit for custom content
+        .list-item-heading,
+        .list-item-heading > .small,
+        .list-item-heading > small {
+            color: inherit;
+        }
+        .list-item-text {
+            color: inherit;
+        }
+    }
+}

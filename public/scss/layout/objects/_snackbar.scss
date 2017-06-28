@@ -1,0 +1,43 @@
+$snackbar-max-width: 568px;
+.snackbar {
+
+    @include shadow(2);
+
+    max-width: $snackbar-max-width;
+    padding: $spacing * 2;
+    display: table;
+    bottom: $spacing * 2;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease 0s, z-index 0s ease 0.3s, right 0s ease 0.3s;
+
+    @extend .affix;
+
+    &.active {
+        opacity: 1;
+        z-index: $zindex-snackbar;
+        right: $spacing * 2;
+        transition: opacity 0.3s ease 0.1s, z-index 0s ease 0s, right 0.3s ease 0.1s;
+    }
+    @media screen and (max-width: $snackbar-max-width + $spacing * 2) {
+        & {
+            max-width: calc(100% - #{$spacing * 2});
+        }
+    }
+
+    &.small {
+        padding: #{$spacing} #{$spacing * 2};
+    }
+    > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    span {
+        margin-right: $spacing * 2;
+    }
+    div {
+        white-space: nowrap;
+        padding-left: $spacing * 2;
+    }
+}

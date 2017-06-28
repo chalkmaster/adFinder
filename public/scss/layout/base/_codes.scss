@@ -1,0 +1,15 @@
+pre {
+  display: block;
+  padding: $spacing;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $radius;
+  cursor: text;
+  white-space: normal;
+
+  code {
+    padding: 0;
+    border-radius: 0;
+    white-space: pre;
+  }
+}

@@ -1,0 +1,25 @@
+$colorClass: '.color'; //class that allows coloring the element
+
+@include text-emphasis-variant($colorClass, '.text-primary', $primary);
+@include text-emphasis-variant($colorClass, '.text-primary-dark', $primaryDark);
+@include text-emphasis-variant($colorClass, '.text-primary-light', $primaryLight);
+
+@include text-emphasis-variant($colorClass, '.text-accent', $accent);
+@include text-emphasis-variant($colorClass, '.text-accent-dark', $accentDark);
+@include text-emphasis-variant($colorClass, '.text-accent-light', $accentLight);
+
+@include text-emphasis-variant($colorClass, '.text-comp', $complementary);
+@include text-emphasis-variant($colorClass, '.text-comp-dark', $complementaryDark);
+@include text-emphasis-variant($colorClass, '.text-comp-light', $complementaryLight);
+
+@include text-emphasis-variant($colorClass, '.text-success', $success);
+@include text-emphasis-variant($colorClass, '.text-info', $info);
+@include text-emphasis-variant($colorClass, '.text-warning', $warning);
+@include text-emphasis-variant($colorClass, '.text-danger', $error);
+@include text-emphasis-variant($colorClass, '.text-error', $error);
+@include text-emphasis-variant($colorClass, '.text-primary-black', $textPrimaryBlack);
+@include text-emphasis-variant($colorClass, '.text-secondary-black', $textSecondaryBlack);
+@include text-emphasis-variant($colorClass, '.text-disabled-black', $textDisabledBlack);
+@include text-emphasis-variant($colorClass, '.text-primary-white', $textPrimaryWhite);
+@include text-emphasis-variant($colorClass, '.text-secondary-white', $textSecondaryWhite);
+@include text-emphasis-variant($colorClass, '.text-disabled-white', $textDisabledWhite);

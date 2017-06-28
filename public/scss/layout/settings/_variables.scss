@@ -1,0 +1,84 @@
+//-----------------------------------------//
+// SETTINGS: Grid global variables related //
+//-----------------------------------------//
+
+// - - - - - LAYOUT BASES
+$spacing: 15px;
+$spacingX2: 30px;
+$radius: 5px;
+$radiusUnity: 5px;
+$scrollbarSize: 17px;
+
+
+
+// - - - - - Z-INDEX CONTROL
+$zindex-navbar:            		1000 !default;
+$zindex-navbar-fixed:      		1030 !default;
+$zindex-fab:                    1030 !default;
+$zindex-mezzanine:	            1040 !default;
+$zindex-modal-background:  		1040 !default;
+$zindex-modal:             		1050 !default;
+$zindex-dropdown:          		1060 !default;
+$zindex-popover:           		1060 !default;
+$zindex-snackbar:          		1060 !default;
+$zindex-tooltip:           		1070 !default;
+$zindex-fixed-buttons-bottom:	1080 !default;
+
+
+
+// - - - - - TYPE
+$font-size-base: 14px;
+$line-height-base: 1.428571429;
+$line-height-computed: floor(($font-size-base * $line-height-base));
+$font-family-base: 'Roboto', sans-serif;
+
+
+
+// - - - - -INPUTS AND FORMS
+$inputHeight: 38px;
+$validate-icon-font-size: 18px;
+$select-caret-font-size: 18px;
+$input-group-btn-font-size: 24px;
+
+
+
+// - - - - - ICON BUTTONS
+$btn-icon-24-size: 34px;
+$btn-icon-18-size: 28px;
+
+
+
+// - - - - - NAVBAR
+$topBarNavigationHeight: 90px;
+$distanceBetweenMenuButtonAndFirstItem: 20px;
+$menuSimpleButtonFontSize: 18px;
+$menuSimpleButtonSize: $menuSimpleButtonFontSize + $spacing * 2;
+
+    //main logo
+    $logoTopNavbarMargin: 8px;
+    $logoSize: $topBarNavigationHeight - $logoTopNavbarMargin * 2;
+
+    //sidebar width
+    $sidebarNavigationWidth: $menuSimpleButtonSize + $spacing * 2;
+    $sidebarNavigationOpenedMaxWidth: 350px;
+
+    //sidebar height - small devices
+    $sidebarNavigationMinHeightSmall: 80px;
+
+    //body behavior
+    $bodyPaddingMenuResponse: $sidebarNavigationWidth;
+
+
+
+ //INPUT RANGE
+ $range-thumb-height: 15px !default;
+ $range-thumb-width: 15px !default;
+ $range-track-height: 2px !default;
+ $range-track-border-width: 0 !default;
+
+// - - - - - NAVBAR
+$mezzanine-lg-size: 400px;
+
+
+// - - - - - SNACKBAR
+$snackbar-max-width: 568px;

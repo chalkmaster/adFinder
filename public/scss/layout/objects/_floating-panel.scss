@@ -1,0 +1,37 @@
+.floating-panel {
+    @include shadow(0);
+
+    right: 30px;
+    bottom: 30px;
+    opacity: 0;
+    width: 320px;
+    height: 480px;
+    z-index: -1;
+    transition: z-index 0s ease 0.3s, opacity 0.2s ease 0s;
+
+    @extend .affix;
+
+    &.active {
+        z-index: 2;
+        opacity: 1;
+        transition: z-index 0s ease 0s, opacity 0.3s ease 0.1s;
+    }
+     @media (max-width: $screen-xssm-max + px) {
+        //!IMPORTANT here because we use javascript to set inline styles (size and position)
+        & {
+            width: 100% !important;
+            left: 0 !important;
+            top: 0 !important;
+            position: fixed !important;
+            height: 100% !important;
+        }
+        &.active {
+            z-index: $zindex-navbar + 1;
+        }
+    }
+    @media (min-width: $screen-sm-min + px) {
+        customers create-task & {
+            margin-top: -30px;
+        }
+    }
+}

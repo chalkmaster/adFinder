@@ -1,0 +1,9 @@
+.btn-group {
+    &.fixed-bottom {
+        bottom: $spacing;
+        left: $spacing;
+        z-index: $zindex-fixed-buttons-bottom;
+
+        @extend .affix;
+    }
+}

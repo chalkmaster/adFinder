@@ -1,0 +1,141 @@
+.dropdown {
+    position: relative;
+}
+.dropdown-toggle:focus {
+    outline: 0;
+}
+ul.dropdown-menu{
+    padding-left: 0;
+}
+.dropdown-menu {
+
+    @include shadow(0);
+
+    position: absolute;
+    top: 100%;
+    z-index: $zindex-dropdown;
+    border-radius: $radius;
+    background-clip: padding-box;
+    min-width: 160px;
+
+    @extend .pd-tp-5;
+    @extend .pd-bt-5;
+    @extend .mg-tp-5;
+
+    .on-hover & {
+        // margin-top: 0;
+        &::before {
+            background-color: transparent !important;
+            content: "";
+            display: block;
+            height: 5px;
+            position: absolute;
+            top: -5px;
+            width: 100%;
+        }
+    }
+    &.right {
+        left: auto;
+        right: 0;
+    }
+    &:not(.right) {
+        left: 0;
+        right: auto;
+    }
+    .divider {
+        height: 1px;
+        margin: (($line-height-computed / 2) - 1) 0;
+        overflow: hidden;
+    }
+
+    li {
+        @extend .list-unstyled;
+    }
+
+    // Links within the dropdown menu
+    > li > a {
+
+        transition: all 300ms ease 0s;
+
+        @extend .cursor-pointer;
+        @extend .block;
+        @extend .text-ellipsis;
+
+        &:not(.sm) {
+            @extend .pd-15;
+        }
+        &.sm {
+            @extend .pd-tp-5;
+            @extend .pd-rt-15;
+            @extend .pd-bt-5;
+            @extend .pd-lt-15;
+        }
+    }
+
+    //VARIATIONS
+    & {
+        display: none;
+    }
+    &.animated {
+        display: block;
+        transform: scaleY(0);
+        transition: transform 0.2s ease 0.3s;
+        & > * {
+            opacity: 0;
+            transition: opacity 0.2s ease 0s;
+        }
+        .dropdown.open &, .on-hover:hover & {
+            transform: scaleY(1);
+            transition: transform 0.2s ease 0s;
+            > * {
+                opacity: 1;
+                transition: opacity 0.2s ease 0.2s;
+            }
+        }
+    }
+}
+// Hover/Focus state
+.dropdown-menu > li > a {
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
+}
+// Active state
+.dropdown-menu > .active > a {
+    &,
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        outline: 0;
+    }
+}
+// Disabled state
+.dropdown-menu > .disabled > a {
+    // Nuke hover/focus effects
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        background-color: transparent;
+        background-image: none;
+        cursor: default;
+    }
+}
+// Open state for the dropdown
+.on-hover:hover,
+.open {
+    // Show the menu
+    .dropdown-menu {
+        display: block;
+    }
+    // Remove the outline when :focus is triggered
+    > a {
+        outline: 0;
+    }
+}
+
+// Backdrop to catch body clicks on mobile, etc.
+.dropdown-backdrop {
+    @extend .fixed-total-size;
+    z-index: ($zindex-dropdown - 10);
+}

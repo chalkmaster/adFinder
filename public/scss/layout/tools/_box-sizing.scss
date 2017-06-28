@@ -1,0 +1,9 @@
+//--------------------------------------//
+// TOOLS: Default mixins anda functions //
+//--------------------------------------//
+
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}

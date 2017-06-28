@@ -1,0 +1,12 @@
+.alert {
+    & {
+        border-width: 1px 1px 1px 2px;
+        border-style: solid;
+        @include border-right-radius($radiusUnity);
+        @extend .pd-15;
+    }
+    li {
+        list-style: circle;
+        @extend .pd-lt-15;
+    }
+}

@@ -1,0 +1,7 @@
+@mixin form-group-state-variant ($state, $color) {
+    .form-group.#{$state}:not(.no-feedback-validation) {
+        * {
+            color: $color;
+        }
+    }
+};

@@ -1,0 +1,8 @@
+.main-content {
+    padding-top: 23px;//layout detail to align title with menu icon
+    min-height: calc(100vh - #{$topBarNavigationHeight + $sidebarNavigationMinHeightSmall} - 66px); //120px is a layout adjustment to show the first layer of footer
+
+    @media (min-width: $screen-md-min + px) {
+        min-height: calc(100vh - #{$topBarNavigationHeight} - 66px); //120px is a layout adjustment to show the first layer of footer
+    }
+}

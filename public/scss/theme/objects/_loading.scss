@@ -1,0 +1,28 @@
+.loading{
+	&:not(.white-loading)::before{
+  		background: rgba($body-bg,0.5);
+	}
+	&.white-loading {
+		&::before {
+  			background: rgba($white,0.6);
+  		}
+	}
+	&:after {
+		background: transparent;
+	}
+}
+.loading::after{
+  border-top-color: $accent;
+  border-right-color: $accent;
+}
+.local-loading-container {
+	background-color: rgba($body-bg, 0.9);
+    &.white-loading {
+    	background-color: rgba($white, 0.9);
+    }
+	.loading {
+	    &::before {
+	    	background-color: transparent;
+	    }
+	}
+}
