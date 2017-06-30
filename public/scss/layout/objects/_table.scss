@@ -223,13 +223,13 @@ sortable {
     white-space: nowrap;
 }
 
-.string-size-limier-25vw {
+.string-size-limiter-25vw {
     @extend .text-ellipsis;
     @media (min-width: $screen-sm-max + px) {
         max-width: 25vw;
     }
 }
-.string-size-limier-40vw {
+.string-size-limiter-40vw {
     @extend .text-ellipsis;
     @media (min-width: $screen-sm-max + px) {
         max-width: 40vw;

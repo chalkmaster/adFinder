@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt" ng-app>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Global Peace adFinder</title>
+    <meta name="description" content="Encontre produtos e serviços na sua região">
+    <meta name="author" content="GlobalPeace">
+
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body>
+    <div class="container-fluid pd-0 bg-color primary color text-primary-white">
+        <navbar>
+            <nav class="container pd-tp-30 pd-bt-30">
+				<div class="space-between center">
+					<div class="full-width hidden-xssm-down">
+						<span class="headline">AdFinder</span>
+					</div>
+					<div class="main-search form-group mg-bt-0 full-width" ng-class="{'is-focused' : mainSearchFocus}">
+						<div class="relative clearfix">
+							<input id="inputMain"
+								class="form-control color text-primary-white"
+								type="text"
+								name="inputMain"
+                                ng-focus="mainSearchFocus = true;"
+                                ng-blur="mainSearchFocus = false;"/>
+                            <i class="material-icons color text-disabled-white">search</i>
+                            <button class="btn type-flat icon-24 color-white">
+                                <i class="material-icons">arrow_forward</i>
+                            </button>
+
+						</div>
+					</div>
+					<div class="full-width v-align-children text-right">
+						<button class="btn type-flat color-white">
+							<span>Categorias</span>
+						</button>
+						<button class="btn type-flat color-white">
+							<span>Entrar</span>
+						</button>
+					</div>
+				</div>
+            </nav>
+        </navbar>
+    </div>
+
+	<div class="container-fluid bg-color primary-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="flex-start top pd-tp-15 pd-bt-15 details-header">
+                        <button class="btn type-flat icon-24 color-white mg-rt-15">
+                            <i class="material-icons">arrow_back</i>
+                        </button>
+                        <div class="details-image bg-color white mg-rt-15"></div>
+                        <div class="texts full-width">
+                            <span class="heading block color text-primary-white">Renan Zózimo</span>
+                            <span class="caption block color text-primary-white">Lorem ipsum</span>
+
+                            <div class="v-align-children text-nowrap color text-primary-white mg-tp-15">
+                                <div class="v-align-children text-nowrap mg-rt-15">
+                                    <i class="material-icons sz-18">thumb_up</i>
+                                    <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                                </div>
+                                <div class="v-align-children text-nowrap mg-rt-15">
+                                    <i class="material-icons sz-18">thumb_down</i>
+                                    <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                                </div>
+                                <div class="v-align-children text-nowrap">
+                                    <i class="material-icons sz-18">message</i>
+                                    <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="texts full-width">
+                            <span class="subheading color text-primary-white">"</span>
+                            <span class="color text-primary-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, dolorum explicabo labore.</span>
+                            <span class="subheading color text-primary-white">"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" style="padding: 0 63px;">
+                <h3 class="color text-primary-dark">Lorem ipsum</h3>
+                <p class="color text-secondary-black">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                <p class="color text-secondary-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident alias eligendi similique, optio quam blanditiis suscipit facere soluta vel dolor aliquam voluptatem accusantium necessitatibus officia ea nobis, ex voluptates velit.</p>
+                <p class="color text-secondary-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia molestias porro, a minus animi unde quo ab, alias eligendi reiciendis.</p>
+            </div>
+        </div>
+        <hr class="mg-tp-30 mg-bt-30">
+    </div>
+
+    <div class="container-fluid" style="background-color: #efefef;">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12" style="height: 400px; background-color: rgba(0,0,0,0.2)">
+                    <!-- FOTOS  -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <hr class="mg-tp-30 mg-bt-30">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="color text-primary-dark">Avaliações e comentários</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="left">
+                            <span class="avatar-character img-circle">R</span><!--
+                         --><div class="texts">
+                                <span class="block mg-lt-5 text-ellipsis">Renan Zózimo</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <i class="material-icons mg-tp-15 color text-success">thumb_up</i>
+                        </div>
+                    </div>
+                    <div class="card-body pd-lt-15 pd-rt-15 pd-bt-15">
+                        <p class="color text-secondary-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quidem quas similique numquam itaque velit, perferendis soluta delectus corporis aperiam blanditiis aliquam autem </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="left">
+                            <span class="avatar-character img-circle">L</span><!--
+                         --><div class="texts">
+                                <span class="block mg-lt-5 text-ellipsis">Leticia Zózimo</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <i class="material-icons mg-tp-15 color text-success">thumb_up</i>
+                        </div>
+                    </div>
+                    <div class="card-body pd-lt-15 pd-rt-15 pd-bt-15">
+                        <p class="color text-secondary-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quidem quas similique numquam itaque velit, perferen. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="left">
+                            <span class="avatar-character img-circle">C</span><!--
+                         --><div class="texts">
+                                <span class="block mg-lt-5 text-ellipsis">Charles Fortes</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <i class="material-icons mg-tp-15 color text-success">thumb_up</i>
+                        </div>
+                    </div>
+                    <div class="card-body pd-lt-15 pd-rt-15 pd-bt-15">
+                        <p class="color text-secondary-black">Lorem ipsum dolor sit amet, consectetur. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</body>
+
+</html>

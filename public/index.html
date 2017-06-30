@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt" ng-app>
 
 <head>
     <meta charset="utf-8">
@@ -16,8 +16,6 @@
 </head>
 
 <body>
-
-
     <div class="container-fluid pd-0 bg-color primary color text-primary-white">
         <navbar>
             <nav class="container pd-tp-30 pd-bt-30">
@@ -25,12 +23,19 @@
 					<div class="full-width hidden-xssm-down">
 						<span class="headline">AdFinder</span>
 					</div>
-					<div class="form-group mg-bt-0 full-width">
+					<div class="main-search form-group mg-bt-0 full-width" ng-class="{'is-focused' : mainSearchFocus}">
 						<div class="relative clearfix">
 							<input id="inputMain"
-								class="form-control"
+								class="form-control color text-primary-white"
 								type="text"
-								name="Write asd"/>
+								name="inputMain"
+                                ng-focus="mainSearchFocus = true;"
+                                ng-blur="mainSearchFocus = false;"/>
+                            <i class="material-icons color text-disabled-white">search</i>
+                            <button class="btn type-flat icon-24 color-white">
+                                <i class="material-icons">arrow_forward</i>
+                            </button>
+
 						</div>
 					</div>
 					<div class="full-width v-align-children text-right">
@@ -47,37 +52,32 @@
     </div>
 
 	<div class="container">
-		<div class="row">
-            <div class="col-xs-12">
-                <h1 class="display-1">Helow word</h1>
-            </div>
-		</div>
         <div class="row">
             <div class="col-xs-12">
-                <h3>Um tanto de coisa</h3>
+                <h3 class="color text-secondary-black">Todos os resultados para "renan lorem"</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="card">
+        <div class="row main-list">
+            <div class="col-xs-12 hidden-md-down">
+                <div class="card mg-bt-15 interactive">
                     <div class="card-body pd-15">
                         <div class="space-between center">
-                            <div class="v-align-children full-width">
-                                <i class="material-icons sz-48 color text-secondary-black">account_circle</i>
+                            <div class="v-align-children text-nowrap lg-main-list-line-part pd-15">
+                                <span class="avatar-character img-circle">R</span>
                                 <div class="texts mg-lt-5 reacts-btn-icon-24-2x">
-                                    <span class="headline block">Renan Zózimo</span>
-                                    <span class="block color text-secondary-black">Lorem ipsum</span>
+                                    <span class="block text-ellipsis">Renan Zózimo</span>
+                                    <span class="caption block color text-secondary-black">Lorem ipsum</span>
                                 </div>
                             </div>
-                            <div class="full-width">
+                            <div class="full-width lg-main-list-line-part pd-lt-15 pd-rt-15">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, iure.</p>
                             </div>
-                            <div class="v-align-children full-width color text-secondary-black text-right" style="">
-                                <div class="v-align-children text-nowrap mg-rt-30">
+                            <div class="v-align-children text-nowrap color text-secondary-black lg-main-list-line-part pd-lt-30 pd-rt-15">
+                                <div class="v-align-children text-nowrap mg-rt-15">
                                     <i class="material-icons sz-18">thumb_up</i>
                                     <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
                                 </div>
-                                <div class="v-align-children text-nowrap mg-rt-30">
+                                <div class="v-align-children text-nowrap mg-rt-15">
                                     <i class="material-icons sz-18">thumb_down</i>
                                     <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
                                 </div>
@@ -90,10 +90,45 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12 hidden-lg-up">
+                <div class="card mg-bt-15 interactive">
+                    <div class="card-header">
+                        <div class="left">
+                            <span class="avatar-character img-circle">
+                                R
+                            </span><!--
+                         --><div class="texts">
+                                <span class="wrap block text-break-all">Renan Zózimo</span>
+                                <span class="wrap caption block color text-secondary-black text-break-all">Lorem ipsum</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pd-rt-15 pd-lt-15">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, iure.</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="right text-right color text-secondary-black">
+                            <div class="v-align-children text-nowrap mg-rt-15">
+                                <i class="material-icons sz-18">thumb_up</i>
+                                <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                            </div>
+                            <div class="v-align-children text-nowrap mg-rt-15">
+                                <i class="material-icons sz-18">thumb_down</i>
+                                <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                            </div>
+                            <div class="v-align-children text-nowrap">
+                                <i class="material-icons sz-18">message</i>
+                                <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 	</div>
 
     <script src="js/scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 </body>
 
 </html>

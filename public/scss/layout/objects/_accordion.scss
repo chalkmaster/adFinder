@@ -1,0 +1,13 @@
+.accordion-container {
+    box-shadow: 0 0 4px 0 #afafaf inset;
+    overflow: hidden;
+    transition: height 375ms ease 0s;
+
+    .content {
+        padding: 15px;
+    }
+
+    &:not(.active) {
+        height: 0 !important;
+    }
+}

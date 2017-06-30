@@ -38,7 +38,7 @@
 
         @extend .pd-rt-5;
 
-        > * {
+        > *:not(.wrap) {
             @extend .text-ellipsis;
         }
         > i.headline-align-adjustment {
@@ -48,7 +48,7 @@
     *:not(img) + .texts {
         max-width: calc(100% - 48px);//48px -> image size
     }
-    img + .texts {
+    img + .texts, .avatar-character + .texts {
         max-width: calc(100% - 65px);//48px from img + 15px from spacing -> image size
     }
     .texts:not([class*='v-align']) > * {

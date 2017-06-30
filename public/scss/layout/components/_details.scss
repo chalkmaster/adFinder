@@ -1,0 +1,12 @@
+.details-header {
+    .details-image {
+        height: 144px;
+        width: 144px;
+
+        //mock
+        border: 2px solid;
+    }
+    .details-image, > button.btn {
+        flex-shrink: 0;
+    }
+}

@@ -74,6 +74,10 @@
     @extend .text-nowrap;
 }
 
+.text-break-all {
+    word-break: break-all;
+}
+
 //FLEX BOX
 .space-between, .space-around, .flex-start {
     display: flex;

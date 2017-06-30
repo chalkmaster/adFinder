@@ -1,0 +1,11 @@
+.main-list {
+    .lg-main-list-line-part {
+        &:nth-child(1), &:nth-child(2) {
+            border-right-width: 1px;
+            border-right-style: solid;
+        }
+        .texts > span {
+            width: 170px;
+        }
+    }
+}

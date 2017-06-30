@@ -13,25 +13,24 @@ h1, .heading, h2, .headline {
 }
 
 h1, .heading {
-    font-size: 26px;
+    font-size: #{$font-size-base + 14};
 }
 h2, .headline {
-    font-size: 24px;
+    font-size: #{$font-size-base + 10};
 }
 h3, .title {
-    font-size: 20px;
+    font-size: #{$font-size-base + 6};
 }
 h4, .subheading {
-    font-size: 16px;
+    font-size: #{$font-size-base + 2} + px;
 }
 h5, .body-2 {
-    font-size: 14px;
+    font-size: #{$font-size-base} + px;
 }
 h6, .caption {
-    font-size: 12px;
+    font-size: #{$font-size-base - 2} + px;
 }
 body,
 p {
-    font-size: 14px;
     font-weight: 400;
 }

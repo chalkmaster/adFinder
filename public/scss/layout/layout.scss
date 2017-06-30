@@ -28,6 +28,7 @@
 @import "base/typography";
 
 //OBJECTS
+@import "objects/accordion";
 @import "objects/alerts";
 @import "objects/btn-group";
 @import "objects/buttons";
@@ -55,6 +56,9 @@
 @import "objects/typography";
 
 //COMPONENTS
+@import "components/details";
+@import "components/main-list";
+@import "components/main-search";
 
 //TRUMPS
 @import "trumps/trumps";
