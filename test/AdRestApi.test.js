@@ -4,7 +4,6 @@ const chai = require('chai');
 const chaiHTTP = require('chai-http');
 const should = chai.should();
 const server = require('../index.js');
-const AdRepository = require('../AdRepository.js').AdRepository;
 
 const validAd = { id: 1, name: 'charles' };
 

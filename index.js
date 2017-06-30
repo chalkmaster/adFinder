@@ -1,10 +1,9 @@
 'use strict'
-const AdRepository = require('./AdRepository').AdRepository;
 const bodyParser = require("body-parser");
 const express = require('express');
 const app = express();
 const port = (process.env.PORT || 5000);
-const repository = new AdRepository();
+const factory = require('./domainFactory');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,19 +12,19 @@ app.use(bodyParser.json());
 app.post('/api/v1/ad/', (req, resp) => {
     let newAd = req.body;
     newAd.id = 0;
-    repository.save(newAd);
+    factory.buildAdService().save(newAd);
     resp.end();
 });
 
 app.put('/api/v1/ad/', (req, resp) => {
     let adToUpdate = req.body;
-    repository.save(adToUpdate);
+    factory.buildAdService().save(adToUpdate);
     resp.end();
 });
 
 app.get('/api/v1/ad/:id', (req, resp) => {    
     const id = parseInt(req.params.id);
-    let found = repository.findById(id);
+    let found = factory.buildAdService().findById(id);
     if(found)
         resp.json(found);
     else
@@ -35,12 +34,17 @@ app.get('/api/v1/ad/:id', (req, resp) => {
 
 app.delete('/api/v1/ad/:id', (req, resp) => {
     const id = parseInt(req.params.id);
-    repository.delete({'id': id});
+    factory.buildAdService().delete({'id': id});
     resp.end();
 });
 
 app.get('/api/v1/ad/search', (req, resp) => {
-    resp.status(501).send('not implemented');
+    const id = parseInt(req.params.q);    
+    let found = factory.buildAdService().search(q);
+    if(found)
+        resp.json(found);
+    else
+        resp.status(404).send();
     resp.end();
 });
 

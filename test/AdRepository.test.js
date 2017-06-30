@@ -1,58 +1,60 @@
 process.env.NODE_ENV = 'test';
 
 const expect = require('chai').expect;
-const AdRepository = require('../AdRepository.js').AdRepository;
+const factory = require('../domainFactory');
 
 const validAd = { id: 1, name: 'charles' };
 
-describe("ad repository testes", () => {
+describe("ad service tests", () => {
   describe("CRUD Operations", () => {
     it("can add new", () => {
-      const repository = new AdRepository();
-      const initialRepositoryLenth = repository.dataStore.length;
-      repository.save(validAd);
-      expect(repository.dataStore.length).gt(initialRepositoryLenth);
+      const service = factory.buildAdService();
+      const initialRepositoryLenth = service.retrieveTabeSize();
+      console.log(initialRepositoryLenth);
+      service.save(validAd);
+      console.log(service.retrieveTabeSize());
+      expect(service.retrieveTabeSize()).gt(initialRepositoryLenth);
     });
 
     it("can find by Id", () => {
-      const repository = new AdRepository();
-      const initialRepositoryLenth = repository.length;
-      repository.save(validAd);
+      const service = factory.buildAdService();
+      const initialRepositoryLenth = service.retrieveTabeSize();
+      service.save(validAd);
 
-      let found = repository.findById(validAd.id);
+      let found = service.findById(validAd.id);
 
       expect(found.name).to.eq(validAd.name);
     });
 
     it("can delete", () => {
-      const repository = new AdRepository();
-      const initialRepositoryLenth = repository.length;
-      repository.save(validAd);
+      const service = factory.buildAdService();
+      const initialRepositoryLenth = service.retrieveTabeSize();
+      service.save(validAd);
 
-      let found = repository.findById(validAd.id);
+      let found = service.findById(validAd.id);
 
       expect(found.name).to.eq(validAd.name);
 
-      repository.delete(found);
+      service.delete(found);
 
-      found = repository.findById(validAd.id);
+      found = service.findById(validAd.id);
       expect(found).to.be.null;
     });
 
     it("can update", () => {
-      const repository = new AdRepository();
-      const initialRepositoryLenth = repository.length;
-      repository.save(validAd);
+      const service = factory.buildAdService();
+      const initialRepositoryLenth = service.retrieveTabeSize();
+      service.save(validAd);
 
-      let found = repository.findById(validAd.id);
+      let found = service.findById(validAd.id);
 
       expect(found).not.be.null;
       expect(found.name).to.eq(validAd.name);
       const newName = 'renan'
       found.name = newName;
-      repository.save(found);
+      service.save(found);
 
-      found = repository.findById(validAd.id);
+      found = service.findById(validAd.id);
 
       expect(found).not.be.null;
       expect(found.name).to.eq(newName);

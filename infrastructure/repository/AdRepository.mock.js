@@ -1,4 +1,4 @@
-module.exports.AdRepository = class AdRepository {
+module.exports = class AdRepository {
 
   constructor() {
     this.dataStore = [];
