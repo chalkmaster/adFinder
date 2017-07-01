@@ -1,8 +1,14 @@
 const AdRepository = require('./infrastructure/repository/AdRepository');
+const MediaRepository = require('./infrastructure/repository/MediaRepository');
 const AdService = require('./services/AdService');
+
 
 function buildAdRepository() {
   return new AdRepository();
+}
+
+function buildMediaRepository() {
+  return new MediaRepository();
 }
 
 function buildAdService() {
@@ -13,4 +19,5 @@ function buildAdService() {
 module.exports = {
   buildAdRepository,
   buildAdService,
+  buildMediaRepository,
 }
