@@ -25,8 +25,8 @@ $textSecondaryWhite:      rgba($white, 0.7) !default;
 $textDisabledWhite:       rgba($white, 0.5) !default;
 $textDivadersWhite:       rgba($white, 0.12) !default;
 
-$link-color:              $accent !default;
-$link-hover-color:        darken($accent, 10%) !default;
+$link-color:              $accent900 !default;
+$link-hover-color:        darken($accent900, 10%) !default;
 
 $success:                 #81c784 !default;
 $info:                    #5bc0de !default;

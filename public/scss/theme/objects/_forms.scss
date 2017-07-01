@@ -14,3 +14,21 @@
 fieldset {
     border-color: $textDivadersBlack;
 }
+
+.form-group.single-line {
+    input {
+        &[type="email"],
+        &[type="password"],
+        &[type="text"],
+        &[type="number"],
+        &[type="date"],
+        &[type="datetime"],
+        &[type="datetime-local"],
+        &[type="tel"],
+        &[type="time"] {
+            & {
+                background-color: transparent;
+            }
+        }
+    }
+}

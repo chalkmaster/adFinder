@@ -38,6 +38,15 @@
 .reset-box-shadow {
     box-shadow: 0 0 transparent;
 }
+.row-gutters-15 {
+    margin-right: 0;
+    padding: 15px 15px 0 15px;
+
+    > *[class*="col-"] {
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+}
 
 //WRITING
 .separated-by-commas {
@@ -77,9 +86,14 @@
 .text-break-all {
     word-break: break-all;
 }
-
+.text-keep-all {
+    word-break: keep-all;
+}
+.text-break {
+    word-wrap: break-word;
+}
 //FLEX BOX
-.space-between, .space-around, .flex-start {
+.space-between, .space-around, .flex-start, .flex-end {
     display: flex;
 
     //ALIGN
@@ -111,6 +125,9 @@
 }
 .flex-start {
     justify-content: flex-start;
+}
+.flex-end {
+    justify-content: flex-end;
 }
 
 //CLASSES TO CONFIGURE MAX-WIDTH IN ELEMENTS NEXT TO .BTN.ICON-24
@@ -280,6 +297,7 @@ i + .icon-badge {
 @include responsive-trumps( '.pd-rt-5', 'padding-right', '5px');
 @include responsive-trumps( '.pd-rt-15', 'padding-right', '15px');
 @include responsive-trumps( '.pd-rt-30', 'padding-right', '30px');
+@include responsive-trumps( '.pd-rt-65', 'padding-right', '65px');
 
 @include responsive-trumps( '.pd-bt-5', 'padding-bottom', '5px');
 @include responsive-trumps( '.pd-bt-15', 'padding-bottom', '15px');
@@ -288,3 +306,4 @@ i + .icon-badge {
 @include responsive-trumps( '.pd-lt-5', 'padding-left', '5px');
 @include responsive-trumps( '.pd-lt-15', 'padding-left', '15px');
 @include responsive-trumps( '.pd-lt-30', 'padding-left', '30px');
+@include responsive-trumps( '.pd-lt-65', 'padding-left', '65px');

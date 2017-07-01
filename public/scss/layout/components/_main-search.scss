@@ -1,4 +1,12 @@
 .main-search {
+    &.form-group {
+        transition: opacity 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s, transform 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+        nav & {
+            transform: scale(0.8);
+            opacity: 0.4;
+        }
+    }
+
     input.form-control {
         height: 50px;
         padding: 0 58px;
@@ -6,8 +14,6 @@
         transition: opacity 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s, transform 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
         nav & {
             border-width: 0;
-            transform: scale(0.8);
-            opacity: 0.4;
         }
     }
     input + i {
@@ -15,13 +21,6 @@
         top: 13px;
         left: 20px;
         z-index: 2;
-        transition: transform 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
-        nav & {
-            transform: translateX(24px);
-            @media (min-width: $screen-xlg-min + px) {
-                transform: translateX(42px);
-            }
-        }
     }
     button.btn {
         position: absolute;
@@ -37,12 +36,9 @@
     }
 
     nav &.is-focused {
-        input {
+        & {
             opacity: 1;
             transform: scale(1);
-        }
-        input + i {
-            transform: translateX(0);
         }
         button.btn {
             opacity: 1;

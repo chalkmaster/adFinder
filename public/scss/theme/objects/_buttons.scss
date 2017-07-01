@@ -9,6 +9,7 @@
         //COLORED BUTTONS
         &.color-accent {
             @include button-variant($accent);
+            color: $textSecondaryBlack; //exception
         }
         &.color-complementary {
             @include button-variant($complementary);

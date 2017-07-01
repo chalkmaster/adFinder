@@ -132,7 +132,7 @@
         <div class="container">
             <div class="row">
                 <close class="absolute-total-size" ng-click="showLogin = false"></close>
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4 pd-tp-15" style="padding-top: 125px;">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4" style="top: 90px;">
                     <div class="card">
                         <div class="card-header">
                             <div class="left">
@@ -190,6 +190,9 @@
                             <button class="btn type-flat mg-tp-15">
                                 <small class="text-capitalize">esqueci minha senha</small>
                             </button>
+                            <button class="btn type-flat mg-tp-15 pull-left" ng-click="showNewAccount = true">
+                                <small class="text-capitalize">criar conta</small>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -202,22 +205,158 @@
         <div class="container">
             <div class="row">
                 <close class="absolute-total-size" ng-click="showCategories = false"></close>
-                <div class="col-xs-12" style="padding-top: 125px;">
-                    <div class="card">
-                        <div class="card-body pd-15">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-lg-4">
-                                    <a class="interactive-item block border-radius pd-15 bg-color greyscale100" href="">Renan Zózimo</a>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-lg-4">
-                                    <a class="interactive-item block border-radius pd-15" href="">Renan Zózimo</a>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-lg-4">
-                                    <a class="interactive-item block border-radius pd-15" href="">Renan Zózimo</a>
+                <div class="backdrop-content col-xs-12">
+                    <div class="card structure">
+                        <div class="structure-title pd-tp-15 pd-rt-15 pd-lt-15">
+                            <span class="headline color text-primary">Categorias</span>
+                        </div>
+                        <div class="structure-body pd-0-force">
+                            <div class="overflow-limiter">
+                                <div class="row row-gutters-15">
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <a href="" class="interactive-item text-ellipsis block border-radius pd-15 bg-color greyscale100" title="Renan Zózimo">Renan Zózimo</a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <a href="" class="interactive-item text-ellipsis block border-radius pd-15" title="Renan Zózimo">Renan Zózimo</a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <a href="" class="interactive-item text-ellipsis block border-radius pd-15" title="Renan Zózimo">Renan Zózimo</a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <a href="" class="interactive-item text-ellipsis block border-radius pd-15" title="Renan Zózimo">Renan Zózimo</a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                                        <a href="" class="interactive-item text-ellipsis block border-radius pd-15" title="Renan Zózimo">Renan Zózimo</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="generic-backdrop color text-secondary-black" ng-class="{'active' : showNewAccount}">
+        <close class="absolute-total-size" ng-click="showNewAccount = false"></close>
+        <div class="container">
+            <div class="row">
+                <close class="absolute-total-size" ng-click="showNewAccount = false"></close>
+                <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
+                    <form class="card structure" name="newAccountForm">
+                        <div class="structure-header pd-15-force bordered">
+                            <div class="left">
+                                <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i><!--
+                             --><div class="texts">
+                                    <span class="headline color text-primary">Criar conta</span>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <button class="btn type-flat icon-24" ng-click="showNewAccount = false">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="structure-body pd-15-force mg-bt-30">
+                            <div class="overflow-limiter">
+                                <div class="row">
+                                    <div class="col-xs-10 col-xs-offset-1 col-xssm-8 col-xssm-offset-2">
+
+                                <div class="form-group"
+                                     ng-class="{'is-focused': newEmailInputIsFocused,
+                                                'has-error' : newAccountForm.newEmailInput.$error.email,
+                                                'is-empty' : newAccountForm.newEmailInput.$error.required}">
+
+                                    <label class="control-label required"
+                                           for="newEmailInput">
+
+                                        <span>Email</span>
+                                    </label>
+                                    <div class="relative clearfix">
+                                        <input id="newEmailInput"
+                                               class="form-control"
+                                               type="email"
+                                               name="newEmailInput"
+                                               ng-model="newEmailInput"
+                                               ng-focus="newEmailInputIsFocused = true"
+                                               ng-blur="newEmailInputIsFocused = false" required/>
+
+                                        <i class="form-control-feedback help-block material-icons">
+                                            <span class="color text-success"
+                                                  ng-show="newAccountForm.newEmailInput.$valid">check</span>
+                                            <span class="color"
+                                                  ng-show="newAccountForm.newEmailInput.$error.email">error</span>
+                                        </i>
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group"
+                                     ng-class="{'is-focused': newPasswordIsFocused,
+                                                'is-empty' : newAccountForm.newPassword.$error.required}">
+
+                                    <label class="control-label required"
+                                           for="newPassword">
+
+                                        <span>Senha</span>
+                                    </label>
+                                    <div class="relative clearfix">
+                                        <input id="newPassword"
+                                               class="form-control"
+                                               type="password"
+                                               name="newPassword"
+                                               ng-model="newPassword"
+                                               ng-focus="newPasswordIsFocused = true"
+                                               ng-blur="newPasswordIsFocused = false" required/>
+
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group"
+                                     ng-class="{'is-focused': newPasswordConfirmIsFocused,
+                                                'has-error' : newPasswordConfirm && newPasswordConfirm != newPassword,
+                                                'is-empty' : newAccountForm.newPasswordConfirm.$error.required}">
+
+                                    <label class="control-label required"
+                                           for="newPasswordConfirm">
+
+                                        <span>Confirme sua senha</span>
+                                    </label>
+                                    <div class="relative clearfix">
+                                        <input id="newPasswordConfirm"
+                                               class="form-control"
+                                               type="password"
+                                               name="newPasswordConfirm"
+                                               ng-model="newPasswordConfirm"
+                                               ng-focus="newPasswordConfirmIsFocused = true"
+                                               ng-blur="newPasswordConfirmIsFocused = false" required/>
+
+                                        <i class="form-control-feedback help-block material-icons">
+                                            <span class="color text-success"
+                                                  ng-show="newPasswordConfirm && newPasswordConfirm == newPassword">check</span>
+                                            <span class="color"
+                                                  ng-show="newPasswordConfirm && newPasswordConfirm != newPassword">error</span>
+                                        </i>
+                                        <span class="material-input"></span>
+                                    </div>
+                                </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="structure-footer bordered">
+                            <div class="right">
+                                <div class="btn-group text-right">
+                                    <button class="btn type-flat" ng-click="showNewAccount = false">
+                                        <span>voltar</span>
+                                    </button>
+                                    <button class="btn" type="submit">
+                                        <span>criar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
