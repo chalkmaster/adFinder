@@ -23,13 +23,16 @@ button.list-item {
     @extend .cursor-pointer;
 }
 a.list-item,
-button.list-item {
+button.list-item,
+.list-item.interactive {
     transition: background-color 300ms ease-in-out 0s;
 }
 .list-item {
 
     @extend .relative;
-    @extend .full-width;
+    &:not([class*="col-"]) {
+        width: 100%;
+    }
 
     &:not(.text-nowrap) {
         word-wrap: break-word;

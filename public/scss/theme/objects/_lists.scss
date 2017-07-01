@@ -4,7 +4,8 @@
     }
 }
 a.list-item,
-button.list-item {
+button.list-item,
+.list-item.interactive {
     // Hover state
     &:focus,
     &:hover {
@@ -43,5 +44,11 @@ button.list-item {
         .list-item-text {
             color: inherit;
         }
+    }
+    // Active on children
+
+    & > *.active {
+        color: $white;
+        background-color: $primary;
     }
 }

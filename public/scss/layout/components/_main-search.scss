@@ -18,6 +18,9 @@
         transition: transform 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
         nav & {
             transform: translateX(24px);
+            @media (min-width: $screen-xlg-min + px) {
+                transform: translateX(42px);
+            }
         }
     }
     button.btn {

@@ -178,6 +178,9 @@ i + .icon-badge {
 }
 
 //BORDER RADIUS
+.border-radius {
+    border-radius: $radius;
+}
 .border-top-radius {
     @include border-top-radius($radius);
 }
