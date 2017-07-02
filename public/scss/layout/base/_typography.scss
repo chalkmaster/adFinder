@@ -22,13 +22,13 @@ h3, .title {
     font-size: #{$font-size-base + 6};
 }
 h4, .subheading {
-    font-size: #{$font-size-base + 2} + px;
+    font-size: #{$font-size-base + 2};
 }
 h5, .body-2 {
-    font-size: #{$font-size-base} + px;
+    font-size: #{$font-size-base};
 }
 h6, .caption {
-    font-size: #{$font-size-base - 2} + px;
+    font-size: #{$font-size-base - 2};
 }
 body,
 p {

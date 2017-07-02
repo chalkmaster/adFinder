@@ -32,17 +32,17 @@
                                 ng-focus="mainSearchFocus = true;"
                                 ng-blur="mainSearchFocus = false;"/>
                             <i class="material-icons color text-disabled-white">search</i>
-                            <button class="btn type-flat icon-24 color-white">
+                            <button type="button" class="btn type-flat icon-24 color-white">
                                 <i class="material-icons">arrow_forward</i>
                             </button>
 
 						</div>
 					</div>
 					<div class="full-width v-align-children text-right">
-						<button class="btn type-flat color-white" ng-click="showCategories = true">
+						<button type="button" class="btn type-flat color-white" ng-click="showCategories = true">
 							<span>Categorias</span>
 						</button>
-						<button class="btn type-flat color-white" ng-click="showLogin = true">
+						<button type="button" class="btn type-flat color-white" ng-click="showLogin = true">
 							<span>Entrar</span>
 						</button>
 					</div>
@@ -68,9 +68,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="flex-start top pd-tp-15 pd-bt-15 details-header">
-                        <button class="btn type-flat icon-24 color-white mg-rt-15 mg-tp-5-sm-down">
-                            <i class="material-icons">arrow_back</i>
-                        </button>
+                        <a href="index.html" class="btn type-flat icon-24 color-white mg-rt-15 mg-tp-5-sm-down">
+                            <i class="material-icons mg-tp-5">arrow_back</i>
+                        </a>
 
                         <div class="details-image bg-color white mg-rt-15 hidden-sm-down"></div>
 
@@ -101,7 +101,7 @@
                             <spam class="block text-right">
                                 - <span><i>Renan Zózimo</i></span>
                             </spam>
-                            <button class="btn color-accent mg-tp-5" ng-click="showAddRating = true">
+                            <button type="button" class="btn color-accent mg-tp-5" ng-click="showAddRating = true">
                                 avaliar
                             </button>
                         </div>
@@ -142,10 +142,10 @@
         <div class="row">
             <div class="col-xs-12">
                 <h3 class="color text-primary-dark pull-left">Avaliações e comentários</h3>
-                <button class="btn full-width pull-right mg-bt-15 hidden-xssm-up" ng-click="showAddRating = true">
+                <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" ng-click="showAddRating = true">
                     avaliar
                 </button>
-                <button class="btn pull-right mg-tp-15 hidden-xs-only" ng-click="showAddRating = true">
+                <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" ng-click="showAddRating = true">
                     avaliar
                 </button>
             </div>
@@ -224,7 +224,7 @@
                                 </div>
                             </div>
                             <div class="right">
-                                <button class="btn type-flat icon-24" ng-click="showLogin = false">
+                                <button type="button" class="btn type-flat icon-24" ng-click="showLogin = false">
                                     <i class="material-icons">close</i>
                                 </button>
                             </div>
@@ -267,13 +267,13 @@
                             </div>
                         </div>
                         <div class="card-part pd-15 text-right">
-                            <button class="btn full-width">
+                            <button type="button" class="btn full-width">
                                 Entrar
                             </button>
-                            <button class="btn type-flat mg-tp-15">
+                            <button type="button" class="btn type-flat mg-tp-15">
                                 <small class="text-capitalize">esqueci minha senha</small>
                             </button>
-                            <button class="btn type-flat mg-tp-15 pull-left" ng-click="showNewAccount = true">
+                            <button type="button" class="btn type-flat mg-tp-15 pull-left" ng-click="showNewAccount = true">
                                 <small class="text-capitalize">criar conta</small>
                             </button>
                         </div>
@@ -326,7 +326,7 @@
             <div class="row">
                 <close class="absolute-total-size" ng-click="showNewAccount = false"></close>
                 <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
-                    <form class="card structure" name="newAccountForm">
+                    <form class="card structure" name="newAccountForm" novalidate>
                         <div class="structure-header pd-15-force bordered">
                             <div class="left">
                                 <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i><!--
@@ -335,7 +335,7 @@
                                 </div>
                             </div>
                             <div class="right">
-                                <button class="btn type-flat icon-24" ng-click="showNewAccount = false">
+                                <button type="button" class="btn type-flat icon-24" ng-click="showNewAccount = false">
                                     <i class="material-icons">close</i>
                                 </button>
                             </div>
@@ -430,7 +430,7 @@
                         <div class="structure-footer bordered">
                             <div class="right">
                                 <div class="btn-group text-right">
-                                    <button class="btn type-flat" ng-click="showNewAccount = false">
+                                    <button type="button" class="btn type-flat" ng-click="showNewAccount = false">
                                         <span>voltar</span>
                                     </button>
                                     <button class="btn" type="submit">
@@ -451,7 +451,7 @@
             <div class="row">
                 <close class="absolute-total-size" ng-click="showAddRating = false"></close>
                 <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
-                    <form action="" class="card">
+                    <form action="" class="card" novalidate>
                         <div class="card-header">
                             <div class="left">
                                 <div class="texts">
@@ -459,7 +459,7 @@
                                 </div>
                             </div>
                             <div class="right">
-                                <button class="btn type-flat icon-24">
+                                <button type="button" class="btn type-flat icon-24" ng-click="showAddRating = false">
                                     <i class="material-icons">close</i>
                                 </button>
                             </div>
@@ -515,10 +515,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="right">
-                                <button class="btn type-flat">
+                                <button type="button" class="btn type-flat" ng-click="showAddRating = false">
                                     voltar
                                 </button>
-                                <button class="btn">
+                                <button class="btn" type="submit">
                                     salvar
                                 </button>
                             </div>
@@ -530,6 +530,14 @@
         </div>
     </div>
 
+    <div class="snackbar bg-color complementary color text-accent">
+        <span>Cadastro realizado com sucesso</span>
+    </div>
+
+    <div class="snackbar bg-color greyscale100 color text-error v-align-children">
+        <i class="material-icons mg-rt-5">error</i>
+        <span class="mg-0-force">Ops: Erro genérico</span>
+    </div>
 
     <script src="js/scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>

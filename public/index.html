@@ -32,17 +32,17 @@
                                 ng-focus="mainSearchFocus = true;"
                                 ng-blur="mainSearchFocus = false;"/>
                             <i class="material-icons color text-disabled-white">search</i>
-                            <button class="btn type-flat icon-24 color-white">
+                            <button type="button" class="btn type-flat icon-24 color-white">
                                 <i class="material-icons">arrow_forward</i>
                             </button>
 
 						</div>
 					</div>
 					<div class="full-width v-align-children text-right">
-						<button class="btn type-flat color-white" ng-click="showCategories = true">
+						<button type="button" class="btn type-flat color-white" ng-click="showCategories = true">
 							<span>Categorias</span>
 						</button>
-						<button class="btn type-flat color-white" ng-click="showLogin = true">
+						<button type="button" class="btn type-flat color-white" ng-click="showLogin = true">
 							<span>Entrar</span>
 						</button>
 					</div>
@@ -59,8 +59,8 @@
         </div>
         <div class="row main-list">
             <div class="col-xs-12 hidden-md-down">
-                <div class="card mg-bt-15 interactive">
-                    <div class="card-body pd-15">
+                <a href="details.html" class="card block mg-bt-15 interactive">
+                    <div class="card-body pd-15 color text-primary-black">
                         <div class="space-between center">
                             <div class="v-align-children text-nowrap lg-main-list-line-part pd-15">
                                 <span class="avatar-character img-circle">R</span>
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-xs-12 hidden-lg-up">
                 <div class="card mg-bt-15 interactive">
@@ -141,7 +141,7 @@
                                 </div>
                             </div>
                             <div class="right">
-                                <button class="btn type-flat icon-24" ng-click="showLogin = false">
+                                <button type="button" class="btn type-flat icon-24" ng-click="showLogin = false">
                                     <i class="material-icons">close</i>
                                 </button>
                             </div>
@@ -184,13 +184,13 @@
                             </div>
                         </div>
                         <div class="card-part pd-15 text-right">
-                            <button class="btn full-width">
+                            <button type="button" class="btn full-width">
                                 Entrar
                             </button>
-                            <button class="btn type-flat mg-tp-15">
+                            <button type="button" class="btn type-flat mg-tp-15">
                                 <small class="text-capitalize">esqueci minha senha</small>
                             </button>
-                            <button class="btn type-flat mg-tp-15 pull-left" ng-click="showNewAccount = true">
+                            <button type="button" class="btn type-flat mg-tp-15 pull-left" ng-click="showNewAccount = true">
                                 <small class="text-capitalize">criar conta</small>
                             </button>
                         </div>
@@ -243,7 +243,7 @@
             <div class="row">
                 <close class="absolute-total-size" ng-click="showNewAccount = false"></close>
                 <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
-                    <form class="card structure" name="newAccountForm">
+                    <form class="card structure" name="newAccountForm" novalidate>
                         <div class="structure-header pd-15-force bordered">
                             <div class="left">
                                 <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i><!--
@@ -252,7 +252,7 @@
                                 </div>
                             </div>
                             <div class="right">
-                                <button class="btn type-flat icon-24" ng-click="showNewAccount = false">
+                                <button type="button" class="btn type-flat icon-24" ng-click="showNewAccount = false">
                                     <i class="material-icons">close</i>
                                 </button>
                             </div>
@@ -347,7 +347,7 @@
                         <div class="structure-footer bordered">
                             <div class="right">
                                 <div class="btn-group text-right">
-                                    <button class="btn type-flat" ng-click="showNewAccount = false">
+                                    <button type="button" class="btn type-flat" ng-click="showNewAccount = false">
                                         <span>voltar</span>
                                     </button>
                                     <button class="btn" type="submit">
@@ -360,6 +360,15 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="snackbar bg-color complementary color text-accent">
+        <span>Cadastro realizado com sucesso</span>
+    </div>
+
+    <div class="snackbar bg-color greyscale100 color text-error v-align-children">
+        <i class="material-icons mg-rt-5">error</i>
+        <span class="mg-0-force">Ops: Erro genérico</span>
     </div>
 
     <script src="js/scripts.js"></script>
