@@ -391,8 +391,14 @@
                                             <span class="headline color text-primary">Emerson Souza</span>
                                         </div>
                                     </div>
+                                    <div class="right">
+                                        <button class="btn type-flat icon-24" ng-click="hideContent = !hideContent" ng-init="hideContent = true">
+                                            <i class="material-icons" ng-show="hideContent">keyboard_arrow_down</i>
+                                            <i class="material-icons" ng-show="!hideContent">keyboard_arrow_up</i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="card-body pd-15">
+                                <div class="card-body pd-15" ng-hide="hideContent">
                                     <span class="subheading block color text-primary mg-bt-15">
                                         Informações básicas
                                     </span>
@@ -425,7 +431,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer">
+                                <div class="card-footer" ng-hide="hideContent">
                                     <div class="right">
                                         <div class="btn-group">
                                             <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
