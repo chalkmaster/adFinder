@@ -12,8 +12,9 @@ function buildMediaRepository() {
 }
 
 function buildAdService() {
-  let repository = buildAdRepository();
-  return new AdService(repository, null);
+  let adRepository = buildAdRepository();
+  let mediaRepository = buildMediaRepository();
+  return new AdService(adRepository, mediaRepository);
 }
 
 module.exports = {

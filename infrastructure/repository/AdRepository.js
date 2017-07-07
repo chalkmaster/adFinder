@@ -1,48 +1,80 @@
-const SQLiteOpenHelper = require('../sqlitedatabase/SQLiteOpenHelper');
+const db = require('sqlite');
+const dbName = './adFinder.sqlite';
 
 module.exports = class AdRepository {
 
   constructor() {
-    let openHelper = new SQLiteOpenHelper();
-    this.db = openHelper.getDataBase();
+    Promise.resolve().then(() =>
+      db.open(dbName, { cached: true })
+        .then(() => {
+          db.migrate();
+        })
+        .catch((err) => { throw err })
+    ).catch((err) => { throw err });
   }
 
   findById(id) {
-    const sql = 'SELECT * FROM ad WHERE id = ?';
-    this.db.each(sql, id, (err, row) => {
-      return this.bindModel(row);
+    return new Promise((resolve, reject) => {
+      db.get('SELECT * FROM ad WHERE id = ?', [id]).then((data) => {
+        resolve(data);
+      }).catch((err) => {
+        reject(err);
+      });
     });
   }
 
   count() {
-    const sql = 'SELECT count(1) as qtd FROM ad';
-    this.db.each(sql, (err, row) => {
-      return row.qtd;
+    return new Promise((resolve, reject) => {
+      db.get('SELECT count(1) as qtd FROM ad').then((data) => {
+        resolve(data);
+      }).catch((err) => {
+        reject(err);
+      });
     });
   }
 
   search(expression) {
-    const sql = 'SELECT * FROM ad WHERE ad MATCH ?';
-    let data = [];
-    this.db.each(sql, expression, (err, row) => {
-      data.push(this.bindModel(row));
+    return new Promise((resolve, reject) => {
+      db.all('SELECT * FROM ad WHERE ad MATCH ?', expression).then((data) => {
+        resolve(data);
+      }).catch((err) => {
+        reject(err);
+      });
     });
-    return data;
+  }
+
+  findAll(expression) {
+    return new Promise((resolve, reject) => {
+      db.all('SELECT * FROM ad').then((data) => {
+        resolve(data);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
   }
 
   update(entityToSave) {
-    const sql = 'UPDATE ad SET id = ?,name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ? WHERE id = ?';
-    this.db.run(sql, this.getParameters(entityToSave, entityToSave.id));
+    return new Promise((resolve, reject) => {
+      const sql = 'UPDATE ad SET id = ?,name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ? WHERE id = ?';
+      db.run(sql, this.getParameters(entityToSave, entityToSave.id))
+        .then(() => { resolve(); }).catch((err) => { reject(err) });
+    });
   }
 
   insert(entityToSave) {
-    const sql = 'INSERT INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?)';
-    this.db.run(sql, this.getParameters(entityToSave));
+    return new Promise((resolve, reject) => {
+      const sql = 'INSERT INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?)';
+      db.run(sql, this.getParameters(entityToSave))
+        .then(() => { resolve(); }).catch((err) => { reject(err) });
+    });
   }
 
   delete(entityToDelete) {
-    const sql = 'DELETE FROM ad WHERE id = ?';
-    this.db.run(sql, entityToDelete.id);
+    return new Promise((resolve, reject) => {
+      const sql = 'DELETE FROM ad WHERE id = ?';
+      db.run(sql, entityToDelete.id)
+        .then(() => { resolve(); }).catch((err) => { reject(err) });
+    });
   }
 
   bindModel(row) {
@@ -76,5 +108,4 @@ module.exports = class AdRepository {
 
     return params;
   }
-
 }

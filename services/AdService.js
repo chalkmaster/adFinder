@@ -1,40 +1,73 @@
-
-
 module.exports = class AdService {
   constructor(adRepo, mediaRepo) {
     this.adRepository = adRepo;
     this.mediaRepository = mediaRepo;
   }
 
-  searchAd(expression) {
-    let ad = this.adRepository.search(expression);
-    if (ad) {
-      this.fillMedia(ad);
-    }
-    return ad;
+  search(expression) {
+    return new Promise((resolve, reject) => {
+      this.adRepository.search(expression).then((data) => {
+        if (data) {
+          this.fillMedia(data);
+        }
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
+  }
+
+  findAll() {
+    return new Promise((resolve, reject) => {
+      this.adRepository.findAll().then((data) => {
+        if (data) {
+          this.fillMedia(data);
+        }
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
   }
 
   findById(id) {
-    let ad = this.adRepository.findById(id);
-    if (ad) {
-      this.fillMedia(ad);
-    }
-    return ad;
+    return new Promise((resolve, reject) => {
+      this.adRepository.findById(id).then((data) => {
+        if (data) {
+          this.fillMedia(data);
+        }
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
   }
 
-  save(ad) {
-    if (ad.id == 0)
-      this.adRepository.insert(ad);
-    else
-      this.adRepository.update(ad);
+  insert(ad) {    
+    return new Promise((resolve, reject) => {
+      this.adRepository.insert(ad).then((data) => {
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
+      
   }
 
-  retrieveTabeSize(){
-    return this.adRepository.count();
+  update(ad) {    
+    return new Promise((resolve, reject) => {
+      this.adRepository.update(ad).then((data) => {
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
+  }
+
+  retrieveTabeSize() {
+    return new Promise((resolve, reject) => {
+      this.adRepository.count().then((data) => {
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
   }
 
   delete(ad) {
-    this.adRepository.delete(ad);
+    return new Promise((resolve, reject) => {
+      this.adRepository.delete(ad).then((data) => {
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
   }
 
   fillMedia(ad) {

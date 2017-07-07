@@ -5,18 +5,21 @@ const chaiHTTP = require('chai-http');
 const should = chai.should();
 const server = require('../index.js');
 
-const validAd = { id: 1, name: 'charles' };
+const model = require('./mock/ad.mock');
 
 chai.use(chaiHTTP);
 
 describe('Ad Rest Tests', () => {
   describe('api v1', () => {
+
     it('/GET should return empty', () => {
       chai.request(server)
         .get('/api/v1/ad/1')
         .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.null;
+          if(err) throw err;
+          
+          chai.expect(res.status).to.be.eq(200);
+
           done();
         });
     });
@@ -24,7 +27,7 @@ describe('Ad Rest Tests', () => {
     it('/POST should persist', () => {
       chai.request(server)
         .post('/api/v1/ad/')
-        .send(validAd)
+        .send(model)
         .end((err, res) => {
           res.should.have.status(200);
           chai.request(server)
@@ -42,7 +45,7 @@ describe('Ad Rest Tests', () => {
 
       chai.request(server)
         .post('/api/v1/ad/')
-        .send(validAd)
+        .send(model)
         .end((err, res) => {
 
           res.should.have.status(200);
@@ -79,7 +82,7 @@ describe('Ad Rest Tests', () => {
 
       chai.request(server)
         .post('/api/v1/ad/')
-        .send(validAd)
+        .send(model)
         .end((err, res) => {
 
           res.should.have.status(200);
