@@ -11,14 +11,14 @@ app.use(bodyParser.json());
 
 app.post('/api/v1/ad/', (req, resp) => {
     let newAd = req.body;
-    newAd.id = 0;
     factory.buildAdService().insert(newAd);
     resp.end();
 });
 
-app.put('/api/v1/ad/', (req, resp) => {
+app.put('/api/v1/ad/:id', (req, resp) => {
+    const id = parseInt(req.params.id);
     let adToUpdate = req.body;
-    factory.buildAdService().post(adToUpdate);
+    factory.buildAdService().update(adToUpdate);
     resp.end();
 });
 
