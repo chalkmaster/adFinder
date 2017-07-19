@@ -90,70 +90,7 @@
                 <h3 class="color text-secondary-black">Todos os resultados para "renan lorem"</h3>
             </div>
         </div>
-        <div class="row main-list">
-            <div class="col-xs-12 hidden-md-down">
-                <a href="details.html" class="card block mg-bt-15 interactive">
-                    <div class="card-body pd-15 color text-primary-black">
-                        <div class="space-between center">
-                            <div class="v-align-children text-nowrap lg-main-list-line-part pd-15">
-                                <div class="texts mg-lt-5">
-                                    <span class="block text-ellipsis">Renan Zózimo</span>
-                                    <span class="caption block color text-secondary-black">Lorem ipsum</span>
-                                </div>
-                            </div>
-                            <div class="full-width lg-main-list-line-part pd-lt-15 pd-rt-15">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, iure.</p>
-                            </div>
-                            <div class="v-align-children text-nowrap color text-secondary-black lg-main-list-line-part pd-lt-30 pd-rt-15">
-                                <div class="v-align-children text-nowrap mg-rt-15">
-                                    <i class="material-icons sz-18">thumb_up</i>
-                                    <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
-                                </div>
-                                <div class="v-align-children text-nowrap mg-rt-15">
-                                    <i class="material-icons sz-18">thumb_down</i>
-                                    <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
-                                </div>
-                                <div class="v-align-children text-nowrap">
-                                    <i class="material-icons sz-18">message</i>
-                                    <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 hidden-lg-up">
-                <div class="card mg-bt-15 interactive">
-                    <div class="card-header">
-                        <div class="left">
-                            <div class="texts">
-                                <span class="wrap block text-break-all">Renan Zózimo</span>
-                                <span class="wrap caption block color text-secondary-black text-break-all">Lorem ipsum</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pd-rt-15 pd-lt-15">
-                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, iure.</span>
-                    </div>
-                    <div class="card-footer">
-                        <div class="right text-right color text-secondary-black">
-                            <div class="v-align-children text-nowrap mg-rt-15">
-                                <i class="material-icons sz-18">thumb_up</i>
-                                <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
-                            </div>
-                            <div class="v-align-children text-nowrap mg-rt-15">
-                                <i class="material-icons sz-18">thumb_down</i>
-                                <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
-                            </div>
-                            <div class="v-align-children text-nowrap">
-                                <i class="material-icons sz-18">message</i>
-                                <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="row main-list" id="adsView"></div>
 	</div>
 
     <div class="generic-backdrop color text-secondary-black" ng-class="{'active' : showLogin}">
@@ -409,8 +346,27 @@
         <span class="mg-0-force">Ops: Erro genérico</span>
     </div>
 
+    <script src="js/views/View.js"></script>
+    <script src="js/views/AdItemView.js"></script>
+
+    <script src="js/models/Ad.js"></script>
+    <script src="js/models/AdsList.js"></script>
+
+    <script src="js/controllers/AdItemController.js"></script>
+
+    <script src="js/helpers/Bind.js"></script>
+
+    <script src="js/services/HttpService.js"></script>
+    <script src="js/services/AdService.js"></script>
+    <script src="js/services/ProxyFactory.js"></script>
+
     <script src="js/scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script>
+        let adItemController = new AdItemController();
+    </script>
+
 </body>
 
 </html>
