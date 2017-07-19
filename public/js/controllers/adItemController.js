@@ -1,18 +1,21 @@
-class adItemController {
+class AdItemController {
 
     constructor() {
 
         let $ = document.querySelector.bind(document);
 
-        this._adsList = new AdsList(model =>
-            this._adsView.update(model));
+        this._adsList = new Bind (
+            new AdsList(),
+            new AdItemView($('#adsView')),
+            'add');
 
-        this._adsView = new AdsView($('#adsView'));
-        this._adsView.update(this._adsList);
+        let service = new AdService();
 
-        this._message = new Message();
-        this._messageView = new MessageView($('#messageView'));
-        this._messageView.update(this._message);
+        service.getAdList()
+        .then(ads => {
 
+          ads.forEach(ad => this._adsList.add(ad));
+        })
+        .catch(error => console.log(error));
     }
 }

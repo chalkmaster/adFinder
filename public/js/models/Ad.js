@@ -1,14 +1,12 @@
 class Ad {
 
-    constructor(name, id, description, region, category, contacts, medias) {
+    constructor(name, id, description, region, category) {
 
         this._name = name;
         this._id = id;
         this._description = description;
         this._region = region;
         this._category = category;
-        this._contacts = contacts;
-        this._medias = medias;
         Object.freeze(this);
     }
 
@@ -40,15 +38,5 @@ class Ad {
     get category() {
 
         return this._category;
-    }
-
-    get contacts() {
-
-        return this._contacts;
-    }
-
-    get medias() {
-
-        return this._medias;
     }
 }

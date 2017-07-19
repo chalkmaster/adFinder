@@ -1,24 +1,21 @@
 class AdService {
 
-    getAds(cb) {
+    constructor() {
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/v1/ad/');
-        xhr.onreadystatechange = () => {
-            if(xhr.readyState == 4) {
-                if(xhr.status == 200) {
+        this._http = new HttpService();
+    }
 
-                  cb(null, JSON.parse(xhr.responseText)
-                        .map(objeto => new Ad(objeto.name, objeto.id, objeto.description,
-                            objeto.region, objeto.category, objeto.contacts, objeto.medias)));
+    getAdList() {
 
-                } else {
-                    console.log(xhr.responseText);
-                    cb('Não foi possível obter as paradas', null);
-                }
-            }
-        }
+        return this._http
+            .get('api/v1/ad/')
+            .then(ads => {
 
-        xhr.send();
+                return ads.map(obj => new Ad(obj.name, obj.id, obj.description, obj.region, obj.category));
+            })
+            .catch(erro => {
+                
+                throw new Error('Não rolou o getAdList');
+            });
     }
 }
