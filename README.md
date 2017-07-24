@@ -59,7 +59,7 @@ http://localhost:5000/search/:q
 http://localhost:5000/api/v1/rating/{id}
 
 -> inserir: /POST
-http://localhost:5000/api/v1/ad/
+http://localhost:5000/api/v1/rating/
 
 ***
 
