@@ -65,7 +65,7 @@ module.exports = class AdRepository {
     return new Promise((resolve, reject) => {
       const sql = 'INSERT INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?)';
       db.run(sql, this.getParameters(entityToSave))
-        .then(() => { resolve(); }).catch((err) => { reject(err) });
+        .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
     });
   }
 

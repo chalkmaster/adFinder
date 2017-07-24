@@ -9,17 +9,62 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.post('/api/v1/rating/', (req, resp) => {
+    let newRate = req.body;
+    factory.buildRatingService()
+        .insert(newRate)
+        .then(() => {
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode(422);
+            res.send(err);
+            resp.end();            
+        });
+});
+
+app.get('/api/v1/rating/:id', (req, resp) => {
+    const id = parseInt(req.params.id);    
+    factory.buildRatingService()
+        .findByAdId(id)
+        .then((data) => {
+            if (data)
+                resp.send(data);
+            else
+                resp.statusCode(404);
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
+});
+
 app.post('/api/v1/ad/', (req, resp) => {
     let newAd = req.body;
-    factory.buildAdService().insert(newAd);
-    resp.end();
+    factory.buildAdService()
+        .insert(newAd)
+        .then(() => {
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode(422);
+            res.send(err);
+        });
 });
 
 app.put('/api/v1/ad/:id', (req, resp) => {
     const id = parseInt(req.params.id);
     let adToUpdate = req.body;
-    factory.buildAdService().update(adToUpdate);
-    resp.end();
+    factory.buildAdService()
+        .update(adToUpdate)
+        .then(() => {
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode(422);
+            res.send(err);
+        });
 });
 
 app.get('/api/v1/ad/:id', (req, resp) => {

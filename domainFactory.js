@@ -1,6 +1,9 @@
+const AdService = require('./services/AdService');
+const RatingService = require('./services/RatingService');
+
 const AdRepository = require('./infrastructure/repository/AdRepository');
 const MediaRepository = require('./infrastructure/repository/MediaRepository');
-const AdService = require('./services/AdService');
+const RatingRepository = require('./infrastructure/repository/RatingRepository');
 
 
 function buildAdRepository() {
@@ -11,14 +14,25 @@ function buildMediaRepository() {
   return new MediaRepository();
 }
 
+function buildRatingRepository() {
+  return new RatingRepository();
+}
+
 function buildAdService() {
   let adRepository = buildAdRepository();
   let mediaRepository = buildMediaRepository();
   return new AdService(adRepository, mediaRepository);
 }
 
+function buildRatingService() {
+  let ratingRepository = buildRatingRepository();
+  return new RatingService(ratingRepository);
+}
+
 module.exports = {
-  buildAdRepository,
   buildAdService,
+  buildRatingService,
+  buildAdRepository,
   buildMediaRepository,
+  buildRatingRepository,
 }

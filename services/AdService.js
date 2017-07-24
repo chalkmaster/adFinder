@@ -1,3 +1,5 @@
+const adValidator = require('../validators/adValidator');
+
 module.exports = class AdService {
   constructor(adRepo, mediaRepo) {
     this.adRepository = adRepo;
@@ -39,6 +41,13 @@ module.exports = class AdService {
 
   insert(ad) {    
     return new Promise((resolve, reject) => {
+      const validator = new adValidator();
+      const {valid, errorList} = validator.validate(ad);
+
+      if (!valid){
+        reject(errorList);
+        return;
+      }
       this.adRepository.insert(ad).then((data) => {
         resolve(data);
       }).catch((err) => { reject(err) });
@@ -48,6 +57,14 @@ module.exports = class AdService {
 
   update(ad) {    
     return new Promise((resolve, reject) => {
+      const validator = new adValidator();
+      const {valid, errorList} = validator.validate(ad);
+
+      if (!valid){
+        reject(errorList);
+        return;
+      }
+
       this.adRepository.update(ad).then((data) => {
         resolve(data);
       }).catch((err) => { reject(err) });
