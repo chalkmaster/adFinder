@@ -15,7 +15,7 @@
 # Acessando
 sistema: http://localhost:5000
 
-## API
+## API ANUNCIOS
 -> listar todos: /GET
 http://localhost:5000/api/v1/ad/
 
@@ -52,5 +52,25 @@ http://localhost:5000/search/:q
 		"email": "emailqualquer@gmail.com",
 		"site": "http://facebookson.com/Isso_Ai_Renan/"
 	}
+}
+```
+## API AVALIAÇÂO
+-> listar específico: /GET/:id
+http://localhost:5000/api/v1/rating/{id}
+
+-> inserir: /POST
+http://localhost:5000/api/v1/ad/
+
+***
+
+**O objeto JSON usado para inserir e atualizar é o mesmo do retorno da consulta e da busca**
+
+## json de consulta e dacastro
+
+```javascript
+{
+"adId": "1",
+"description": "Nú! Doidimais!",
+"liked": 1
 }
 ```
