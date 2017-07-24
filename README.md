@@ -74,3 +74,27 @@ http://localhost:5000/api/v1/rating/
 "liked": 1
 }
 ```
+
+## File Upload
+-> inserir: /POST
+http://localhost:5000/api/v1/fileUpload/
+
+***
+
+## o cadastro é feito via form, usando um input para o id do anuncion e outro para o arquivo.
+## 1. o campo do id do anuncio deve possuir nome e id igual a adId
+## 2. o campo do arquibo deve possuir o nome e o id igual a adFile
+
+```html
+<html>
+  <body>
+    <form action='http://localhost:5000/api/v1/fileUpload/' 
+      method='post' 
+      encType="multipart/form-data">
+        <input type="hidden" name="adId" id="adId" />			
+        <input type="file" name="adFile" id="adFile" />
+        <input type='submit' value='Upload!' />
+    </form>     
+  </body>
+</html>
+```
