@@ -1,5 +1,7 @@
 'use strict'
 const bodyParser = require("body-parser");
+const fileUpload = require('express-fileupload');
+
 const express = require('express');
 const app = express();
 const port = (process.env.PORT || 5000);
@@ -8,6 +10,19 @@ const factory = require('./domainFactory');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(fileUpload());
+
+app.post('/api/v1/fileUpload/', (req, resp) => {
+    let id = req.body.adId;
+
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+
+    let adFile = req.files.adFile;
+    factory.buildMediaRepository().salveMediaFor(id, adFile.data);
+    
+    resp.end();
+});
 
 app.post('/api/v1/rating/', (req, resp) => {
     let newRate = req.body;
