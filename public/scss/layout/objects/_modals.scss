@@ -57,3 +57,7 @@
 .modal-backdrop {
     @extend .fixed-total-size;
 }
+
+body.modal-on {
+    overflow: hidden;
+}

@@ -10,8 +10,16 @@
     }
 }
 .structure {
-    @extend .full-height;
     @extend .relative;
+    
+    @media (max-height: 480px) {
+        &-smart-height-overflow {
+            overflow: auto;
+        }
+    }
+    @media (min-height: 481px) {
+        height: 100%;
+    }
 }
 .structure-header, .structure-footer {
     @extend .justify-children;
