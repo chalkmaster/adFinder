@@ -12,8 +12,9 @@ let app = angular.module('app', [
 
   .component('app', AppComponent)
 
-  .config(['$compileProvider', function($compileProvider) {
+  .config(['$compileProvider', '$locationProvider', ($compileProvider, $locationProvider) => {
     $compileProvider.debugInfoEnabled(process.env.NODE_ENV != 'production');
+    $locationProvider.hashPrefix('');
   }]);
 
 module.exports = app;
