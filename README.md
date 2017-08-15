@@ -5,10 +5,10 @@
 * npm install
 
 ## Executando o projeto
--> node ./index.js
+-> grunt ou node ./index.js
 
 ## Executar testes de unidade
--> npm test
+-> grunt test ou npm test
 
 ***
 
@@ -88,8 +88,8 @@ http://localhost:5000/api/v1/fileUpload/
 ```html
 <html>
   <body>
-    <form action='http://localhost:5000/api/v1/fileUpload/' 
-      method='post' 
+    <form action='http://localhost:5000/api/v1/fileUpload/'
+      method='post'
       encType="multipart/form-data">
         <input type="hidden" name="adId" id="adId" />			
         <input type="file" name="adFile" id="adFile" />

@@ -1,0 +1,122 @@
+<div class="te pd-bt-30 full-width clearfix">
+    <div class="col-xs-12 col-md-6 col-lg-4 col-xlg-3">
+        <h3 class="color text-primary v-align-children">
+            <i class="material-icons">content_paste</i>
+            <span>Informações básicas</span>
+        </h3>
+        <form class="mg-tp-30" action="" name="profileBasicForm">
+            <div class="form-group"
+                 ng-class="{'is-focused': profileNameIsFocused}">
+
+                <label class="control-label required"
+                       for="profileName">
+
+                    <span>Meu nome</span>
+                </label>
+                <div class="relative clearfix">
+                    <input id="profileName"
+                           class="form-control"
+                           type="text"
+                           name="profileName"
+                           ng-init="profileName = 'renanfz'"
+                           ng-model="profileName"
+                           ng-focus="profileNameIsFocused = true"
+                           ng-blur="profileNameIsFocused = false" required/>
+
+                    <i class="form-control-feedback help-block material-icons">
+                        <span class="color text-success"
+                              ng-show="profileBasicForm.profileName.$valid">check</span>
+                        <span class="color"
+                              ng-show="profileBasicForm.profileName.$error.email">error</span>
+                    </i>
+                    <span class="material-input"></span>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-class="{'is-focused': profileCPFIsFocused}">
+
+                <label class="control-label required"
+                       for="profileCPF">
+
+                    <span>CPF</span>
+                </label>
+                <div class="relative clearfix">
+                    <input id="profileCPF"
+                           class="form-control"
+                           type="text"
+                           name="profileCPF"
+                           ng-model="profileCPF"
+                           ng-focus="profileCPFIsFocused = true"
+                           ng-blur="profileCPFIsFocused = false" required/>
+
+                    <i class="form-control-feedback help-block material-icons">
+                        <span class="color text-success"
+                              ng-show="profileBasicForm.profileCPF.$valid">check</span>
+                        <span class="color"
+                              ng-show="profileBasicForm.profileCPF.$error.email">error</span>
+                    </i>
+                    <span class="material-input"></span>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-class="{'is-focused': profilePhoneIsFocused}">
+
+                <label class="control-label"
+                       for="profilePhone">
+
+                    <span>Telefone(s)</span>
+                </label>
+                <div class="relative clearfix">
+                    <input id="profilePhone"
+                           class="form-control"
+                           type="tel"
+                           name="profilePhone"
+                           ng-model="profilePhone"
+                           ng-focus="profilePhoneIsFocused = true"
+                           ng-blur="profilePhoneIsFocused = false"/>
+
+                    <span class="material-input"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-4 col-lg-offset-1 col-xlg-3 col-xlg-offset-1">
+        <h3 class="color text-primary v-align-children">
+            <i class="material-icons">lock_open</i>
+            <span>Acesso</span>
+        </h3>
+        <form class="mg-tp-30" action="" name="profileAccessForm">
+            <div class="form-group mg-bt-15"
+                 ng-class="{'is-focused': newEmailInputIsFocused,
+                            'has-error' : profileAccessForm.newEmailInput.$error.email,
+                            'is-empty' : profileAccessForm.newEmailInput.$error.required}">
+
+                <label class="control-label required"
+                       for="newEmailInput">
+
+                    <span>Email</span>
+                </label>
+                <div class="relative clearfix">
+                    <input id="newEmailInput"
+                           class="form-control"
+                           type="email"
+                           name="newEmailInput"
+                           ng-init="newEmailInput = 'renanfz@gmail.com'"
+                           ng-model="newEmailInput"
+                           ng-focus="newEmailInputIsFocused = true"
+                           ng-blur="newEmailInputIsFocused = false" disabled required/>
+
+                    <span class="material-input"></span>
+                </div>
+            </div>
+        </form>
+        <div class="btn-group full-width text-right">
+            <button class="btn type-flat">
+                alterar e-mail
+            </button>
+            <button class="btn type-flat">
+                alterar senha
+            </button>
+        </div>
+    </div>
+</div>
