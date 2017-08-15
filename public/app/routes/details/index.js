@@ -4,7 +4,7 @@ import uiRouter from 'angular-ui-router';
 
 import mainState from './states/main';
 
-let homeModule = angular.module('routes.home', [
+let detailsModule = angular.module('routes.details', [
     uiRouter
   ])
 
@@ -12,11 +12,9 @@ let homeModule = angular.module('routes.home', [
     ($stateProvider, $urlRouterProvider) => {
       "ngInject";
 
-      $urlRouterProvider.otherwise('/home');
-
       $stateProvider
-        .state('main.home', mainState);
+        .state('main.details', mainState);
     }
   ]);
 
-export default homeModule;
+export default detailsModule;

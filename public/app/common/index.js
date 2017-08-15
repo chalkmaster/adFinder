@@ -1,12 +1,12 @@
 import angular from 'angular';
 import Api from './api';
 import Main from './components/main';
-import Navbar from './components/navbar';
+import Navigation from './components/navigation';
 
 let commonModule = angular.module('app.common', [
   Api.name,
   Main.name,
-  Navbar.name
+  Navigation.name
 ]);
 
 export default commonModule;

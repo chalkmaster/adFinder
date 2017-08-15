@@ -1,10 +1,12 @@
 import template from './app.html';
 
 class AppController {
-  constructor() {
-    
+  constructor($scope) {
+    this.$scope = $scope;
   }
 }
+
+AppController.$inject = ['$scope'];
 
 let appComponent = {
   template,

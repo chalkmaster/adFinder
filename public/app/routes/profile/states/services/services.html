@@ -1,0 +1,73 @@
+<div class="absolute pd-bt-30 full-width clearfix">
+    <div class="col-xs-12 col-md-8 col-xlg-6">
+        <h3 class="color text-primary">
+            <span>Meu anúncio</span>
+        </h3>
+        <form action="" name="adForm">
+            <div class="form-group" ng-class="{'is-focused': adCategoryIsFocused}">
+                <label class="control-label required" for="adCategory">
+                    <span>Categoria</span>
+                </label>
+                <div class="relative">
+                    <div class="select-input" ng-class="{'disabled' : $ctrl.disabled}">
+                        <select id="adCategory"
+                                class="form-control"
+                                name="adCategory"
+                                ng-focus="adCategoryIsFocused = true"
+                                ng-blur="adCategoryIsFocused = false"
+                                ng-model="adCategory" required>
+
+                              <option value="">--</option>
+                              <option value="hidraulica">Hidráulica</option>
+                              <option value="camidacaseira">Comida caseira</option>
+                        </select>
+
+                        <i class="material-icons caret">keyboard_arrow_down</i>
+
+                        <span class="material-input"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"
+                 ng-class="{'is-focused': adDescriptionIsFocused }">
+
+                <label class="control-label required"
+                       for="adDescription">
+
+                    <span>Descrição</span>
+                </label>
+
+                <div class="relative clearfix">
+                    <textarea name="adDescription"
+                              class="form-control"
+                              ng-model="adDescription"
+                              ng-focus="adDescriptionIsFocused = true"
+                              ng-blur="adDescriptionIsFocused = true"
+                              ng-attr-ng-trim="false"
+                              rows = "8"
+                              maxlength="1000"
+                              ng-maxlength="1000"></textarea>
+
+                    <span class="text-right mg-tp-5 help-block max-lenght-counter"
+                          ng-show="adDescription">
+
+                        <span class="text-bold">{{adDescription.length}}</span>
+                        de 1000
+                    </span>
+
+                </div>
+            </div>
+            <div class="btn-group full-width text-right">
+                <button class="btn">
+                    Publicar
+                </button>
+            </div>
+        </form>
+        <h3 class="mg-tp-30 color text-primary">
+            <span>Avaliações e comentários</span>
+        </h3>
+        <button class="btn">
+            ir para página pública
+        </button>
+    </div>
+</div>
