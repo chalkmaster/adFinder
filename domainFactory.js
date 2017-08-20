@@ -28,7 +28,7 @@ function buildUserRepository() {
 function buildAdService() {
   let adRepository = buildAdRepository();
   let mediaRepository = buildMediaRepository();
-  return new AdService(adRepository, mediaRepository);
+  return new AdService(adRepository, mediaRepository, new AproveRepository());
 }
 
 /**

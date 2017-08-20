@@ -20,7 +20,7 @@ module.exports = class AproveRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT * FROM aprove', [email]).then((data) => {
+          db.get('SELECT * FROM aprove').then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);
@@ -46,13 +46,13 @@ module.exports = class AproveRepository {
 
   /**
    * 
-   * @param {Number} adId 
+   * @param {String} adId 
    */
   aproveAd(adId) {
     return new Promise((resolve, reject) => {
       const sql = 'DELETE FROM aprove where adId = ?';
       db.open(dbName).then(() => {
-        db.run(sql, adId)
+        db.run(sql, [adId])
           .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
       });
     });

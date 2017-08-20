@@ -131,7 +131,8 @@ http://localhost:5000/api/v1/user/
 
 -> /PUT/:ID
 http://localhost:5000/api/v1/rating/aprove/{id}
-Headers
-Content-Type: application/json
 
-###
+### Ad
+
+-> /PUT/:ID
+http://localhost:5000/api/v1/ad/aprove/{id}

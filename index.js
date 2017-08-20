@@ -120,12 +120,12 @@ app.post('/api/v1/ad/', (req, resp) => {
         })
         .catch((err) => {
             resp.statusCode = 422;
-            res.send(err);
+            resp.send(err);
         });
 });
 
 app.put('/api/v1/ad/:id', (req, resp) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     let adToUpdate = req.body;
     factory.buildAdService()
         .update(adToUpdate)
@@ -139,7 +139,7 @@ app.put('/api/v1/ad/:id', (req, resp) => {
 });
 
 app.get('/api/v1/ad/:id', (req, resp) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     factory.buildAdService().findById(id)
         .then((data) => {
             if (data)
@@ -170,10 +170,24 @@ app.get('/api/v1/ad/', (req, resp) => {
 });
 
 app.delete('/api/v1/ad/:id', (req, resp) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     factory.buildAdService().delete({ 'id': id }).then(() => {
         resp.end();
     });
+});
+
+app.put('/api/v1/ad/aprove/:id', (req, resp) => {
+    const id = req.params.id;
+    factory.buildAdService()
+        .aprove(id)
+        .then(() => {
+            resp.statusCode = 200;
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
 });
 
 //==== search
