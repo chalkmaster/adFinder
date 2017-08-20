@@ -20,7 +20,7 @@ app.post('/api/v1/fileUpload/', (req, resp) => {
 
     let adFile = req.files.adFile;
     factory.buildMediaRepository().salveMediaFor(id, adFile.data);
-    
+
     resp.end();
 });
 
@@ -34,12 +34,12 @@ app.post('/api/v1/rating/', (req, resp) => {
         .catch((err) => {
             resp.statusCode(422);
             res.send(err);
-            resp.end();            
+            resp.end();
         });
 });
 
 app.get('/api/v1/rating/:id', (req, resp) => {
-    const id = parseInt(req.params.id);    
+    const id = parseInt(req.params.id);
     factory.buildRatingService()
         .findByAdId(id)
         .then((data) => {
@@ -135,5 +135,14 @@ app.get('/search/:q', (req, resp) => {
 });
 
 module.exports = app.listen(port, () => {
-    console.log(`listening at ${port}`);
+    const db = require('sqlite');
+    const dbName = './adFinder.sqlite';
+
+    db.open(dbName).then(() => {
+        db.migrate().then(() => {
+            console.log(`listening at ${port}`);
+        }
+        ).catch((err) => { throw err });
+    }).catch((err) => { throw err });
+
 });
