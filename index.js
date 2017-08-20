@@ -7,6 +7,9 @@ const app = express();
 const port = (process.env.PORT || 5000);
 const factory = require('./domainFactory');
 
+const nodeCache = require('node-cache');
+const cache = new nodeCache();
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -34,6 +37,41 @@ app.post('/api/v1/rating/', (req, resp) => {
         .catch((err) => {
             resp.statusCode(422);
             res.send(err);
+            resp.end();
+        });
+});
+
+app.post('/api/v1/user/', (req, resp) => {
+    let newUser = req.body;
+    factory.buildUserService()
+        .insert(newUser)
+        .then(() => {
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode = 422;
+            resp.send(err);
+            resp.end();
+        });
+});
+
+app.post('/api/v1/auth/', (req, resp) => {
+    let auth = req.body;
+    factory.buildUserService()
+        .auth(auth.email, auth.password)
+        .then((data) => {
+            if(!cache.get(data))
+                cache.set(data, auth.email, 3600);
+
+            resp.send(data);
+            resp.end();
+        })
+        .catch((err) => {
+            if (err == "invalid")
+                resp.statusCode = 401;
+            else
+                resp.statusCode = 422;
+            resp.send(err);
             resp.end();
         });
 });

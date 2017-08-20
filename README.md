@@ -98,3 +98,29 @@ http://localhost:5000/api/v1/fileUpload/
   </body>
 </html>
 ```
+## Auth
+-> autenticar: /post
+http://localhost:5000/api/v1/auth/
+
+***
+
+irá receber de volta um token que deve ser enviado como bearer nas requisições
+
+```javascript
+{
+  "email": "c@c.com",
+  "password": "1234"
+}
+```
+
+## cadsatro de usuário
+-> inserir: /POST
+http://localhost:5000/api/v1/user/
+
+```javascript
+{
+  "cpf":"1",
+  "email": "c@c.com",
+  "password": "1234"
+}
+```

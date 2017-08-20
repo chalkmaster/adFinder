@@ -35,6 +35,10 @@
     "minifyify": "^7.3.2"
   },
   "dependencies": {
+    "angular": "1.6.4",
+    "angular-component": "0.0.7",
+    "angular-resource": "1.6.4",
+    "angular-ui-router": "^0.4.2",
     "body-parser": "^1.17.2",
     "chai": "^4.0.2",
     "chai-http": "^3.0.0",
@@ -43,10 +47,8 @@
     "express-fileupload": "^0.1.4",
     "guid": "0.0.12",
     "mocha": "^3.4.2",
+    "node-cache": "^4.1.1",
     "sqlite": "^2.8.0",
-    "angular": "1.6.4",
-    "angular-resource": "1.6.4",
-    "angular-component": "0.0.7",
-    "angular-ui-router": "^0.4.2"
+    "uuid": "^3.1.0"
   }
 }
