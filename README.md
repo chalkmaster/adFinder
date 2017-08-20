@@ -124,3 +124,14 @@ http://localhost:5000/api/v1/user/
   "password": "1234"
 }
 ```
+***
+## Aprovação
+
+### Rating
+
+-> /PUT/:ID
+http://localhost:5000/api/v1/rating/aprove/{id}
+Headers
+Content-Type: application/json
+
+###

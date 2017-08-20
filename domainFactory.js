@@ -6,6 +6,7 @@ const AdRepository = require('./infrastructure/repository/AdRepository');
 const MediaRepository = require('./infrastructure/repository/MediaRepository');
 const RatingRepository = require('./infrastructure/repository/RatingRepository');
 const UserRepository = require('./infrastructure/repository/UserRepository');
+const AproveRepository = require('./infrastructure/repository/AproveRepository');
 
 
 function buildAdRepository() {
@@ -30,9 +31,12 @@ function buildAdService() {
   return new AdService(adRepository, mediaRepository);
 }
 
+/**
+ * @returns {RatingService}
+ */
 function buildRatingService() {
   let ratingRepository = buildRatingRepository();
-  return new RatingService(ratingRepository);
+  return new RatingService(ratingRepository, new AproveRepository());
 }
 
 function buildUserService() {

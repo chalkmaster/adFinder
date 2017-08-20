@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());
 
+//==== file upload
 app.post('/api/v1/fileUpload/', (req, resp) => {
     let id = req.body.adId;
 
@@ -27,6 +28,7 @@ app.post('/api/v1/fileUpload/', (req, resp) => {
     resp.end();
 });
 
+//==== rating
 app.post('/api/v1/rating/', (req, resp) => {
     let newRate = req.body;
     factory.buildRatingService()
@@ -41,6 +43,38 @@ app.post('/api/v1/rating/', (req, resp) => {
         });
 });
 
+app.get('/api/v1/rating/:id', (req, resp) => {
+    const id = parseInt(req.params.id);
+    factory.buildRatingService()
+        .findByAdId(id)
+        .then((data) => {
+            if (data)
+                resp.send(data);
+            else
+                resp.statusCode = 404;
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
+});
+
+app.put('/api/v1/rating/aprove/:id', (req, resp) => {
+    const id = parseInt(req.params.id);
+    factory.buildRatingService()
+        .aprove(id)
+        .then(() => {
+            resp.statusCode = 200;
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
+});
+
+//==== auth
 app.post('/api/v1/user/', (req, resp) => {
     let newUser = req.body;
     factory.buildUserService()
@@ -76,23 +110,7 @@ app.post('/api/v1/auth/', (req, resp) => {
         });
 });
 
-app.get('/api/v1/rating/:id', (req, resp) => {
-    const id = parseInt(req.params.id);
-    factory.buildRatingService()
-        .findByAdId(id)
-        .then((data) => {
-            if (data)
-                resp.send(data);
-            else
-                resp.statusCode(404);
-            resp.end();
-        })
-        .catch((err) => {
-            resp.send(err);
-            resp.end();
-        });
-});
-
+//==== ad
 app.post('/api/v1/ad/', (req, resp) => {
     let newAd = req.body;
     factory.buildAdService()
@@ -101,7 +119,7 @@ app.post('/api/v1/ad/', (req, resp) => {
             resp.end();
         })
         .catch((err) => {
-            resp.statusCode(422);
+            resp.statusCode = 422;
             res.send(err);
         });
 });
@@ -115,7 +133,7 @@ app.put('/api/v1/ad/:id', (req, resp) => {
             resp.end();
         })
         .catch((err) => {
-            resp.statusCode(422);
+            resp.statusCode = 422;
             res.send(err);
         });
 });
@@ -127,7 +145,7 @@ app.get('/api/v1/ad/:id', (req, resp) => {
             if (data)
                 resp.send(data);
             else
-                resp.statusCode(404);
+                resp.statusCode = 404;
             resp.end();
         })
         .catch((err) => {
@@ -142,7 +160,7 @@ app.get('/api/v1/ad/', (req, resp) => {
             if (data)
                 resp.send(data);
             else
-                resp.statusCode(404);
+                resp.statusCode = 404;
             resp.end();
         })
         .catch((err) => {
@@ -158,13 +176,14 @@ app.delete('/api/v1/ad/:id', (req, resp) => {
     });
 });
 
+//==== search
 app.get('/search/:q', (req, resp) => {
     const exp = req.params.q;
     factory.buildAdService().search(exp).then((data) => {
         if (data)
             resp.send(data);
         else
-            resp.statusCode(404);
+            resp.statusCode = 404;
         resp.end();
     }).catch((err) => {
         resp.send(err);
