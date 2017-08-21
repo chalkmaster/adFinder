@@ -58,3 +58,6 @@ typings/
 
 # dotenv environment variables file
 .env
+public/dist/style.css
+public/dist/style.css.map
+public/dist/vendor.js

@@ -9,7 +9,7 @@
 
                       <div class="texts full-width reacts-btn-icon-24 pd-rt-15-sm-up">
 
-                          <span class="heading block color text-primary-white">Renan Zózimo</span>
+                          <span class="heading block color text-primary-white">{{ad.name}}</span>
                           <span class="caption block color text-primary-white">Lorem ipsum</span>
 
                           <div class="v-align-children color text-primary-white mg-tp-15">
@@ -29,12 +29,12 @@
                       </div>
                       <div class="texts full-width hidden-sm-down color text-primary-white">
                           <span class="block">
-                              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, dolorum explicabo labore."
+                              "{{ad.description}}"
                           </span>
                           <spam class="block text-right">
-                              - <span><i>Renan Zózimo</i></span>
+                              - <span><i>{{ad.name}}</i></span>
                           </spam>
-                          <button type="button" class="btn color-accent mg-tp-5" ng-click="showAddRating = true">
+                          <button type="button" class="btn color-accent mg-tp-5" ng-click="$ctrl.evaluate()">
                               avaliar
                           </button>
                       </div>
