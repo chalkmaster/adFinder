@@ -38,7 +38,7 @@ http://localhost:5000/search/:q
 
 **O objeto JSON usado para inserir e atualizar é o mesmo do retorno da consulta e da busca**
 
-## json de consulta e dacastro
+## json de retorno
 
 ```javascript
 {
@@ -56,6 +56,22 @@ http://localhost:5000/search/:q
 }
 }
 ```
+## json para post e update
+```javascript 
+  {
+ 	"name": "Felipino do Santos Neto",		 +"id": "07796814607",
+ 	"id": "991231123",		 +"name": "Felipino do Santos Neto",
+ 	"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",		 +"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",
+ 	"region": "Savassi",		 +"region": "Savassi",
+ 	"category": "Serviços para Residência",		 +"category": "Serviços para Residência",
+ 	"contacts": {		 +"phone": null,
+ 		"phone": "31 3333-2222, 31 9 8829-2233",		 +"email": null,
+ 		"email": "emailqualquer@gmail.com",		 +"site": null,
+ 		"site": "http://facebookson.com/Isso_Ai_Renan/"		 
+  }
+  }
+```
+
 ## API AVALIAÇÂO
 -> listar específico: /GET/:id
 http://localhost:5000/api/v1/rating/{id}
