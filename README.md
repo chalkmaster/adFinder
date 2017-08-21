@@ -42,16 +42,18 @@ http://localhost:5000/search/:q
 
 ```javascript
 {
-	"name": "Felipino do Santos Neto",
-	"id": "991231123",
-	"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",
-	"region": "Savassi",
-	"category": "Serviços para Residência",
-	"contacts": {
-		"phone": "31 3333-2222, 31 9 8829-2233",
-		"email": "emailqualquer@gmail.com",
-		"site": "http://facebookson.com/Isso_Ai_Renan/"
-	}
+"id": "07796814607",
+"name": "Felipino do Santos Neto",
+"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",
+"region": "Savassi",
+"category": "Serviços para Residência",
+"phone": null,
+"email": null,
+"site": null,
+"rating": {
+"liked": 0,
+"disliked": 0
+}
 }
 ```
 ## API AVALIAÇÂO
@@ -60,6 +62,9 @@ http://localhost:5000/api/v1/rating/{id}
 
 -> inserir: /POST
 http://localhost:5000/api/v1/rating/
+
+-> count: /GET/:id
+http://localhost:5000/api/v1/rating/count/{id}
 
 ***
 
@@ -98,3 +103,41 @@ http://localhost:5000/api/v1/fileUpload/
   </body>
 </html>
 ```
+## Auth
+-> autenticar: /post
+http://localhost:5000/api/v1/auth/
+
+***
+
+irá receber de volta um token que deve ser enviado como bearer nas requisições
+
+```javascript
+{
+  "email": "c@c.com",
+  "password": "1234"
+}
+```
+
+## cadsatro de usuário
+-> inserir: /POST
+http://localhost:5000/api/v1/user/
+
+```javascript
+{
+  "cpf":"1",
+  "email": "c@c.com",
+  "password": "1234"
+}
+```
+***
+## Aprovação
+
+### Rating
+
+-> /PUT/:ID
+http://localhost:5000/api/v1/rating/aprove/{id}
+
+### Ad
+
+-> /PUT/:ID
+http://localhost:5000/api/v1/ad/aprove/{id}

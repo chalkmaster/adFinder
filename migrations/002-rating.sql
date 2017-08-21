@@ -2,7 +2,7 @@
 CREATE TABLE rating (
   adId TEXT,
   description TEXT,
-  liked INTEGER
+  liked INTEGER,
 );
 
 -- down

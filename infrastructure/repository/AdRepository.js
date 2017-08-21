@@ -35,7 +35,7 @@ module.exports = class AdRepository {
 
   search(expression) {
     return new Promise((resolve, reject) => {
-      db.all('SELECT * FROM ad WHERE ad MATCH ?', expression).then((data) => {
+      db.all('SELECT * FROM ad WHERE ad MATCH ? and not exists (select * from aprove where adId = ad.id)', [expression]).then((data) => {
         resolve(data);
       }).catch((err) => {
         reject(err);
@@ -45,7 +45,7 @@ module.exports = class AdRepository {
 
   findAll(expression) {
     return new Promise((resolve, reject) => {
-      db.all('SELECT * FROM ad').then((data) => {
+      db.all('SELECT * FROM ad Where not exists (select * from aprove where adId = ad.id)').then((data) => {
         resolve(data);
       }).catch((err) => {
         reject(err);
