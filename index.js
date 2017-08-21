@@ -43,6 +43,20 @@ app.post('/api/v1/rating/', (req, resp) => {
         });
 });
 
+app.get('/api/v1/rating/count/:id', (req, resp) => {
+    const id = req.params.id;
+    factory.buildRatingService()
+        .countByAdId(id)
+        .then((r) => {
+            resp.send(r);
+            resp.end();
+        })
+        .catch(() => {
+            resp.send(data);
+            resp.end();
+        });
+});
+
 app.get('/api/v1/rating/:id', (req, resp) => {
     const id = parseInt(req.params.id);
     factory.buildRatingService()
@@ -94,7 +108,7 @@ app.post('/api/v1/auth/', (req, resp) => {
     factory.buildUserService()
         .auth(auth.email, auth.password)
         .then((data) => {
-            if(!cache.get(data))
+            if (!cache.get(data))
                 cache.set(data, auth.email, 3600);
 
             resp.send(data);
@@ -142,11 +156,24 @@ app.get('/api/v1/ad/:id', (req, resp) => {
     const id = req.params.id;
     factory.buildAdService().findById(id)
         .then((data) => {
-            if (data)
-                resp.send(data);
-            else
+            if (data) {
+
+                factory.buildRatingService()
+                    .countByAdId(id)
+                    .then((r) => {
+                        data.rating = r;
+                        resp.send(data);
+                        resp.end();
+                    })
+                    .catch(() => {
+                        resp.send(data);
+                        resp.end();
+                    });
+            }
+            else {
                 resp.statusCode = 404;
-            resp.end();
+                resp.end();
+            }
         })
         .catch((err) => {
             resp.send(err);

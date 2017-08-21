@@ -33,6 +33,15 @@ module.exports = class RatingService {
     });
   }
 
+  
+  countByAdId(id) {
+    return new Promise((resolve, reject) => {
+      this.ratingRepository.countByAdId(id).then((data) => {
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
+  }
+
   insert(rate) {
     return new Promise((resolve, reject) => {
       this.ratingRepository.insert(rate).then((data) => {

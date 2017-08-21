@@ -16,6 +16,20 @@ module.exports = class RatingRepository {
     });
   }
 
+  countByAdId(id) {
+    return new Promise((resolve, reject) => {
+      db.open(dbName)
+        .then(() => {
+          db.get('SELECT (select count(1) FROM rating WHERE liked > 0 and adId = ?) as liked, (select count(1) FROM rating WHERE liked <> 1 and adId = ?) as disliked', [id]).then((data) => {
+            resolve(data);
+          }).catch((err) => {
+            reject(err);
+          });
+        })
+        .catch((err) => { throw err; });
+    });
+  }
+
   insert(entityToSave) {
     return new Promise((resolve, reject) => {
       const sql = 'INSERT INTO rating (adId, description, liked, show) values (?,?,?,0)';

@@ -112,4 +112,5 @@ module.exports = class AdService {
   fillMedia(ad) {
     return ad;
   }
+
 }
