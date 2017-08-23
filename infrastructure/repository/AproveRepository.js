@@ -34,7 +34,7 @@ module.exports = class AproveRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT * FROM rating WHERE show = 0', [id]).then((data) => {
+          db.get('SELECT * FROM rating WHERE show = 0').then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);
@@ -61,6 +61,16 @@ module.exports = class AproveRepository {
   aproveRating(adId) {
     return new Promise((resolve, reject) => {
       const sql = 'update rating set show = 1 where adId = ?';
+      db.open(dbName).then(() => {
+        db.run(sql, [adId])
+          .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      });
+    });
+  }
+
+  desaproveRating(adId) {
+    return new Promise((resolve, reject) => {
+      const sql = 'delete from rating where show = 0 and adId = ?';
       db.open(dbName).then(() => {
         db.run(sql, [adId])
           .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });

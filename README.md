@@ -73,7 +73,7 @@ http://localhost:5000/search/:q
 ```
 
 ## API AVALIAÇÂO
--> listar específico: /GET/:id
+-> listar de um anuncio: /GET/:id
 http://localhost:5000/api/v1/rating/{id}
 
 -> inserir: /POST
@@ -149,11 +149,17 @@ http://localhost:5000/api/v1/user/
 ## Aprovação
 
 ### Rating
-
 -> /PUT/:ID
 http://localhost:5000/api/v1/rating/aprove/{id}
 
+-> Desaprovar: PUT/:ID
+http://localhost:5000/api/v1/rating/desaprove/:id'
 ### Ad
+
+caras pendentes:
+-> GET
+ http://localhost:5000/api/v1/aprove/
 
 -> /PUT/:ID
 http://localhost:5000/api/v1/ad/aprove/{id}
+

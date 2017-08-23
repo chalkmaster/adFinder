@@ -33,7 +33,28 @@ module.exports = class RatingService {
     });
   }
 
+  desaprove(rating){
+    return new Promise((resolve, reject) => {
+      this.aproveRepository.desaproveRating(rating).then(() => {
+        resolve("ok");
+      }).catch((err) => { reject(err) });
+    });
+  }
   
+  getToAprove(id){
+    return new Promise((resolve, reject) => {
+      this.aproveRepository.findRating().then((data) => {
+        let ret = {rating: data}
+        this.aproveRepository.findAd().then((dataAd)=>{
+          ret.ad = dataAd;
+          resolve(ret);
+        }).catch(() => {
+          resolve(ret);
+        });
+      }).catch((err) => { reject(err) });
+    });
+  }
+
   countByAdId(id) {
     return new Promise((resolve, reject) => {
       this.ratingRepository.countByAdId(id).then((data) => {

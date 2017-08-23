@@ -75,9 +75,38 @@ app.get('/api/v1/rating/:id', (req, resp) => {
 });
 
 app.put('/api/v1/rating/aprove/:id', (req, resp) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     factory.buildRatingService()
         .aprove(id)
+        .then(() => {
+            resp.statusCode = 200;
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
+});
+
+app.get('/api/v1/aprove/', (req, resp) => {
+    console.log('oi');
+    factory.buildRatingService()
+        .getToAprove()
+        .then((data) => {
+            resp.statusCode = 200;
+            resp.send(data);
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
+});
+
+app.put('/api/v1/rating/desaprove/:id', (req, resp) => {
+    const id = req.params.id;
+    factory.buildRatingService()
+        .desaprove(id)
         .then(() => {
             resp.statusCode = 200;
             resp.end();
