@@ -1,7 +1,7 @@
 const db = require('sqlite');
 const dbName = './adFinder.sqlite';
 
-module.exports = class RatingRepository {
+module.exports = class UserRepository {
   findByEmail(email) {
     return new Promise((resolve, reject) => {
       db.open(dbName)

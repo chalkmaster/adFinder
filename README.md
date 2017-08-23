@@ -38,28 +38,49 @@ http://localhost:5000/search/:q
 
 **O objeto JSON usado para inserir e atualizar é o mesmo do retorno da consulta e da busca**
 
-## json de consulta e dacastro
+## json de retorno
 
 ```javascript
 {
-	"name": "Felipino do Santos Neto",
-	"id": "991231123",
-	"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",
-	"region": "Savassi",
-	"category": "Serviços para Residência",
-	"contacts": {
-		"phone": "31 3333-2222, 31 9 8829-2233",
-		"email": "emailqualquer@gmail.com",
-		"site": "http://facebookson.com/Isso_Ai_Renan/"
-	}
+"id": "07796814607",
+"name": "Felipino do Santos Neto",
+"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",
+"region": "Savassi",
+"category": "Serviços para Residência",
+"phone": null,
+"email": null,
+"site": null,
+"rating": {
+"liked": 0,
+"disliked": 0
+}
 }
 ```
+## json para post e update
+```javascript 
+  {
+ 	"name": "Felipino do Santos Neto",
+ 	"id": "991231123",
+ 	"description": "Marido de Alugel, Eletricista, Bombeiro e Policial Militar",
+ 	"region": "Savassi",
+ 	"category": "Serviços para Residência",
+ 	"contacts": {
+ 		"phone": "31 3333-2222, 31 9 8829-2233",
+ 		"email": "emailqualquer@gmail.com",
+ 		"site": "http://facebookson.com/Isso_Ai_Renan/"		 
+      }
+  }
+```
+
 ## API AVALIAÇÂO
--> listar específico: /GET/:id
+-> listar de um anuncio: /GET/:id
 http://localhost:5000/api/v1/rating/{id}
 
 -> inserir: /POST
 http://localhost:5000/api/v1/rating/
+
+-> count: /GET/:id
+http://localhost:5000/api/v1/rating/count/{id}
 
 ***
 
@@ -124,3 +145,21 @@ http://localhost:5000/api/v1/user/
   "password": "1234"
 }
 ```
+***
+## Aprovação
+
+### Rating
+-> /PUT/:ID
+http://localhost:5000/api/v1/rating/aprove/{id}
+
+-> Desaprovar: PUT/:ID
+http://localhost:5000/api/v1/rating/desaprove/:id'
+### Ad
+
+caras pendentes:
+-> GET
+ http://localhost:5000/api/v1/aprove/
+
+-> /PUT/:ID
+http://localhost:5000/api/v1/ad/aprove/{id}
+

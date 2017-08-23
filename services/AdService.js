@@ -1,9 +1,17 @@
 const adValidator = require('../validators/adValidator');
+const AproveRepository = require('../infrastructure/repository/AproveRepository');
 
 module.exports = class AdService {
-  constructor(adRepo, mediaRepo) {
+  /**
+   * 
+   * @param {*} adRepo 
+   * @param {*} mediaRepo 
+   * @param {AproveRepository} aproveRepo 
+   */
+  constructor(adRepo, mediaRepo, aproveRepo) {
     this.adRepository = adRepo;
     this.mediaRepository = mediaRepo;
+    this.aproveRepository = aproveRepo;
   }
 
   search(expression) {
@@ -18,7 +26,7 @@ module.exports = class AdService {
   }
 
   findAll() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {      
       this.adRepository.findAll().then((data) => {
         if (data) {
           this.fillMedia(data);
@@ -39,28 +47,42 @@ module.exports = class AdService {
     });
   }
 
-  insert(ad) {    
+  /**
+  * 
+  * @param {Number} id 
+  */
+  aprove(id) {
+    return new Promise((resolve, reject) => {
+      this.aproveRepository.aproveAd(id).then(() => {
+        resolve("ok");
+      }).catch((err) => { reject(err) });
+    });
+  }
+
+  insert(ad) {
     return new Promise((resolve, reject) => {
       const validator = new adValidator();
-      const {valid, errorList} = validator.validate(ad);
+      const { valid, errorList } = validator.validate(ad);
 
-      if (!valid){
+      if (!valid) {
         reject(errorList);
         return;
       }
-      this.adRepository.insert(ad).then((data) => {
-        resolve(data);
+      this.adRepository.insert(ad).then(() => {
+        this.aproveRepository.desaproveAd(ad.id).then(
+          () => { resolve(); }
+        ).catch((err) => { reject(err) });
       }).catch((err) => { reject(err) });
     });
-      
+
   }
 
-  update(ad) {    
+  update(ad) {
     return new Promise((resolve, reject) => {
       const validator = new adValidator();
-      const {valid, errorList} = validator.validate(ad);
+      const { valid, errorList } = validator.validate(ad);
 
-      if (!valid){
+      if (!valid) {
         reject(errorList);
         return;
       }
@@ -90,4 +112,5 @@ module.exports = class AdService {
   fillMedia(ad) {
     return ad;
   }
+
 }
