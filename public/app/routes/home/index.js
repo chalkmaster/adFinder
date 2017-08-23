@@ -4,8 +4,11 @@ import uiRouter from 'angular-ui-router';
 
 import mainState from './states/main';
 
+import adsResource from './resource';
+
 let homeModule = angular.module('routes.home', [
-    uiRouter
+    uiRouter,
+    ngResource
   ])
 
   .config(['$stateProvider', '$urlRouterProvider',
@@ -17,6 +20,11 @@ let homeModule = angular.module('routes.home', [
       $stateProvider
         .state('main.home', mainState);
     }
-  ]);
+  ])
+
+
+  .factory('ads.resource', adsResource);
+
+
 
 export default homeModule;

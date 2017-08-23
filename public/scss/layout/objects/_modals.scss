@@ -54,6 +54,12 @@
         }
     }
 }
+.modal-window {
+  div.modal-content {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
 .modal-backdrop {
     @extend .fixed-total-size;
 }

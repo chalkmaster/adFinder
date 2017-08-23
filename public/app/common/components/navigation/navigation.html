@@ -23,7 +23,7 @@
               <button type="button" class="btn type-flat color-white" ng-click="showCategories = true">
                 <span>Categorias</span>
               </button>
-              <button type="button" class="btn type-flat color-white" ng-click="showLogin = true" ng-show="!userLogged">
+              <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openLogin()">
                 <span>Entrar</span>
               </button>
               <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="userLogged">
@@ -37,22 +37,22 @@
                       </li>
                       <li class="divider"></li>
                       <li>
-                          <a href="profile.html" class="v-align-children text-left">
+                          <a data-ui-sref="main.profile.accounts" class="v-align-children text-left">
                               <span>Minha conta</span>
                           </a>
                       </li>
                       <li>
-                          <a href="profile.html" class="v-align-children text-left">
+                          <a data-ui-sref="main.profile.services" class="v-align-children text-left">
                               <span>Meus serviços e produtos</span>
                           </a>
                       </li>
                       <li>
-                          <a href="profile.html" class="v-align-children text-left">
+                          <a data-ui-sref="main.profile.requests" class="v-align-children text-left">
                               <span>Status de solicitações</span>
                           </a>
                       </li>
                       <li>
-                          <a href="profile.html" class="v-align-children text-left">
+                          <a data-ui-sref="main.profile.moderations" class="v-align-children text-left">
                               <span>Moderações administrativas</span>
                           </a>
                       </li>
@@ -107,22 +107,22 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="profile.html" class="v-align-children text-left">
+                                <a data-ui-sref="main.profile.accounts" class="v-align-children text-left">
                                     <span>Minha conta</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="profile.html" class="v-align-children text-left">
+                                <a data-ui-sref="main.profile.services" class="v-align-children text-left">
                                     <span>Meus serviços e produtos</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="profile.html" class="v-align-children text-left">
+                                <a data-ui-sref="main.profile.requests" class="v-align-children text-left">
                                     <span>Status de solicitações</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="profile.html" class="v-align-children text-left">
+                                <a data-ui-sref="main.profile.moderations" class="v-align-children text-left">
                                     <span>Moderações administrativas</span>
                                 </a>
                             </li>
