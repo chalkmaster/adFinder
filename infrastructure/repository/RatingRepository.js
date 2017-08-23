@@ -20,7 +20,7 @@ module.exports = class RatingRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT (select count(1) FROM rating WHERE liked > 0 and adId = ?) as liked, (select count(1) FROM rating WHERE liked <> 1 and adId = ?) as disliked', [id]).then((data) => {
+          db.get('SELECT (select count(1) FROM rating WHERE liked > 0 and adId = ?) as liked, (select count(1) FROM rating WHERE liked <> 1 and adId = ?) as disliked', [id, id]).then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);
