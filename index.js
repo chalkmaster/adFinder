@@ -58,7 +58,7 @@ app.get('/api/v1/rating/count/:id', (req, resp) => {
 });
 
 app.get('/api/v1/rating/:id', (req, resp) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     factory.buildRatingService()
         .findByAdId(id)
         .then((data) => {
