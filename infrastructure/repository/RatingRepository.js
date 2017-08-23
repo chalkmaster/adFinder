@@ -6,7 +6,7 @@ module.exports = class RatingRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT * FROM rating WHERE show > 0 and adId = ?', [id]).then((data) => {
+          db.all('SELECT * FROM rating WHERE show > 0 and adId = ?', [id]).then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);

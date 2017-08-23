@@ -6,7 +6,7 @@ module.exports = class AproveRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT ad.* FROM ad inner join aprove on ad.id = aprove.adId').then((data) => {
+          db.all('SELECT ad.* FROM ad inner join aprove on ad.id = aprove.adId').then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);
@@ -20,7 +20,7 @@ module.exports = class AproveRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT * FROM aprove').then((data) => {
+          db.all('SELECT * FROM aprove').then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);
@@ -34,7 +34,7 @@ module.exports = class AproveRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT * FROM rating WHERE show = 0').then((data) => {
+          db.all('SELECT * FROM rating WHERE show = 0').then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);
