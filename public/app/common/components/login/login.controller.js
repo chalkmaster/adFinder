@@ -3,10 +3,6 @@ class LoginController {
       this.$scope = $scope;
       this.$uibModal = $uibModal;
   }
-  close(){
-    this.$uibModal.close();
-  }
-
 }
 
 LoginController.$inject = ['$scope', '$uibModal'];

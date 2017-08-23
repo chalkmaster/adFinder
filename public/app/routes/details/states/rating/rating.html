@@ -1,0 +1,84 @@
+<div class="generic-backdrop color text-secondary-black active">
+    <close class="absolute-total-size" data-ui-sref="^"></close>
+    <div class="container">
+        <div class="row">
+            <close class="absolute-total-size" data-ui-sref="^"></close>
+            <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
+                <form action="" class="card" novalidate>
+                    <div class="card-header">
+                        <div class="left">
+                            <div class="texts">
+                                <span class="headline color text-primary">Avaliação</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <button type="button" class="btn type-flat icon-24" data-ui-sref="^">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body pd-rt-15 pd-bt-15 pd-lt-15">
+                        <div class="form-group radio mg-bt-0 flex-end">
+                            <div class="content" ng-class="{'color text-success' : like == 1}">
+                                <input type="radio" class="form-control no-active-feedback" name="inputRating" ng-model="like" value="1">
+                                <div class="radio-icons">
+                                    <i class="material-icons">thumb_up</i>
+                                    <i class="material-icons">thumb_up</i>
+                                </div>
+                                <label class="control-label" for="inputs4">Gostei</label>
+                            </div>
+                            <div class="content" ng-class="{'color text-error' : like == 0}">
+                                <input type="radio" class="form-control no-active-feedback" name="inputRating" ng-model="like" value="0">
+                                <div class="radio-icons">
+                                    <i class="material-icons">thumb_down</i>
+                                    <i class="material-icons">thumb_down</i>
+                                </div>
+                                <label class="control-label" for="inputs4">Não gostei</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mg-bt-0"
+                             ng-class="{'is-focused': textRatingIsFocused }">
+
+                            <label class="control-label"
+                                   for="textRating">
+
+                                <span>Comentário (opcional)</span>
+                            </label>
+
+                            <div class="relative clearfix">
+                                <textarea name="textRating"
+                                          class="form-control"
+                                          ng-model="textRating"
+                                          ng-focus="textRatingIsFocused = true"
+                                          ng-blur="textRatingIsFocused = true"
+                                          ng-attr-ng-trim="false"
+                                          maxlength="100"
+                                          ng-maxlength="100"></textarea>
+
+                                <span class="text-right mg-tp-5 help-block max-lenght-counter"
+                                      ng-show="textRating">
+
+                                    <span class="text-bold">{{textRating.length}}</span>
+                                    de 100
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="right">
+                            <button type="button" class="btn type-flat" data-ui-sref="^">
+                                voltar
+                            </button>
+                            <button class="btn" type="button" ng-click="$ctrl.save()" >
+                                salvar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
