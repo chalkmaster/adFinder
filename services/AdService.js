@@ -47,6 +47,14 @@ module.exports = class AdService {
     });
   }
 
+  getCategories() {
+    return new Promise((resolve, reject) => {
+      this.adRepository.getCategories().then((data) => {
+        resolve(data);
+      }).catch((err) => { reject(err) });
+    });
+  }
+
   /**
   * 
   * @param {Number} id 

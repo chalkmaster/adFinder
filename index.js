@@ -167,6 +167,19 @@ app.post('/api/v1/ad/', (req, resp) => {
         });
 });
 
+app.get('/api/v1/category/', (req, resp) => {
+    factory.buildAdService()
+        .getCategories()
+        .then((data) => {
+            resp.json(data);
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode = 422;
+            resp.send(err);
+        });
+});
+
 app.put('/api/v1/ad/:id', (req, resp) => {
     const id = req.params.id;
     let adToUpdate = req.body;
