@@ -17,13 +17,11 @@ class RatingMainController {
     };
     this.loading = true;
     this.resource.save(modelToSave).$promise.then(response => {
-      console.log(response);
       this.loading = false;
       this.$state.go('^', {}, {reload: true});
     }).catch(error => {
-      alert(error);
       this.loading = false;
-      this.$state.go('^');
+      this.$state.go('^', {}, {reload: true});
     });
   }
 }

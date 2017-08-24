@@ -87,7 +87,7 @@ module.exports = function(grunt) {
     env: {
       dev: {
         NODE_ENV: "development",
-        API_URL: "https://charlesfortes.herokuapp.com/"
+        API_URL: "http://charlesfortes.herokuapp.com/"
       },
       prod: {
         NODE_ENV: "production",

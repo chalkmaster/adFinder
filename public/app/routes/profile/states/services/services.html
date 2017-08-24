@@ -15,11 +15,10 @@
                                 name="adCategory"
                                 ng-focus="adCategoryIsFocused = true"
                                 ng-blur="adCategoryIsFocused = false"
-                                ng-model="adCategory" required>
+                                ng-model="$ctrl.category" required>
 
                               <option value="">--</option>
-                              <option value="hidraulica">Hidráulica</option>
-                              <option value="camidacaseira">Comida caseira</option>
+                              <option ng-repeat="obj in $ctrl.categories" value="{{obj.category}}">{{obj.category}}</option>
                         </select>
 
                         <i class="material-icons caret">keyboard_arrow_down</i>
@@ -40,7 +39,7 @@
                 <div class="relative clearfix">
                     <textarea name="adDescription"
                               class="form-control"
-                              ng-model="adDescription"
+                              ng-model="$ctrl.description"
                               ng-focus="adDescriptionIsFocused = true"
                               ng-blur="adDescriptionIsFocused = true"
                               ng-attr-ng-trim="false"
@@ -49,16 +48,16 @@
                               ng-maxlength="1000"></textarea>
 
                     <span class="text-right mg-tp-5 help-block max-lenght-counter"
-                          ng-show="adDescription">
+                          ng-show="$ctrl.description">
 
-                        <span class="text-bold">{{adDescription.length}}</span>
+                        <span class="text-bold">{{$ctrl.description.length}}</span>
                         de 1000
                     </span>
 
                 </div>
             </div>
             <div class="btn-group full-width text-right">
-                <button class="btn">
+                <button class="btn" type="button" ng-disabled="!$ctrl.description.length" ng-click="$ctrl.save()">
                     Publicar
                 </button>
             </div>

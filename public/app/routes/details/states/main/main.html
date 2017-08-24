@@ -21,14 +21,14 @@
                                   <i class="material-icons sz-18">thumb_down</i>
                                   <span class="mg-lt-5 reacts-btn-icon-24" style="font-size: 11px">{{ad.rating.disliked}}</span>
                               </div>
-                              <div class="v-align-children text-nowrap" ng-if="ad.rating.comments">
+                              <div class="v-align-children text-nowrap">
                                   <i class="material-icons sz-18">message</i>
-                                  <span class="mg-lt-5 reacts-btn-icon-24" style="font-size: 11px">{{ad.rating.comments}}</span>
+                                  <span class="mg-lt-5 reacts-btn-icon-24" style="font-size: 11px">{{$ctrl.comments}}</span>
                               </div>
                           </div>
                       </div>
                       <div class="texts full-width hidden-sm-down color text-primary-white">
-                          <span class="block">
+                          <span class="block" ng-show="$ctrl.ratings.length">
                               <i>"{{$ctrl.ratings[$ctrl.ratings.length - 1].description}}"</i>
                           </span>
                           <spam class="block text-right" ng-if="posterName">

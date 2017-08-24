@@ -10,7 +10,7 @@ const factory = require('./domainFactory');
 const nodeCache = require('node-cache');
 const cache = new nodeCache();
 
-app.use(express.static('public'));
+app.use(express.static('public/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());

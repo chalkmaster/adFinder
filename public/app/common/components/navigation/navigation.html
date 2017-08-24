@@ -11,13 +11,18 @@
                   class="form-control color text-primary-white"
                   type="text"
                   name="inputMain"
+                  ng-model="$ctrl.query"
+                  ng-keydown="$event.keyCode  == 13 ? $ctrl.find() : null"
                   ng-focus="mainSearchFocus = true;"
                   ng-blur="mainSearchFocus = false;"/>
                 <i class="material-icons color text-disabled-white">search</i>
-                <button type="button" class="btn type-flat icon-24 color-white">
+                <button type="button" class="btn type-flat icon-24 color-white" ng-click="$ctrl.find()">
                     <i class="material-icons">arrow_forward</i>
                 </button>
               </div>
+              <button type="button" class="btn type-flat icon-24 color-white" ng-click="$ctrl.find()">
+                  <i class="material-icons">arrow_forward</i>
+              </button>
             </div>
             <div class="full-width v-align-children text-right btn-group">
               <button type="button" class="btn type-flat color-white" ng-click="showCategories = true">
@@ -26,18 +31,18 @@
               <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openLogin()">
                 <span>Entrar</span>
               </button>
-              <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="userLogged">
+              <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="$ctrl.userLogged">
                   <button type="button" class="btn type-flat color-white dropdown-toggle" ng-click="profileOptions = !profileOptions">
                       <span class="mg-lt-15">Minha conta</span>
                       <i class="material-icons">arrow_drop_down</i>
                   </button>
                   <ul class="dropdown-menu right text-left" style="width: 290px;">
                       <li class="v-align-children pd-15">
-                        <span class="color text-primary title text-ellipsis" title="Renan Zózimo">Renan Zózimo</span>
+                        <span class="color text-primary title text-ellipsis" title="Renan Zózimo">{{$ctrl.currentUser.name}}</span>
                       </li>
                       <li class="divider"></li>
                       <li>
-                          <a data-ui-sref="main.profile.accounts" class="v-align-children text-left">
+                          <a data-ui-sref="main.profile.account" class="v-align-children text-left">
                               <span>Minha conta</span>
                           </a>
                       </li>
@@ -51,14 +56,14 @@
                               <span>Status de solicitações</span>
                           </a>
                       </li>
-                      <li>
+                      <li ng-if="allowed" >
                           <a data-ui-sref="main.profile.moderations" class="v-align-children text-left">
                               <span>Moderações administrativas</span>
                           </a>
                       </li>
                       <li class="divider"></li>
                       <li>
-                          <a href="" class="v-align-children text-right" ng-click="userLogged = false">
+                          <a href="" class="v-align-children text-right" ng-click="$ctrl.signOut()">
                               <span class="mg-rt-5">Sair</span>
                               <i class="material-icons">exit_to_app</i>
                           </a>
@@ -79,10 +84,12 @@
                               class="form-control color text-primary-white"
                               type="text"
                               name="inputMain"
+                              ng-keydown="$event.keyCode  == 13 ? $ctrl.find() : null"
+                              ng-model="$ctrl.query"
                               ng-focus="mainSearchFocus = true;"
                               ng-blur="mainSearchFocus = false;"/>
                             <i class="material-icons color text-disabled-white">search</i>
-                            <button type="button" class="btn type-flat icon-24 color-white">
+                            <button type="button" class="btn type-flat icon-24 color-white" ng-click="$ctrl.find()">
                                 <i class="material-icons">arrow_forward</i>
                             </button>
                           </div>

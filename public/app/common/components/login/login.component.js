@@ -4,7 +4,7 @@ import controller from './login.controller';
 let loginComponent = {
   restrict: 'E',
   template,
-  controller,
+  controller
 };
 
 export default loginComponent;

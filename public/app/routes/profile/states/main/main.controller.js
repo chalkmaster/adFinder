@@ -1,10 +1,17 @@
 class ProfileController {
-  constructor($scope) {
-    this.name = 'Profile Main';
+  constructor($scope, authCredentials) {
+    this.authCredentials = authCredentials;
     this.$scope = $scope;
+    this.getCurrentUser();
+  }
+  getCurrentUser() {
+    let token = this.authCredentials.currentAccessToken();
+    if(token) {
+      this.currentUser = JSON.parse(token);
+    }
   }
 }
 
-ProfileController.$inject = ['$scope'];
+ProfileController.$inject = ['$scope', 'authCredentials'];
 
 export default ProfileController;

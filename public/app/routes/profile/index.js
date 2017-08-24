@@ -8,6 +8,8 @@ import profileModerationsState from './states/moderations';
 import profileRequestsState from './states/requests';
 import profileServicesState from './states/services';
 
+import categoryResource from './states/services/resource';
+
 let profileModule = angular.module('routes.profile', [
     uiRouter
   ])
@@ -24,6 +26,8 @@ let profileModule = angular.module('routes.profile', [
         .state('main.profile.requests', profileRequestsState)
         .state('main.profile.services', profileServicesState);
     }
-  ]);
+  ])
+
+  .factory('categories.resource', categoryResource);
 
 export default profileModule;

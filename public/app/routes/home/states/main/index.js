@@ -2,7 +2,7 @@ import template from './home.html';
 import controller from './home.controller';
 
 let homeMain = {
-    url: '/home',
+    url: '/',
     template,
     controller,
     controllerAs:'$ctrl'
