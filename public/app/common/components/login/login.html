@@ -2,7 +2,7 @@
     <close class="absolute-total-size" ng-click="close()"></close>
     <div class="container">
         <div class="row">
-            <close class="absolute-total-size" ng-click="showLogin = false"></close>
+            <close class="absolute-total-size" ng-click="close()"></close>
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4" style="top: 90px;">
                 <div class="card mg-0-force">
                     <div class="card-header">
@@ -12,7 +12,7 @@
                             </div>
                         </div>
                         <div class="right">
-                            <button type="button" class="btn type-flat icon-24" ng-click="$ctrl.close()">
+                            <button type="button" class="btn type-flat icon-24" ng-click="close()">
                                 <i class="material-icons">close</i>
                             </button>
                         </div>
@@ -30,7 +30,7 @@
                                            type="text"
                                            name="inputUser"
                                            placeholder="usuário ou e-mail"
-                                           ng-model="inputUser"
+                                           ng-model="$ctrl.email"
                                            ng-focus="inputUserIsFocused = true"
                                            ng-blur="inputUserIsFocused = false"/>
 
@@ -48,7 +48,7 @@
                                            type="password"
                                            name="inputPassword"
                                            placeholder="senha"
-                                           ng-model="inputPassword"
+                                           ng-model="$ctrl.password"
                                            ng-focus="inputPasswordIsFocused = true"
                                            ng-blur="inputPasswordIsFocused = false"/>
 
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="card-part pd-15 text-right">
-                        <button type="button" class="btn full-width" ng-disabled="!inputPassword" ng-click="userLogged = true; showLogin = false;">
+                        <button type="button" class="btn full-width" ng-disabled="!$ctrl.password" ng-click="$ctrl.signIn()">
                             Entrar
                         </button>
                         <button type="button" class="btn type-flat mg-tp-15">

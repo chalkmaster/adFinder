@@ -11,6 +11,7 @@ class DetailsMainController {
     this.loading = true;
     this.resource.query({id: this.$scope.ad.id}).$promise.then(response => {
       this.ratings = response;
+      this.comments = response.filter((x) => x.description !== "").length;
       this.loading = false;
     }).catch(err => {
       this.loading = false;

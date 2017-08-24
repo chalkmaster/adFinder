@@ -1,7 +1,7 @@
 <div class="container">
       <div class="row">
           <div class="col-xs-12">
-              <h3 class="color text-secondary-black">Todos os resultados para "renan lorem"</h3>
+              <h3 class="color text-secondary-black">{{ $ctrl.searchHint ? 'Todos os resultados para "' + $ctrl.searchHint + '"' : '' }}</h3>
           </div>
       </div>
       <div class="row main-list" id="adsView">
@@ -22,15 +22,15 @@
                           <div class="v-align-children text-nowrap color text-secondary-black lg-main-list-line-part pd-lt-30 pd-rt-15">
                               <div class="v-align-children text-nowrap mg-rt-15">
                                   <i class="material-icons sz-18">thumb_up</i>
-                                  <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                                  <small class="mg-lt-5 reacts-btn-icon-24">{{ad.liked}}</small>
                               </div>
                               <div class="v-align-children text-nowrap mg-rt-15">
                                   <i class="material-icons sz-18">thumb_down</i>
-                                  <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                                  <small class="mg-lt-5 reacts-btn-icon-24">{{ad.disliked}}</small>
                               </div>
                               <div class="v-align-children text-nowrap">
                                   <i class="material-icons sz-18">message</i>
-                                  <small class="mg-lt-5 reacts-btn-icon-24">1204</small>
+                                  <small class="mg-lt-5 reacts-btn-icon-24">{{ad.comments}}</small>
                               </div>
                           </div>
                       </div>

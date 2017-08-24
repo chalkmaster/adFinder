@@ -15,7 +15,7 @@ let homeModule = angular.module('routes.home', [
     ($stateProvider, $urlRouterProvider) => {
       "ngInject";
 
-      $urlRouterProvider.otherwise('/home');
+      $urlRouterProvider.otherwise('/');
 
       $stateProvider
         .state('main.home', mainState);

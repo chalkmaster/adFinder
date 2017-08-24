@@ -18,8 +18,8 @@
                            class="form-control"
                            type="text"
                            name="profileName"
-                           ng-init="profileName = 'renanfz'"
-                           ng-model="profileName"
+                           ng-disabled="true"
+                           ng-model="currentUser.name"
                            ng-focus="profileNameIsFocused = true"
                            ng-blur="profileNameIsFocused = false" required/>
 
@@ -45,7 +45,8 @@
                            class="form-control"
                            type="text"
                            name="profileCPF"
-                           ng-model="profileCPF"
+                           ng-disabled="true"
+                           ng-model="currentUser.cpf"
                            ng-focus="profileCPFIsFocused = true"
                            ng-blur="profileCPFIsFocused = false" required/>
 
@@ -71,7 +72,8 @@
                            class="form-control"
                            type="tel"
                            name="profilePhone"
-                           ng-model="profilePhone"
+                           ng-disabled="true"
+                           ng-model="currentUser.phone"
                            ng-focus="profilePhoneIsFocused = true"
                            ng-blur="profilePhoneIsFocused = false"/>
 
@@ -101,8 +103,7 @@
                            class="form-control"
                            type="email"
                            name="newEmailInput"
-                           ng-init="newEmailInput = 'renanfz@gmail.com'"
-                           ng-model="newEmailInput"
+                           ng-model="currentUser.email"
                            ng-focus="newEmailInputIsFocused = true"
                            ng-blur="newEmailInputIsFocused = false" disabled required/>
 

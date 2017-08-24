@@ -1,9 +1,11 @@
 class ProfileAccountController {
-  constructor() {
+  constructor($scope) {
     this.name = 'Profile Account Screen';
+    this.$scope = $scope;
+    this.$scope.currentUser = $scope.$parent.$ctrl.currentUser;
   }
 }
 
-ProfileAccountController.$inject = [];
+ProfileAccountController.$inject = ['$scope'];
 
 export default ProfileAccountController;
