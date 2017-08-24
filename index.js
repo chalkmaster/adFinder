@@ -137,8 +137,8 @@ app.post('/api/v1/auth/', (req, resp) => {
     factory.buildUserService()
         .auth(auth.email, auth.password)
         .then((data) => {
-            if (!cache.get(data))
-                cache.set(data, auth.email, 3600);
+            if (!cache.get(data.token))
+                cache.set(data.token, data.cpf, 3600);
 
             resp.send(data);
             resp.end();

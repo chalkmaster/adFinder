@@ -20,7 +20,13 @@ module.exports = class UserService {
               session = `1${session}`;
             else
               session = `0${session}`;            
-            resolve(session);
+            resolve({
+              token: session,
+              email: data.email,
+              cpf: data.cpf,
+              name: data.name,
+              }
+            );
           }
           else
             reject("invalid");
