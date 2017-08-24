@@ -16,6 +16,10 @@ module.exports = class UserService {
         if (data && data.password){
           if (data.password == pass){
             var session = uuid();
+            if (data.email.indexOf("@globalpeace.com.br") > -1)
+              session = `1${session}`;
+            else
+              session = `0${session}`;            
             resolve(session);
           }
           else
