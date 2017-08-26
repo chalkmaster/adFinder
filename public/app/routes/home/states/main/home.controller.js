@@ -1,11 +1,13 @@
 class HomeMainController {
-  constructor($rootScope, adsResource, ratingResource) {
+  constructor($rootScope, adsResource, ratingResource, $stateParams) {
     this.name = 'Home Main Screen';
     this.adsResource = adsResource;
     this.ratingResource = ratingResource;
     $rootScope.$on('search', this.filter.bind(this));
     $rootScope.$on('loadList', this.load.bind(this));
-    this.load();
+    if(!$stateParams.preventLoad) {
+      this.load();
+    }
   }
   load(){
     this.loading = true;
@@ -43,6 +45,6 @@ class HomeMainController {
   }
 }
 
-HomeMainController.$inject = ['$rootScope', 'ads.resource', 'ratings.resource'];
+HomeMainController.$inject = ['$rootScope', 'ads.resource', 'ratings.resource', '$stateParams'];
 
 export default HomeMainController;
