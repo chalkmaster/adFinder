@@ -137,8 +137,8 @@ app.post('/api/v1/auth/', (req, resp) => {
     factory.buildUserService()
         .auth(auth.email, auth.password)
         .then((data) => {
-            if (!cache.get(data))
-                cache.set(data, auth.email, 3600);
+            if (!cache.get(data.token))
+                cache.set(data.token, data.cpf, 3600);
 
             resp.send(data);
             resp.end();
@@ -159,6 +159,19 @@ app.post('/api/v1/ad/', (req, resp) => {
     factory.buildAdService()
         .insert(newAd)
         .then(() => {
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode = 422;
+            resp.send(err);
+        });
+});
+
+app.get('/api/v1/category/', (req, resp) => {
+    factory.buildAdService()
+        .getCategories()
+        .then((data) => {
+            resp.json(data);
             resp.end();
         })
         .catch((err) => {
