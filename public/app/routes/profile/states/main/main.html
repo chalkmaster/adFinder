@@ -19,7 +19,7 @@
                     <li class="text-uppercase caption" data-ui-sref-active="active" data-ui-sref="main.profile.requests">
                         Status de solicitações
                     </li>
-                    <li class="text-uppercase caption" data-ui-sref-active="active" data-ui-sref="main.profile.moderations" ng-if="allowed">
+                    <li class="text-uppercase caption" data-ui-sref-active="active" data-ui-sref="main.profile.moderations" ng-if="$ctrl.currentUser.isAdmin">
                         Moderações administrativas
                     </li>
                 </ul>

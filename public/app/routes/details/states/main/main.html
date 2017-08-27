@@ -34,7 +34,7 @@
                           <spam class="block text-right" ng-if="posterName">
                               - <span><i>{{ad.name}}</i></span>
                           </spam>
-                          <button type="button" class="btn color-accent mg-tp-5" data-ui-sref="main.details.rating">
+                          <button type="button" class="btn color-accent mg-tp-5" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged">
                               avaliar
                           </button>
                       </div>
@@ -73,10 +73,10 @@
     <div class="row">
         <div class="col-xs-12">
             <h3 class="color text-primary-dark pull-left">Avaliações e comentários</h3>
-            <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" data-ui-sref="main.details.rating">
+            <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged">
                 avaliar
             </button>
-            <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" data-ui-sref="main.details.rating">
+            <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged">
                 avaliar
             </button>
         </div>

@@ -14,27 +14,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-show="$ctrl.joinRequests">
                     <td class="pivot">Emerson dos Santos</td>
                     <td data-th="CPF">09919876670</td>
                     <td data-th="Telefone">31900876767</td>
                     <td data-th="E-mail">emerson.santos@mail.com</td>
-                    <td>
-                        <div class="btn-group">
-                            <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
-                                <i class="material-icons">close</i>
-                            </button>
-                            <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
-                                <i class="material-icons">check</i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="pivot">Carlos Antônio</td>
-                    <td data-th="CPF">19987656617</td>
-                    <td data-th="Telefone">31980897867</td>
-                    <td data-th="E-mail">carl.ant02@mail.com</td>
                     <td>
                         <div class="btn-group">
                             <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
@@ -53,13 +37,13 @@
         <h3 class="color text-primary">
             <span>Solicitações de anúncios</span>
         </h3>
-        <div class="row"><!-- repeat aqui -->
+        <div class="row" data-ng-repeat="ad in $ctrl.ads"><!-- repeat aqui -->
             <div class="col-xs-12">
                 <div class="card">
                     <div class="card-header bordered">
                         <div class="left">
                             <div class="texts">
-                                <span class="headline color text-primary">Emerson Souza</span>
+                                <span class="headline color text-primary">{{ad.name}}</span>
                             </div>
                         </div>
                         <div class="right">
@@ -76,15 +60,15 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 mg-bt-15">
                                 <span class="block"><b>CPF</b></span>
-                                <span class="block">09887867716</span>
+                                <span class="block">{{ad.id}}</span>
                             </div>
                             <div class="col-xs-12 col-sm-6 mg-bt-15">
                                 <span class="block"><b>Telefone</b></span>
-                                <span class="block">31988987876</span>
+                                <span class="block">{{ad.phone}}</span>
                             </div>
                             <div class="col-xs-12 col-sm-6 mg-bt-15">
                                 <span class="block"><b>E-mail</b></span>
-                                <span class="block">merson@mail.com</span>
+                                <span class="block">{{ad.email}}</span>
                             </div>
                         </div>
                         <hr>
@@ -94,21 +78,21 @@
                         <div class="row">
                             <div class="col-xs-12 mg-bt-15">
                                 <span class="block"><b>Categoria</b></span>
-                                <span class="block">Engenharia</span>
+                                <span class="block">{{ad.category}}</span>
                             </div>
                             <div class="col-xs-12">
                                 <span class="block"><b>Descrição</b></span>
-                                <span class="block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident expedita, accusantium neque eius deleniti eligendi molestiae veritatis cumque, quas, mollitia cupiditate. Repellat facilis, eligendi pariatur, hic vel porro voluptatibus nihil rerum aliquid velit eos amet dolores vitae ratione temporibus nam!</span>
+                                <span class="block">{{ad.description}}</span>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                     <div class="card-footer" ng-hide="hideContent">
                         <div class="right">
                             <div class="btn-group">
                                 <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
                                     <i class="material-icons">close</i>
                                 </button>
-                                <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
+                                <button class="btn type-flat icon-24" data-ui-sref="main.profile.moderations.aprove({id: ad.id})">
                                     <i class="material-icons">check</i>
                                 </button>
                             </div>
