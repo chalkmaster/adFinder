@@ -1,10 +1,11 @@
 class ProfileServicesController {
-  constructor($scope, $http, adsResource, categoriesResource) {
+  constructor($scope, $http, adsResource, categoriesResource, uiCommunication) {
     this.$scope = $scope;
     this.$http = $http;
     this.$scope.currentUser = $scope.$parent.$ctrl.currentUser;
     this.adsResource = adsResource;
     this.categoriesResource = categoriesResource;
+    this.uiCommunication = uiCommunication;
     this.load();
   }
   load(){
@@ -27,14 +28,21 @@ class ProfileServicesController {
      };
      this.$http.post('api://api/v1/ad/', angular.toJson(model)).then(response => {
       console.log('ad saved');
+      this.uiCommunication.snackbar('Anúncio enviado com sucesso para aprovação.');
+      this.resetForm();
     }, (response) => {
+        this.uiCommunication.snackbar('Não foi possível enviar o anúncio.');
         if(response.data && response.data.error_description) {
           onsole.log('error');
         }
     });
   }
+  resetForm(){
+    this.description = null;
+    this.category = null;
+  }
 }
 
-ProfileServicesController.$inject = ['$scope', '$http', 'ads.resource', 'categories.resource'];
+ProfileServicesController.$inject = ['$scope', '$http', 'ads.resource', 'categories.resource', 'uiCommunication'];
 
 export default ProfileServicesController;

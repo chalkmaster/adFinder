@@ -1,0 +1,84 @@
+<div class="generic-backdrop color text-secondary-black active" >
+    <close class="absolute-total-size" ng-click="$ctrl.close()"></close>
+    <div class="container">
+        <div class="row">
+            <close class="absolute-total-size" ng-click="$ctrl.close()"></close>
+            <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
+                <form action="" class="card" novalidate>
+                    <div class="card-header">
+                        <div class="left">
+                            <div class="texts">
+                                <span class="headline color text-primary">Aprovar ou reprovar</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <button type="button" class="btn type-flat icon-24" ng-click="$ctrl.close()">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body pd-rt-15 pd-bt-15 pd-lt-15">
+                        <div class="form-group radio mg-bt-0 flex-end">
+                            <div class="content" ng-class="{'color text-success' : moderation == 1}">
+                                <input type="radio" class="form-control no-active-feedback" name="inputModeration" ng-model="moderation" value="1">
+                                <div class="radio-icons">
+                                    <i class="material-icons">check</i>
+                                    <i class="material-icons">check</i>
+                                </div>
+                                <label class="control-label" for="inputs4">Aprovar</label>
+                            </div>
+                            <div class="content" ng-class="{'color text-error' : moderation == 0}">
+                                <input type="radio" class="form-control no-active-feedback" name="inputModeration" ng-model="moderation" value="0">
+                                <div class="radio-icons">
+                                    <i class="material-icons">close</i>
+                                    <i class="material-icons">close</i>
+                                </div>
+                                <label class="control-label" for="inputs4">Reprovar</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mg-bt-0"
+                             ng-class="{'is-focused': textModerationIsFocused }">
+
+                            <label class="control-label"
+                                   for="textModeration">
+
+                                <span>Comentário (opcional)</span>
+                            </label>
+
+                            <div class="relative clearfix">
+                                <textarea name="textModeration"
+                                          class="form-control"
+                                          ng-model="textModeration"
+                                          ng-focus="textModerationIsFocused = true"
+                                          ng-blur="textModerationIsFocused = true"
+                                          ng-attr-ng-trim="false"
+                                          maxlength="100"
+                                          ng-maxlength="100"></textarea>
+
+                                <span class="text-right mg-tp-5 help-block max-lenght-counter"
+                                      ng-show="textModeration">
+
+                                    <span class="text-bold">{{textRating.length}}</span>
+                                    de 100
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="right">
+                            <button type="button" class="btn type-flat" ng-click="$ctrl.close()">
+                                voltar
+                            </button>
+                            <button class="btn" type="button" ng-click="$ctrl.save()">
+                                salvar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@ import Login from './components/login';
 import Signup from './components/signup';
 import Category from './components/category';
 import Auth from './components/auth';
+import UiCommunication from './uiCommunication';
 
 let commonModule = angular.module('app.common', [
   Api.name,
@@ -14,7 +15,8 @@ let commonModule = angular.module('app.common', [
   Signup.name,
   Login.name,
   Main.name,
-  Navigation.name
+  Navigation.name,
+  UiCommunication.name
 ]);
 
 export default commonModule;
