@@ -1,0 +1,183 @@
+<div class="generic-backdrop color text-secondary-black structure-smart-height-overflow active">
+    <close class="absolute-total-size" ng-click="close()"></close>
+    <div class="container">
+        <div class="row">
+            <close class="absolute-total-size" ng-click="close()"></close>
+            <div class="backdrop-content col-xs-12 col-sm-8 col-sm-offset-1 col-lg-6 col-lg-offset-3 col-xlg-4 col-xlg-offset-4">
+                <form class="card structure" name="newAccountForm" novalidate ng-submit="$ctrl.signUp()">
+                    <div class="structure-header pd-15-force bordered">
+                        <div class="left">
+                            <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i><!--
+                         --><div class="texts">
+                                <span class="headline color text-primary">Criar conta</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <button type="button" class="btn type-flat icon-24" ng-click="close()">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="structure-body pd-15-force mg-bt-30">
+                        <div class="overflow-limiter">
+                            <div class="row">
+                                <div class="col-xs-10 col-xs-offset-1 col-xssm-8 col-xssm-offset-2">
+
+
+                            
+                            <div class="form-group"
+                                 ng-class="{'is-focused': cpfInputIsFocused,
+                                            'has-error' : newAccountForm.cpfInput.$error.invalidCpf,
+                                            'is-empty' : newAccountForm.cpfInput.$error.required}">
+
+                                <label class="control-label required"
+                                        for="cpfInput">
+
+                                    <span>Cpf</span>
+                                </label>
+                                <div class="relative clearfix">
+                                    <input id="cpfInput"
+                                            class="form-control"
+                                            type="text"
+                                            name="cpfInput"
+                                            ng-model="cpfInput"
+                                            minlength="11"
+                                            maxlength="11"
+                                            ng-minlength="11"
+                                            ng-focus="cpfInputIsFocused = true"
+                                            ng-blur="cpfInputIsFocused = false" required/>
+
+                                    <i class="form-control-feedback help-block material-icons">
+                                        <span class="color text-success"
+                                                ng-show="newAccountForm.cpfInput.$valid">check</span>
+                                        <span class="color"
+                                                ng-show="newAccountForm.cpfInput.$error.invalidCpf">error</span>
+                                    </i>
+                                    <span class="material-input">{{$ctrl.error}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                ng-class="{'is-focused': nameInputIsFocused,
+                                            'is-empty' : newAccountForm.nameInput.$error.required}">
+
+                                <label class="control-label required"
+                                        for="nameInput">
+
+                                    <span>Name</span>
+                                </label>
+                                <div class="relative clearfix">
+                                    <input id="nameInput"
+                                            class="form-control"
+                                            type="text"
+                                            name="nameInput"
+                                            ng-model="nameInput"
+                                            maxlength="30"
+                                            ng-focus="nameInputIsFocused = true"
+                                            ng-blur="nameInputIsFocused = false" required/>
+
+                                    <i class="form-control-feedback help-block material-icons">
+                                        <span class="color text-success"
+                                                ng-show="newAccountForm.nameInput.$valid">check</span>
+                                    </i>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                 ng-class="{'is-focused': newEmailInputIsFocused,
+                                            'has-error' : newAccountForm.newEmailInput.$error.email,
+                                            'is-empty' : newAccountForm.newEmailInput.$error.required}">
+
+                                <label class="control-label required"
+                                       for="newEmailInput">
+
+                                    <span>Email</span>
+                                </label>
+                                <div class="relative clearfix">
+                                    <input id="newEmailInput"
+                                           class="form-control"
+                                           type="email"
+                                           name="newEmailInput"
+                                           ng-model="newEmailInput"
+                                           ng-focus="newEmailInputIsFocused = true"
+                                           ng-blur="newEmailInputIsFocused = false" required/>
+
+                                    <i class="form-control-feedback help-block material-icons">
+                                        <span class="color text-success"
+                                              ng-show="newAccountForm.newEmailInput.$valid">check</span>
+                                        <span class="color"
+                                              ng-show="newAccountForm.newEmailInput.$error.email">error</span>
+                                    </i>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                 ng-class="{'is-focused': newPasswordIsFocused,
+                                            'is-empty' : newAccountForm.newPassword.$error.required}">
+
+                                <label class="control-label required"
+                                       for="newPassword">
+
+                                    <span>Senha</span>
+                                </label>
+                                <div class="relative clearfix">
+                                    <input id="newPassword"
+                                           class="form-control"
+                                           type="password"
+                                           name="newPassword"
+                                           ng-model="newPassword"
+                                           ng-focus="newPasswordIsFocused = true"
+                                           ng-blur="newPasswordIsFocused = false" required/>
+
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                 ng-class="{'is-focused': newPasswordConfirmIsFocused,
+                                            'has-error' : newPasswordConfirm && newPasswordConfirm != newPassword,
+                                            'is-empty' : newAccountForm.newPasswordConfirm.$error.required}">
+
+                                <label class="control-label required"
+                                       for="newPasswordConfirm">
+
+                                    <span>Confirme sua senha</span>
+                                </label>
+                                <div class="relative clearfix">
+                                    <input id="newPasswordConfirm"
+                                           class="form-control"
+                                           type="password"
+                                           name="newPasswordConfirm"
+                                           ng-model="newPasswordConfirm"
+                                           ng-focus="newPasswordConfirmIsFocused = true"
+                                           ng-blur="newPasswordConfirmIsFocused = false" required/>
+
+                                    <i class="form-control-feedback help-block material-icons">
+                                        <span class="color text-success"
+                                              ng-show="newPasswordConfirm && newPasswordConfirm == newPassword">check</span>
+                                        <span class="color"
+                                              ng-show="newPasswordConfirm && newPasswordConfirm != newPassword">error</span>
+                                    </i>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="structure-footer bordered">
+                        <div class="right">
+                            <div class="btn-group text-right">
+                                <button type="button" class="btn type-flat" ng-click="close()">
+                                    <span>voltar</span>
+                                </button>
+                                <button class="btn" type="submit" ng-disabled="newAccountForm.$invalid">
+                                    <span>criar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

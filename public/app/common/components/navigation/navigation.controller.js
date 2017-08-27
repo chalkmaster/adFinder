@@ -29,15 +29,17 @@ class NavigationController {
   openLogin(){
     this.$uibModal.open({ template : '<login></login>' });
   }
-  openRegister(){
-
+  openCategories(){
+    this.$uibModal.open({ template : '<category></category>' });
   }
   find(){
-    if(this.query){
-      this.$rootScope.$broadcast('search', this.query);
-    } else {
-      this.$rootScope.$broadcast('loadList');
-    }
+    this.$state.go('main.home', {preventLoad : true}).then(state => {
+      if(this.query){
+        this.$rootScope.$broadcast('search', this.query);
+      } else {
+        this.$rootScope.$broadcast('loadList');
+      }
+    });
   }
 }
 

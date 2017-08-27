@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       },
       prod: {
         NODE_ENV: "production",
-        API_URL: "production api url here :)"
+        API_URL: "https://charlesfortes.herokuapp.com/"
       }
     },
     sass: {

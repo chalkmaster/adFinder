@@ -8,6 +8,7 @@ class AuthCredentials {
   setToken(access_token) {
     let date = new Date();
     let expires_at = new Date(date.setDate(date.getDate() + 1));
+    access_token.isAdmin = parseInt(access_token.token.charAt(0)) == 1 ? true : false; 
     this.$cookies.put('adf-access-token', JSON.stringify(access_token), {
       expires: expires_at,
       path: '/'

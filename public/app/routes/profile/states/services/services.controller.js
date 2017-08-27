@@ -1,6 +1,7 @@
 class ProfileServicesController {
-  constructor($scope, adsResource, categoriesResource) {
+  constructor($scope, $http, adsResource, categoriesResource) {
     this.$scope = $scope;
+    this.$http = $http;
     this.$scope.currentUser = $scope.$parent.$ctrl.currentUser;
     this.adsResource = adsResource;
     this.categoriesResource = categoriesResource;
@@ -13,25 +14,27 @@ class ProfileServicesController {
   }
   save(){
     let model = {
-     	name: this.$scope.currentUser.name,
+     	name: this.$scope.currentUser.name || "Padrão",
      	id: this.$scope.currentUser.cpf,
      	description: this.description,
      	region: "Belo Horizonte",
      	category: this.category,
      	contacts: {
-     		phone: null,
+     		phone: "",
      		email: this.$scope.currentUser.email,
-     		site: null
+     		site: ""
         }
      };
-     this.adsResource.save(JSON.stringify(model)).$promise.then(results => {
-       console.log('ad saved');
-     }).catch(e => {
-      console.log('error');
-     });
+     this.$http.post('api://api/v1/ad/', angular.toJson(model)).then(response => {
+      console.log('ad saved');
+    }, (response) => {
+        if(response.data && response.data.error_description) {
+          onsole.log('error');
+        }
+    });
   }
 }
 
-ProfileServicesController.$inject = ['$scope', 'ads.resource', 'categories.resource'];
+ProfileServicesController.$inject = ['$scope', '$http', 'ads.resource', 'categories.resource'];
 
 export default ProfileServicesController;

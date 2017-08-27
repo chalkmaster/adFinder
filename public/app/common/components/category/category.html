@@ -1,0 +1,33 @@
+<div class="generic-backdrop color text-secondary-black active">
+    <close class="absolute-total-size" ng-click="close()"></close>
+    <div class="container">
+        <div class="row">
+            <close class="absolute-total-size" ng-click="close()"></close>
+            <div class="backdrop-content col-xs-12">
+                <div class="card structure">
+                    <div class="structure-header pd-tp-15 pd-rt-15 pd-lt-15">
+                        <div class="left">
+                            <div class="texts">
+                                <span class="headline color text-primary">Categorias</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <button class="btn type-flat icon-24" ng-click="close()">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="structure-body pd-0-force">
+                        <div class="overflow-limiter">
+                            <div class="row row-gutters-15">
+                                <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="obj in $ctrl.categories">
+                                    <a ng-click="$ctrl.dispatchSearchEvent(obj.category)" class="interactive-item text-ellipsis block border-radius pd-15" title="obj.category">{{obj.category}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,10 @@ let homeMain = {
     url: '/',
     template,
     controller,
-    controllerAs:'$ctrl'
+    controllerAs:'$ctrl',
+    params: {
+        preventLoad: false
+    }
 };
 
 export default homeMain;
