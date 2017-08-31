@@ -2,8 +2,8 @@
     <navbar>
         <nav class="container pd-tp-30 pd-bt-30 hidden-sm-down">
           <div class="space-between center">
-              <a data-ui-sref="main.home" class="color text-primary-white full-width hidden-xssm-down">
-                <span class="headline">Venda Mais</span>
+              <a data-ui-sref="main.home" class="full-width hidden-xssm-down pd-rt-15">
+                <img src="imgs/logo.png" alt="" class="full-width">
               </a>
             <div class="main-search form-group mg-bt-0 full-width" ng-class="{'is-focused' : mainSearchFocus}">
               <div class="relative clearfix">
@@ -28,7 +28,7 @@
               <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openCategories()">
                 <span>Categorias</span>
               </button>
-              <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openLogin()">
+              <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openLogin()" ng-show="!$ctrl.userLogged">
                 <span>Entrar</span>
               </button>
               <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="$ctrl.userLogged">
@@ -38,7 +38,7 @@
                   </button>
                   <ul class="dropdown-menu right text-left" style="width: 290px;">
                       <li class="v-align-children pd-15">
-                        <span class="color text-primary title text-ellipsis" title="Renan Zózimo">{{$ctrl.currentUser.name || $ctrl.currentUser.email}}</span>
+                        <span class="color text-primary title text-ellipsis" title="{{$ctrl.currentUser.name || $ctrl.currentUser.email}}">{{$ctrl.currentUser.name || $ctrl.currentUser.email}}</span>
                       </li>
                       <li class="divider"></li>
                       <li>
@@ -100,17 +100,17 @@
                     <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openCategories()">
                       <span>Categorias</span>
                     </button>
-                    <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openLogin()" ng-show="!userLogged">
+                    <button type="button" class="btn type-flat color-white" ng-click="$ctrl.openLogin()" ng-show="!$ctrl.userLogged">
                       <span>Entrar</span>
                     </button>
-                    <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="userLogged">
+                    <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="$ctrl.userLogged">
                         <button type="button" class="btn type-flat color-white dropdown-toggle" ng-click="profileOptions = !profileOptions">
                             <span class="mg-lt-15">Minha conta</span>
                             <i class="material-icons">arrow_drop_down</i>
                         </button>
                         <ul class="dropdown-menu right text-left" style="width: 290px;">
                             <li class="v-align-children pd-15">
-                              <span class="color text-primary title text-ellipsis" title="Renan Zózimo">Renan Zózimo</span>
+                              <span class="color text-primary title text-ellipsis" title="{{$ctrl.currentUser.name || $ctrl.currentUser.email}}">{{$ctrl.currentUser.name || $ctrl.currentUser.email}}</span>
                             </li>
                             <li class="divider"></li>
                             <li>
