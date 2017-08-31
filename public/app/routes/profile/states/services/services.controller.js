@@ -1,7 +1,8 @@
 class ProfileServicesController {
-  constructor($scope, $http, adsResource, categoriesResource, uiCommunication) {
+  constructor($scope, $http, $state, adsResource, categoriesResource, uiCommunication) {
     this.$scope = $scope;
     this.$http = $http;
+    this.$state = $state;
     this.$scope.currentUser = $scope.$parent.$ctrl.currentUser;
     this.adsResource = adsResource;
     this.categoriesResource = categoriesResource;
@@ -37,12 +38,17 @@ class ProfileServicesController {
         }
     });
   }
+  goToPublicPage(){
+    this.$state.go('main.home', {preventLoad : true}).then(state => {
+      this.$state.go('main.details', {id : this.$scope.currentUser.cpf});
+    });
+  }
   resetForm(){
     this.description = null;
     this.category = null;
   }
 }
 
-ProfileServicesController.$inject = ['$scope', '$http', 'ads.resource', 'categories.resource', 'uiCommunication'];
+ProfileServicesController.$inject = ['$scope', '$http', '$state', 'ads.resource', 'categories.resource', 'uiCommunication'];
 
 export default ProfileServicesController;

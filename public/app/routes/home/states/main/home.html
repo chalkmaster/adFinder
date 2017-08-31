@@ -4,7 +4,7 @@
               <h3 class="color text-secondary-black">{{ $ctrl.searchHint ? 'Todos os resultados para "' + $ctrl.searchHint + '"' : '' }}</h3>
           </div>
       </div>
-      <div class="row main-list" id="adsView">
+      <div class="row main-list" id="adsView" ng-class="{'loading full-page': $ctrl.loading}">
         <div ng-repeat="ad in $ctrl.ads">
           <div class="col-xs-12 hidden-md-down">
               <a data-ui-sref="main.details({id: ad.id})" class="card block mg-bt-15 interactive">
