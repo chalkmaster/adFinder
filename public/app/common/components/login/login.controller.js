@@ -10,8 +10,9 @@ class LoginController {
   }
   signIn() {
     this.$scope.error = null;
+    this.loading = true;
     this.authService.signin({email: this.email, password: this.password}).then(() =>{
-      console.log('sign in');
+      this.loading = false;
       this.$rootScope.$broadcast('userLoggedIn');
       this.uiCommunication.snackbar('Login realizado com sucesso.');
       this.$scope.close();

@@ -18,6 +18,7 @@
                         </div>
                     </div>
                     <div class="structure-body pd-0-force">
+                        <div style="height: 200px" ng-class="{'loading': $ctrl.loading}" ng-show="$ctrl.loading"></div>
                         <div class="overflow-limiter">
                             <div class="row row-gutters-15">
                                 <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="obj in $ctrl.categories">
