@@ -8,8 +8,10 @@ class CategoryController {
       this.load();
   }
   load() {
+    this.loading = true;
     this.categoriesResource.query().$promise.then(data => {
       this.categories = data;
+      this.loading = false;
     });
   }
   dispatchSearchEvent(category){

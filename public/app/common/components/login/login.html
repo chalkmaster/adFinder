@@ -17,7 +17,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card-body pd-rt-15 pd-bt-15 pd-lt-15">
+                    <div class="card-body pd-rt-15 pd-bt-15 pd-lt-15" ng-class="{'loading': $ctrl.loading}">
                         <div class="alert color-error mg-bt-15" ng-show="error">
                             <span translate>{{error}}</span>
                         </div>
@@ -59,13 +59,18 @@
                         </div>
                     </div>
                     <div class="card-part pd-15 text-right">
-                        <button type="button" class="btn full-width" ng-disabled="!$ctrl.password" ng-click="$ctrl.signIn()">
+                        <button type="button" class="btn full-width" ng-disabled="!$ctrl.password || $ctrl.loading" ng-click="$ctrl.signIn()">
                             Entrar
                         </button>
-                        <button type="button" class="btn type-flat mg-tp-15">
+                        <button type="button" 
+                                class="btn type-flat mg-tp-15"
+                                ng-disabled="$ctrl.loading">
                             <small class="text-capitalize">esqueci minha senha</small>
                         </button>
-                        <button type="button" class="btn type-flat mg-tp-15 pull-left" ng-click="$ctrl.openRegister()">
+                        <button type="button" 
+                                class="btn type-flat mg-tp-15 pull-left" 
+                                ng-click="$ctrl.openRegister()"
+                                ng-disabled="$ctrl.loading">
                             <small class="text-capitalize">criar conta</small>
                         </button>
                     </div>

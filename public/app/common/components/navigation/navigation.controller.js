@@ -1,5 +1,5 @@
 class NavigationController {
-  constructor($rootScope, $scope, $state, $uibModal, authService, authCredentials) {
+  constructor($rootScope, $scope, $state, $uibModal, authService, authCredentials, uiCommunication) {
     this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.$state = $state;
@@ -7,6 +7,7 @@ class NavigationController {
     this.$uibModal = $uibModal;
     this.authService = authService;
     this.authCredentials = authCredentials;
+    this.uiCommunication = uiCommunication;
     this.getCurrentUser();
     this.userLogged = authCredentials.isLogged();
     $rootScope.$on('userLoggedIn', this.sessionUser.bind(this));
@@ -24,6 +25,7 @@ class NavigationController {
   signOut(){
     this.userLogged = false;
     this.authService.invalidate();
+    this.uiCommunication.snackbar('Você saiu do sistema.');
     this.$state.go('main.home');
   }
   openLogin(){
@@ -43,6 +45,6 @@ class NavigationController {
   }
 }
 
-NavigationController.$inject = ['$rootScope', '$scope', '$state', '$uibModal', 'authService', 'authCredentials'];
+NavigationController.$inject = ['$rootScope', '$scope', '$state', '$uibModal', 'authService', 'authCredentials', 'uiCommunication'];
 
 export default NavigationController;
