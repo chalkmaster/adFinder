@@ -1,0 +1,16 @@
+.carousel {
+    .banner-content {
+        width: 100%;
+    }
+    .btn-group .btn {
+        position: absolute;
+        top: 50%;
+        margin-top: -29px;
+    }
+    > .btn-group .btn:first-child {
+        left: 0;
+    }
+    > .btn-group .btn:last-child {
+        right: 0;;
+    }
+}

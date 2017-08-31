@@ -1,6 +1,7 @@
 .main-search {
     &.form-group {
         transition: opacity 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s, transform 375ms cubic-bezier(0.0, 0.0, 0.2, 1) 0s;
+        transform-origin: 100% 0;
         nav & {
             transform: scale(0.8);
             opacity: 0.4;
