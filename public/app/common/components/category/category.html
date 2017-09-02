@@ -22,7 +22,10 @@
                         <div class="overflow-limiter">
                             <div class="row row-gutters-15">
                                 <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="obj in $ctrl.categories">
-                                    <a ng-click="$ctrl.dispatchSearchEvent(obj.category)" class="interactive-item text-ellipsis block border-radius pd-15" title="obj.category">{{obj.category}}</a>
+                                    <a ng-click="$ctrl.dispatchSearchEvent(obj.category)" 
+                                       class="interactive-item text-ellipsis block border-radius pd-15" 
+                                       title="obj.category"
+                                       ng-class="{'bg-color greyscale100' : $ctrl.selectedCategory == obj.category}">{{obj.category}}</a>
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,12 @@
 class CategoryController {
-    constructor($rootScope, $state, $scope, categoriesResource) {
+    constructor($rootScope, $state, $scope, categoriesResource, categoryHelper) {
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$state = $state;
-      this.$scope.close = this.$scope.$parent.$close;
+      this.categoryHelper = categoryHelper;
       this.categoriesResource = categoriesResource;
+      this.$scope.close = this.$scope.$parent.$close;
+      this.selectedCategory = this.categoryHelper.get();
       this.load();
   }
   load() {
@@ -15,6 +17,7 @@ class CategoryController {
     });
   }
   dispatchSearchEvent(category){
+    this.categoryHelper.set(category);
     this.$state.go('main.home', {preventLoad : true}).then(state => {
       if(category){
         this.$rootScope.$broadcast('search', category);
@@ -26,7 +29,7 @@ class CategoryController {
   }
 }
 
-CategoryController.$inject = ['$rootScope', '$state', '$scope', 'categories.resource'];
+CategoryController.$inject = ['$rootScope', '$state', '$scope', 'categories.resource', 'categoryHelper'];
 
 
 export default CategoryController;

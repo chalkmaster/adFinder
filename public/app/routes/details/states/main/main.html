@@ -1,4 +1,6 @@
+
 <div class="container-fluid bg-color primary-light">
+        <div class="row main-list" id="loadingView" ng-class="{'loading full-page': $ctrl.loading}"></div>
       <div class="container">
           <div class="row">
               <div class="col-xs-12">
@@ -10,7 +12,26 @@
                       <div class="texts full-width reacts-btn-icon-24 pd-rt-15-sm-up">
 
                           <span class="heading block color text-primary-white">{{ad.name}}</span>
-                          <span class="caption block color text-primary-white">{{ad.category}}</span>
+                          <span class="caption block color text-primary-white" data-ng-show="!$ctrl.editing">{{ad.category}}</span>
+                          
+                          <div class="space-between center mg-bt-15" data-ng-show="$ctrl.editing">
+                                <div class="select-input" ng-class="{'disabled' : $ctrl.disabled}">
+                                    <select id="adCategory"
+                                            class="form-control"
+                                            name="adCategory"
+                                            ng-focus="adCategoryIsFocused = true"
+                                            ng-blur="adCategoryIsFocused = false"
+                                            ng-model="ad.category" required>
+            
+                                            <option value="">--</option>
+                                            <option ng-repeat="obj in $ctrl.categories" value="{{obj.category}}">{{obj.category}}</option>
+                                    </select>
+            
+                                    <i class="material-icons caret">keyboard_arrow_down</i>
+            
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
 
                           <div class="v-align-children color text-primary-white mg-tp-15">
                               <div class="v-align-children text-nowrap mg-rt-15">
@@ -34,7 +55,7 @@
                           <spam class="block text-right" ng-if="posterName">
                               - <span><i>{{ad.name}}</i></span>
                           </spam>
-                          <button type="button" class="btn color-accent mg-tp-5" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged && $ctrl.ratings.length">
+                          <button type="button" class="btn color-accent mg-tp-5" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged && $ctrl.ratings.length && ($ctrl.currentUser.cpf != ad.id)">
                               avaliar
                           </button>
                       </div>
@@ -48,7 +69,27 @@
     <div class="row">
         <div class="col-xs-12 pd-lt-65-sm-up pd-rt-65-sm-up text-break">
             <h3 class="color text-primary-dark">{{ad.name}}</h3>
-            <p class="color text-secondary-black">{{ad.description}}</p>
+            <p class="color text-secondary-black" data-ng-show="!$ctrl.editing">{{ad.description}}</p>
+            <div class="relative clearfix" data-ng-show="$ctrl.editing">
+                    <textarea name="adDescription"
+                              class="form-control"
+                              ng-model="ad.description"
+                              placeholder="Insira a nova descrição do anúncio"
+                              ng-focus="adDescriptionIsFocused = true"
+                              ng-blur="adDescriptionIsFocused = true"
+                              ng-attr-ng-trim="false"
+                              rows = "8"
+                              maxlength="1000"
+                              ng-maxlength="1000"></textarea>
+
+                    <span class="text-right mg-tp-5 help-block max-lenght-counter"
+                          ng-show="ad.description">
+
+                        <span class="text-bold">{{ad.description.length}}</span>
+                        de 1000
+                    </span>
+
+                </div>
         </div>
     </div>
     <hr class="mg-tp-30 mg-bt-30" ng-if="ad.images">
@@ -73,11 +114,23 @@
     <div class="row">
         <div class="col-xs-12">
             <h3 class="color text-primary-dark pull-left">Avaliações e comentários</h3>
-            <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged">
+            <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" data-ui-sref="main.details.rating" data-ng-show="($ctrl.currentUser.cpf != ad.id) && $ctrl.userIsLogged">
                 avaliar
             </button>
-            <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" data-ui-sref="main.details.rating" data-ng-show="$ctrl.userIsLogged">
+            <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" data-ng-show="$ctrl.currentUser.cpf == ad.id && !$ctrl.editing" data-ng-click="$ctrl.toogleEdit()">
+                editar
+            </button>
+            <button type="button" class="btn full-width pull-right mg-bt-15 hidden-xssm-up" data-ng-show="$ctrl.editing" data-ng-click="$ctrl.updateAd()">
+                salvar
+            </button>
+            <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" data-ui-sref="main.details.rating" data-ng-show="($ctrl.currentUser.cpf != ad.id) && $ctrl.userIsLogged">
                 avaliar
+            </button>
+            <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" data-ng-show="$ctrl.currentUser.cpf == ad.id && !$ctrl.editing" data-ng-click="$ctrl.toogleEdit()">
+                editar
+            </button>
+            <button type="button" class="btn pull-right mg-tp-15 hidden-xs-only" data-ng-show="$ctrl.editing" data-ng-click="$ctrl.updateAd()">
+                salvar
             </button>
         </div>
     </div>
