@@ -1,7 +1,9 @@
 class HomeMainController {
-  constructor($rootScope, adsResource, ratingResource, $stateParams) {
+  constructor($rootScope, $state, adsResource, ratingResource, categoryHelper, $stateParams) {
     this.name = 'Home Main Screen';
+    this.$state = $state;
     this.adsResource = adsResource;
+    this.categoryHelper = categoryHelper;
     this.ratingResource = ratingResource;
     $rootScope.$on('search', this.filter.bind(this));
     $rootScope.$on('loadList', this.load.bind(this));
@@ -12,6 +14,7 @@ class HomeMainController {
   load(){
     this.loading = true;
     this.searchHint = "";
+    this.categoryHelper.clear();
     this.adsResource.query().$promise.then((data) => {
       this.ads = data;
       this.ads.map(x => {
@@ -25,6 +28,10 @@ class HomeMainController {
     }).catch(() => {
       this.loading = false;
     });
+  }
+  openAdDetail(ad){
+    this.loadingAd = ad.id;
+    this.$state.go('main.details', {id: ad.id});
   }
   filter(event, query){
     this.searchHint = query;
@@ -45,6 +52,6 @@ class HomeMainController {
   }
 }
 
-HomeMainController.$inject = ['$rootScope', 'ads.resource', 'ratings.resource', '$stateParams'];
+HomeMainController.$inject = ['$rootScope', '$state', 'ads.resource', 'ratings.resource', 'categoryHelper', '$stateParams'];
 
 export default HomeMainController;

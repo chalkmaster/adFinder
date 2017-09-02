@@ -1,5 +1,5 @@
 class NavigationController {
-  constructor($rootScope, $scope, $state, $uibModal, authService, authCredentials, uiCommunication) {
+  constructor($rootScope, $scope, $state, $uibModal, authService, authCredentials, categoryHelper, uiCommunication) {
     this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.$state = $state;
@@ -8,6 +8,7 @@ class NavigationController {
     this.authService = authService;
     this.authCredentials = authCredentials;
     this.uiCommunication = uiCommunication;
+    this.categoryHelper = categoryHelper;
     this.getCurrentUser();
     this.userLogged = authCredentials.isLogged();
     $rootScope.$on('userLoggedIn', this.sessionUser.bind(this));
@@ -32,19 +33,24 @@ class NavigationController {
     this.$uibModal.open({ template : '<login></login>' });
   }
   openCategories(){
-    this.$uibModal.open({ template : '<category></category>' });
+    this.$state.go('main.home', {preventLoad : true}).then(state => {
+      this.$state.go('main.home.categories');
+    });
+    //this.$uibModal.open({ template : '<category></category>' });
   }
   find(){
     this.$state.go('main.home', {preventLoad : true}).then(state => {
       if(this.query){
         this.$rootScope.$broadcast('search', this.query);
+        this.query = '';
       } else {
+        this.categoryHelper.clear();
         this.$rootScope.$broadcast('loadList');
       }
     });
   }
 }
 
-NavigationController.$inject = ['$rootScope', '$scope', '$state', '$uibModal', 'authService', 'authCredentials', 'uiCommunication'];
+NavigationController.$inject = ['$rootScope', '$scope', '$state', '$uibModal', 'authService', 'authCredentials', 'categoryHelper', 'uiCommunication'];
 
 export default NavigationController;

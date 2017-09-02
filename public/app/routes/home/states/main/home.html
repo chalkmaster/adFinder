@@ -1,14 +1,21 @@
 <div class="container">
       <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12 space-between center">
               <h3 class="color text-secondary-black">{{ $ctrl.searchHint ? 'Todos os resultados para "' + $ctrl.searchHint + '"' : '' }}</h3>
+              <div class="v-align-children right" ng-show="$ctrl.searchHint">
+                <span class="color text-secondary-black">Limpar Filtros</span>
+                <button class="btn type-flat icon-24"  ng-click="$ctrl.load()">
+                    <i class="material-icons">close</i>
+                </button>
+              </div>
           </div>
       </div>
-      <div class="row main-list" id="adsView" ng-class="{'loading full-page': $ctrl.loading}">
+      <div class="row main-list" id="loadingView" ng-class="{'loading full-page': $ctrl.loading}"></div>
+      <div class="row main-list" id="adsView">
         <div ng-repeat="ad in $ctrl.ads">
           <div class="col-xs-12 hidden-md-down">
-              <a data-ui-sref="main.details({id: ad.id})" class="card block mg-bt-15 interactive">
-                  <div class="card-body pd-15 color text-primary-black">
+              <a data-ng-click="$ctrl.openAdDetail(ad)" class="card block mg-bt-15 interactive">
+                  <div class="card-body pd-15 color text-primary-black" ng-class="{'loading sm': $ctrl.loadingAd == ad.id}"> 
                       <div class="space-between center">
                           <div class="v-align-children text-nowrap lg-main-list-line-part pd-15">
                               <div class="texts mg-lt-5">

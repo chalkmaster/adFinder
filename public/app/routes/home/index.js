@@ -6,6 +6,10 @@ import mainState from './states/main';
 
 import adsResource from './resource';
 
+import {
+  modalize
+} from '../../helpers/routes';
+
 let homeModule = angular.module('routes.home', [
     uiRouter,
     ngResource
@@ -18,7 +22,11 @@ let homeModule = angular.module('routes.home', [
       $urlRouterProvider.otherwise('/');
 
       $stateProvider
-        .state('main.home', mainState);
+        .state('main.home', mainState)
+        .state('main.home.categories', modalize({
+          url: 'category',
+          template: '<category></category>'
+        }));
     }
   ])
 
