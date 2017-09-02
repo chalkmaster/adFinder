@@ -24,7 +24,7 @@
                                 <div class="col-xs-10 col-xs-offset-1 col-xssm-8 col-xssm-offset-2">
 
 
-                            
+
                             <div class="form-group"
                                  ng-class="{'is-focused': cpfInputIsFocused,
                                             'has-error' : newAccountForm.cpfInput.$error.invalidCpf,
@@ -53,8 +53,9 @@
                                         <span class="color"
                                                 ng-show="newAccountForm.cpfInput.$error.invalidCpf">error</span>
                                     </i>
-                                    <span class="material-input">{{$ctrl.error}}</span>
+                                    <span class="material-input"></span>
                                 </div>
+                                <span class="block caption mg-tp-5">{{$ctrl.error}}</span>
                             </div>
                             <div class="form-group"
                                 ng-class="{'is-focused': nameInputIsFocused,

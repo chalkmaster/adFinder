@@ -34,9 +34,5 @@
     .backdrop-content {
         height: calc(100vh - 30px);
         top: 15px;
-        @media (min-width: $screen-sm-min + px) {
-            top: 90px;
-            height: auto;
-        }
     }
 }
