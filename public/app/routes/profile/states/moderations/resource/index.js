@@ -8,7 +8,7 @@ export default ['$resource', ($resource) => {
         },
         aproveAd: {
             method: 'PUT',
-            url: 'api://api/v1/aprove/:id'
+            url: 'api://api/v1/ad/aprove/:id'
         }
     });
   }];

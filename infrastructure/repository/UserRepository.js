@@ -6,7 +6,7 @@ module.exports = class UserRepository {
     return new Promise((resolve, reject) => {
       db.open(dbName)
         .then(() => {
-          db.get('SELECT *, (select name from ad where id = user.cpf) as name  FROM user WHERE email = ?', [email]).then((data) => {
+          db.get('SELECT user.*, ad.name, ad.region, ad.phone, ad.site from user left join ad on ad.id = user.cpf WHERE user.email = ?', [email]).then((data) => {
             resolve(data);
           }).catch((err) => {
             reject(err);

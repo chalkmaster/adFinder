@@ -4,24 +4,16 @@
             <i class="material-icons">content_paste</i>
             <span>Informações básicas</span>
         </h3>
-        <form class="mg-tp-30" action="" name="profileBasicForm">
-            <div class="form-group"
-                 ng-class="{'is-focused': profileNameIsFocused}">
+        <form class="mg-tp-30" action="/api/v1/profile/update/" method="post" name="profileBasicForm">
+            <div class="form-group" ng-class="{'is-focused': profileNameIsFocused}">
 
-                <label class="control-label required"
-                       for="profileName">
+                <label class="control-label required" for="profileName">
 
                     <span>Meu nome</span>
                 </label>
                 <div class="relative clearfix">
-                    <input id="profileName"
-                           class="form-control"
-                           type="text"
-                           name="profileName"
-                           ng-disabled="true"
-                           ng-model="currentUser.name"
-                           ng-focus="profileNameIsFocused = true"
-                           ng-blur="profileNameIsFocused = false" required/>
+                    <input id="name" class="form-control" type="text" name="name" ng-model="currentUser.name" ng-focus="profileNameIsFocused = true"
+                        ng-blur="profileNameIsFocused = false" required/>
 
                     <i class="form-control-feedback help-block material-icons">
                         <span class="color text-success"
@@ -32,54 +24,65 @@
                     <span class="material-input"></span>
                 </div>
             </div>
-            <div class="form-group"
-                 ng-class="{'is-focused': profileCPFIsFocused}">
+            <div class="form-group" ng-class="{'is-focused': profileCPFIsFocused}">
 
-                <label class="control-label required"
-                       for="profileCPF">
+                <label class="control-label required" for="profileCPF">
 
                     <span>CPF</span>
                 </label>
                 <div class="relative clearfix">
-                    <input id="profileCPF"
-                           class="form-control"
-                           type="text"
-                           name="profileCPF"
-                           ng-disabled="true"
-                           ng-model="currentUser.cpf"
-                           ng-focus="profileCPFIsFocused = true"
-                           ng-blur="profileCPFIsFocused = false" required/>
-
+                    
+                    <input id="profileCPF" class="form-control" type="text" name="profileCPF" ng-disabled="true" ng-model="currentUser.cpf" ng-focus="profileCPFIsFocused = true"
+                    ng-blur="profileCPFIsFocused = false" required/>
+                    
                     <i class="form-control-feedback help-block material-icons">
                         <span class="color text-success"
-                              ng-show="profileBasicForm.profileCPF.$valid">check</span>
+                        ng-show="profileBasicForm.profileCPF.$valid">check</span>
                         <span class="color"
-                              ng-show="profileBasicForm.profileCPF.$error.email">error</span>
+                        ng-show="profileBasicForm.profileCPF.$error.email">error</span>
                     </i>
                     <span class="material-input"></span>
                 </div>
             </div>
-            <div class="form-group"
-                 ng-class="{'is-focused': profilePhoneIsFocused}">
+            <input id="id" type="hidden" name="id" value="{{currentUser.cpf}}" />
+            <div class="form-group" ng-class="{'is-focused': profilePhoneIsFocused}">
 
-                <label class="control-label"
-                       for="profilePhone">
+                <label class="control-label" for="profilePhone">
 
                     <span>Telefone(s)</span>
                 </label>
                 <div class="relative clearfix">
-                    <input id="profilePhone"
-                           class="form-control"
-                           type="tel"
-                           name="profilePhone"
-                           ng-disabled="true"
-                           ng-model="currentUser.phone"
-                           ng-focus="profilePhoneIsFocused = true"
-                           ng-blur="profilePhoneIsFocused = false"/>
+                    <input id="phone" class="form-control" type="tel" name="phone" ng-model="currentUser.phone" ng-focus="profilePhoneIsFocused = true"
+                        ng-blur="profilePhoneIsFocused = false" />
 
                     <span class="material-input"></span>
                 </div>
             </div>
+            <div class="form-group" ng-class="{'is-focused': profilePhoneIsFocused}">
+                <label class="control-label" for="site">
+                    <span>Site(s)</span>
+                </label>
+                <div class="relative clearfix">
+                    <input id="site" class="form-control" type="text" name="site" ng-model="currentUser.site" ng-focus="siteIsFocused = true"
+                        ng-blur="siteIsFocused = false" />
+
+                    <span class="material-input"></span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'is-focused': profilePhoneIsFocused}">
+                <label class="control-label" for="region">
+                        <span>Região</span>
+                    </label>
+                <div class="relative clearfix">
+                    <input id="region" class="form-control" type="text" name="region" ng-model="currentUser.region" ng-focus="siteIsFocused = true"
+                        ng-blur="siteIsFocused = false" />
+
+                    <span class="material-input"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn">
+                    SALVAR
+            </button>
         </form>
     </div>
     <div class="col-xs-12 col-md-6 col-lg-4 col-lg-offset-1 col-xlg-3 col-xlg-offset-1">
@@ -88,36 +91,21 @@
             <span>Acesso</span>
         </h3>
         <form class="mg-tp-30" action="" name="profileAccessForm">
-            <div class="form-group mg-bt-15"
-                 ng-class="{'is-focused': newEmailInputIsFocused,
+            <div class="form-group mg-bt-15" ng-class="{'is-focused': newEmailInputIsFocused,
                             'has-error' : profileAccessForm.newEmailInput.$error.email,
                             'is-empty' : profileAccessForm.newEmailInput.$error.required}">
 
-                <label class="control-label required"
-                       for="newEmailInput">
+                <label class="control-label required" for="newEmailInput">
 
                     <span>Email</span>
                 </label>
                 <div class="relative clearfix">
-                    <input id="newEmailInput"
-                           class="form-control"
-                           type="email"
-                           name="newEmailInput"
-                           ng-model="currentUser.email"
-                           ng-focus="newEmailInputIsFocused = true"
-                           ng-blur="newEmailInputIsFocused = false" disabled required/>
+                    <input id="newEmailInput" class="form-control" type="email" name="newEmailInput" ng-model="currentUser.email" ng-focus="newEmailInputIsFocused = true"
+                        ng-blur="newEmailInputIsFocused = false" disabled required/>
 
                     <span class="material-input"></span>
                 </div>
             </div>
         </form>
-        <div class="btn-group full-width text-right">
-            <button class="btn type-flat">
-                alterar e-mail
-            </button>
-            <button class="btn type-flat">
-                alterar senha
-            </button>
-        </div>
     </div>
 </div>

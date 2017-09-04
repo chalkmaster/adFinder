@@ -1,6 +1,17 @@
 'use strict'
 const bodyParser = require("body-parser");
 const fileUpload = require('express-fileupload');
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.globalpeace.com.br',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'cadastro@globalpeace.com.br',
+        pass: 'cadastro2017'
+    }
+});
 
 const express = require('express');
 const app = express();
@@ -14,6 +25,38 @@ app.use(express.static('public/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());
+
+app.post('/api/v1/recover/', (req, resp) => {
+    let body = req.body;
+    factory.buildUserService()
+        .findByEmail(body.email)
+        .then((user) => {
+            if (user && user.cpf == body.cpf) {
+                const mailOptions = {
+                    from: 'cadastro@globalpeace.com.br',
+                    to: body.email,
+                    subject: 'Recuperação de Senhas Venda Mais',
+                    text: `Sua senha de acesso é:${user.password}`
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);                        
+                    }
+                    resp.redirect("/sent.html");
+                });
+            }
+        })
+        .then(() => {
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode(422);
+            res.send(err);
+            resp.end();
+        });
+});
 
 //==== file upload
 app.post('/api/v1/fileUpload/', (req, resp) => {
@@ -123,6 +166,16 @@ app.post('/api/v1/user/', (req, resp) => {
     factory.buildUserService()
         .insert(newUser)
         .then(() => {
+            factory.buildAdService()
+            .insert({id:newUser.cpf, 
+                name:newUser.name,
+                 email:newUser.email,
+                 description: '',
+                 region: '',
+                 category:'',
+                phone: '',
+                site: ''
+                });
             resp.end();
         })
         .catch((err) => {
@@ -191,6 +244,26 @@ app.put('/api/v1/ad/:id', (req, resp) => {
         .catch((err) => {
             resp.statusCode = 422;
             res.send(err);
+        });
+});
+
+app.post('/api/v1/profile/update/', (req, resp) => {
+    let body = req.body;
+    let adToUpdate = {};
+    const id = body.id;
+    adToUpdate.id = id;
+    adToUpdate.region = body.region;
+    adToUpdate.phone = body.phone;
+    adToUpdate.site = body.site;
+    factory.buildAdService()
+        .updateProfile(adToUpdate)
+        .then(() => {
+            resp.redirect('/#/profile/account');
+            resp.end();
+        })
+        .catch((err) => {
+            resp.statusCode = 422;
+            resp.send(err);
         });
 });
 

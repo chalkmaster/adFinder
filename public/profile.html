@@ -20,30 +20,26 @@
     <div class="container-fluid pd-0 bg-color primary color text-primary-white">
         <navbar>
             <nav class="container pd-tp-30 pd-bt-30 hidden-sm-down">
-				<div class="space-between center">
+                <div class="space-between center">
                     <a href="index.html" class="color text-primary-white full-width hidden-xssm-down">
 						<span class="headline">AdFinder</span>
 					</a>
-					<div class="main-search form-group mg-bt-0 full-width" ng-class="{'is-focused' : mainSearchFocus}">
-						<div class="relative clearfix">
-							<input id="inputMain"
-								class="form-control color text-primary-white"
-								type="text"
-								name="inputMain"
-                                ng-focus="mainSearchFocus = true;"
-                                ng-blur="mainSearchFocus = false;"/>
+                    <div class="main-search form-group mg-bt-0 full-width" ng-class="{'is-focused' : mainSearchFocus}">
+                        <div class="relative clearfix">
+                            <input id="inputMain" class="form-control color text-primary-white" type="text" name="inputMain" ng-focus="mainSearchFocus = true;"
+                                ng-blur="mainSearchFocus = false;" />
                             <i class="material-icons color text-disabled-white">search</i>
                             <button type="button" class="btn type-flat icon-24 color-white">
                                 <i class="material-icons">arrow_forward</i>
                             </button>
 
-						</div>
-					</div>
-					<div class="full-width v-align-children text-right btn-group">
-						<button type="button" class="btn type-flat color-white" ng-click="showCategories = true">
+                        </div>
+                    </div>
+                    <div class="full-width v-align-children text-right btn-group">
+                        <button type="button" class="btn type-flat color-white" ng-click="showCategories = true">
 							<span>Categorias</span>
 						</button>
-						<button type="button" class="btn type-flat color-white" ng-click="showLogin = true" ng-show="userLogged == false">
+                        <button type="button" class="btn type-flat color-white" ng-click="showLogin = true" ng-show="userLogged == false">
 							<span>Entrar</span>
 						</button>
                         <div class="dropdown on-hover" ng-class="{'open' : profileOptions}" ng-show="userLogged == true">
@@ -53,7 +49,7 @@
     						</button>
                             <ul class="dropdown-menu right text-left" style="width: 290px;">
                                 <li class="v-align-children pd-15">
-        							<span class="color text-primary title text-ellipsis" title="Renan Zózimo">Renan Zózimo</span>
+                                    <span class="color text-primary title text-ellipsis" title="Renan Zózimo">Renan Zózimo</span>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
@@ -85,8 +81,8 @@
                                 </li>
                             </ul>
                         </div>
-					</div>
-				</div>
+                    </div>
+                </div>
             </nav>
             <nav class="pd-tp-30 pd-bt-5 hidden-md-up">
                 <div class="clearfix">
@@ -94,20 +90,16 @@
                         <div class="space-between center mg-bt-5">
                             <a href="index.html" class="color text-primary-white headline mg-rt-15" style="flex-shrink: 0;">Ad</a>
                             <div class="main-search form-group mg-bt-0 full-width" ng-class="{'is-focused' : mainSearchFocus}">
-        						<div class="relative clearfix">
-        							<input id="inputMain"
-        								class="form-control color text-primary-white"
-        								type="text"
-        								name="inputMain"
-                                        ng-focus="mainSearchFocus = true;"
-                                        ng-blur="mainSearchFocus = false;"/>
+                                <div class="relative clearfix">
+                                    <input id="inputMain" class="form-control color text-primary-white" type="text" name="inputMain" ng-focus="mainSearchFocus = true;"
+                                        ng-blur="mainSearchFocus = false;" />
                                     <i class="material-icons color text-disabled-white">search</i>
                                     <button type="button" class="btn type-flat icon-24 color-white">
                                         <i class="material-icons">arrow_forward</i>
                                     </button>
 
-        						</div>
-        					</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-12 text-right btn-group">
@@ -124,7 +116,7 @@
     						</button>
                             <ul class="dropdown-menu right text-left" style="width: 290px;">
                                 <li class="v-align-children pd-15">
-        							<span class="color text-primary title text-ellipsis" title="Renan Zózimo">Renan Zózimo</span>
+                                    <span class="color text-primary title text-ellipsis" title="Renan Zózimo">Renan Zózimo</span>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
@@ -162,7 +154,7 @@
         </navbar>
     </div>
 
-	<div class="container" ng-init="profileView = 1">
+    <div class="container" ng-init="profileView = 1">
         <div class="row">
             <div class="col-xs-12">
                 <h1>
@@ -198,23 +190,15 @@
                         <span>Informações básicas</span>
                     </h3>
                     <form class="mg-tp-30" action="" name="profileBasicForm">
-                        <div class="form-group"
-                             ng-class="{'is-focused': profileNameIsFocused}">
+                        <div class="form-group" ng-class="{'is-focused': profileNameIsFocused}">
 
-                            <label class="control-label required"
-                                   for="profileName">
+                            <label class="control-label required" for="profileName">
 
                                 <span>Meu nome</span>
                             </label>
                             <div class="relative clearfix">
-                                <input id="profileName"
-                                       class="form-control"
-                                       type="text"
-                                       name="profileName"
-                                       ng-init="profileName = 'renanfz'"
-                                       ng-model="profileName"
-                                       ng-focus="profileNameIsFocused = true"
-                                       ng-blur="profileNameIsFocused = false" required/>
+                                <input id="profileName" class="form-control" type="text" name="profileName" ng-init="profileName = 'renanfz'" ng-model="profileName"
+                                    ng-focus="profileNameIsFocused = true" ng-blur="profileNameIsFocused = false" required/>
 
                                 <i class="form-control-feedback help-block material-icons">
                                     <span class="color text-success"
@@ -225,22 +209,15 @@
                                 <span class="material-input"></span>
                             </div>
                         </div>
-                        <div class="form-group"
-                             ng-class="{'is-focused': profileCPFIsFocused}">
+                        <div class="form-group" ng-class="{'is-focused': profileCPFIsFocused}">
 
-                            <label class="control-label required"
-                                   for="profileCPF">
+                            <label class="control-label required" for="profileCPF">
 
                                 <span>CPF</span>
                             </label>
                             <div class="relative clearfix">
-                                <input id="profileCPF"
-                                       class="form-control"
-                                       type="text"
-                                       name="profileCPF"
-                                       ng-model="profileCPF"
-                                       ng-focus="profileCPFIsFocused = true"
-                                       ng-blur="profileCPFIsFocused = false" required/>
+                                <input id="profileCPF" class="form-control" type="text" name="profileCPF" ng-model="profileCPF" ng-focus="profileCPFIsFocused = true"
+                                    ng-blur="profileCPFIsFocused = false" required/>
 
                                 <i class="form-control-feedback help-block material-icons">
                                     <span class="color text-success"
@@ -251,22 +228,15 @@
                                 <span class="material-input"></span>
                             </div>
                         </div>
-                        <div class="form-group"
-                             ng-class="{'is-focused': profilePhoneIsFocused}">
+                        <div class="form-group" ng-class="{'is-focused': profilePhoneIsFocused}">
 
-                            <label class="control-label"
-                                   for="profilePhone">
+                            <label class="control-label" for="profilePhone">
 
                                 <span>Telefone(s)</span>
                             </label>
                             <div class="relative clearfix">
-                                <input id="profilePhone"
-                                       class="form-control"
-                                       type="tel"
-                                       name="profilePhone"
-                                       ng-model="profilePhone"
-                                       ng-focus="profilePhoneIsFocused = true"
-                                       ng-blur="profilePhoneIsFocused = false"/>
+                                <input id="profilePhone" class="form-control" type="tel" name="profilePhone" ng-model="profilePhone" ng-focus="profilePhoneIsFocused = true"
+                                    ng-blur="profilePhoneIsFocused = false" />
 
                                 <span class="material-input"></span>
                             </div>
@@ -279,25 +249,18 @@
                         <span>Acesso</span>
                     </h3>
                     <form class="mg-tp-30" action="" name="profileAccessForm">
-                        <div class="form-group mg-bt-15"
-                             ng-class="{'is-focused': newEmailInputIsFocused,
+                        <div class="form-group mg-bt-15" ng-class="{'is-focused': newEmailInputIsFocused,
                                         'has-error' : profileAccessForm.newEmailInput.$error.email,
                                         'is-empty' : profileAccessForm.newEmailInput.$error.required}">
 
-                            <label class="control-label required"
-                                   for="newEmailInput">
+                            <label class="control-label required" for="newEmailInput">
 
                                 <span>Email</span>
                             </label>
                             <div class="relative clearfix">
-                                <input id="newEmailInput"
-                                       class="form-control"
-                                       type="email"
-                                       name="newEmailInput"
-                                       ng-init="newEmailInput = 'renanfz@gmail.com'"
-                                       ng-model="newEmailInput"
-                                       ng-focus="newEmailInputIsFocused = true"
-                                       ng-blur="newEmailInputIsFocused = false" disabled required/>
+                                <input id="newEmailInput" class="form-control" type="email" name="newEmailInput" ng-init="newEmailInput = 'renanfz@gmail.com'"
+                                    ng-model="newEmailInput" ng-focus="newEmailInputIsFocused = true" ng-blur="newEmailInputIsFocused = false"
+                                    disabled required/>
 
                                 <span class="material-input"></span>
                             </div>
@@ -318,9 +281,18 @@
         <div class="row relative" ng-class="{'active' : profileView == 2}">
             <div class="active-view absolute pd-bt-30 full-width clearfix" ng-class="{'active' : profileView == 2}">
                 <div class="col-xs-12 col-md-8 col-xlg-6">
-                    <h3 class="color text-primary">
-                        <span>Meu anúncio</span>
+                    <h3 class="mg-tp-30 color text-primary">
+                        <span>Editar Anuncio e Vizualizar Avaliações</span>
                     </h3>
+                    <button class="btn">
+                                ir para página pública
+                            </button>
+                    <h3 class="color text-primary">
+                        <span>Criar anúncio</span>
+                    </h3>
+                    <h4>
+                        <span>Seu anúncio só será exibido após aprovação por parte da administração, aguarde.</span>                            
+                    </h4>
                     <form action="" name="adForm">
                         <div class="form-group" ng-class="{'is-focused': adCategoryIsFocused}">
                             <label class="control-label required" for="adCategory">
@@ -328,12 +300,8 @@
                             </label>
                             <div class="relative">
                                 <div class="select-input" ng-class="{'disabled' : $ctrl.disabled}">
-                                    <select id="adCategory"
-                                            class="form-control"
-                                            name="adCategory"
-                                            ng-focus="adCategoryIsFocused = true"
-                                            ng-blur="adCategoryIsFocused = false"
-                                            ng-model="adCategory" required>
+                                    <select id="adCategory" class="form-control" name="adCategory" ng-focus="adCategoryIsFocused = true" ng-blur="adCategoryIsFocused = false"
+                                        ng-model="adCategory" required>
 
                                           <option value="">--</option>
                                           <option value="hidraulica">Hidráulica</option>
@@ -346,31 +314,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group"
-                             ng-class="{'is-focused': adDescriptionIsFocused }">
+                        <div class="form-group" ng-class="{'is-focused': adDescriptionIsFocused }">
 
-                            <label class="control-label required"
-                                   for="adDescription">
+                            <label class="control-label required" for="adDescription">
 
                                 <span>Descrição</span>
                             </label>
 
                             <div class="relative clearfix">
-                                <textarea name="adDescription"
-                                          class="form-control"
-                                          ng-model="adDescription"
-                                          ng-focus="adDescriptionIsFocused = true"
-                                          ng-blur="adDescriptionIsFocused = true"
-                                          ng-attr-ng-trim="false"
-                                          rows = "8"
-                                          maxlength="1000"
-                                          ng-maxlength="1000"></textarea>
+                                <textarea name="adDescription" class="form-control" ng-model="adDescription" ng-focus="adDescriptionIsFocused = true" ng-blur="adDescriptionIsFocused = true"
+                                    ng-attr-ng-trim="false" rows="8" maxlength="1000" ng-maxlength="1000"></textarea>
 
-                                <span class="text-right mg-tp-5 help-block max-lenght-counter"
-                                      ng-show="adDescription">
+                                <span class="text-right mg-tp-5 help-block max-lenght-counter" ng-show="adDescription">
 
-                                    <span class="text-bold">{{adDescription.length}}</span>
-                                    de 1000
+                                    <span class="text-bold">{{adDescription.length}}</span>                                de 1000
                                 </span>
 
                             </div>
@@ -381,12 +338,6 @@
                             </button>
                         </div>
                     </form>
-                    <h3 class="mg-tp-30 color text-primary">
-                        <span>Avaliações e comentários</span>
-                    </h3>
-                    <button class="btn">
-                        ir para página pública
-                    </button>
                 </div>
             </div>
         </div>
@@ -396,7 +347,7 @@
                     <h3 class="color text-primary">
                         <span>Solicitações</span>
                     </h3>
-                    <div class="alert color-warning">
+                    <div class="alert color-warning" id="solicitacaoPendente">
                         <span class="block title mg-bt-5">Solicitação de publicação</span>
                         <span class="block mg-bt-5">Solicitação Pendente</span></span>
                         <small class="block text-right">Atualizada 01/02/2017 - 9:35</small>
@@ -417,7 +368,8 @@
                                 <th>CPF</th>
                                 <th>Telefone</th>
                                 <th>E-mail</th>
-                                <th></th><!-- actions -->
+                                <th></th>
+                                <!-- actions -->
                             </tr>
                         </thead>
                         <tbody>
@@ -460,7 +412,8 @@
                     <h3 class="color text-primary">
                         <span>Solicitações de anúncios</span>
                     </h3>
-                    <div class="row"><!-- repeat aqui -->
+                    <div class="row">
+                        <!-- repeat aqui -->
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header bordered">
@@ -557,14 +510,8 @@
                                 <i class="material-icons color text-secondary-black pd-rt-15">person</i>
                                 <div class="form-group mg-bt-0 full-width" ng-class="{ 'is-focused' : inputUserIsFocused }">
                                     <div class="relative clearfix">
-                                        <input id="inputUser"
-                                               class="form-control"
-                                               type="text"
-                                               name="inputUser"
-                                               placeholder="usuário ou e-mail"
-                                               ng-model="inputUser"
-                                               ng-focus="inputUserIsFocused = true"
-                                               ng-blur="inputUserIsFocused = false"/>
+                                        <input id="inputUser" class="form-control" type="text" name="inputUser" placeholder="usuário ou e-mail" ng-model="inputUser"
+                                            ng-focus="inputUserIsFocused = true" ng-blur="inputUserIsFocused = false" />
 
                                         <span class="material-input"></span>
 
@@ -575,14 +522,9 @@
                                 <i class="material-icons color text-secondary-black pd-rt-15">lock</i>
                                 <div class="form-group mg-bt-0 full-width" ng-class="{ 'is-focused' : inputPasswordIsFocused }">
                                     <div class="relative clearfix">
-                                        <input id="inputPassword"
-                                               class="form-control"
-                                               type="password"
-                                               name="inputPassword"
-                                               placeholder="senha"
-                                               ng-model="inputPassword"
-                                               ng-focus="inputPasswordIsFocused = true"
-                                               ng-blur="inputPasswordIsFocused = false"/>
+                                        <input id="inputPassword" class="form-control" type="password" name="inputPassword" placeholder="senha" ng-model="inputPassword"
+                                            ng-focus="inputPasswordIsFocused = true" ng-blur="inputPasswordIsFocused = false"
+                                        />
 
                                         <span class="material-input"></span>
 
@@ -662,8 +604,10 @@
                     <form class="card structure" name="newAccountForm" novalidate>
                         <div class="structure-header pd-15-force bordered">
                             <div class="left">
-                                <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i><!--
-                             --><div class="texts">
+                                <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i>
+                                <!--
+                             -->
+                                <div class="texts">
                                     <span class="headline color text-primary">Criar conta</span>
                                 </div>
                             </div>
@@ -678,83 +622,63 @@
                                 <div class="row">
                                     <div class="col-xs-10 col-xs-offset-1 col-xssm-8 col-xssm-offset-2">
 
-                                <div class="form-group"
-                                     ng-class="{'is-focused': newEmailInputIsFocused,
+                                        <div class="form-group" ng-class="{'is-focused': newEmailInputIsFocused,
                                                 'has-error' : newAccountForm.newEmailInput.$error.email,
                                                 'is-empty' : newAccountForm.newEmailInput.$error.required}">
 
-                                    <label class="control-label required"
-                                           for="newEmailInput">
+                                            <label class="control-label required" for="newEmailInput">
 
                                         <span>Email</span>
                                     </label>
-                                    <div class="relative clearfix">
-                                        <input id="newEmailInput"
-                                               class="form-control"
-                                               type="email"
-                                               name="newEmailInput"
-                                               ng-model="newEmailInput"
-                                               ng-focus="newEmailInputIsFocused = true"
-                                               ng-blur="newEmailInputIsFocused = false" required/>
+                                            <div class="relative clearfix">
+                                                <input id="newEmailInput" class="form-control" type="email" name="newEmailInput" ng-model="newEmailInput" ng-focus="newEmailInputIsFocused = true"
+                                                    ng-blur="newEmailInputIsFocused = false" required/>
 
-                                        <i class="form-control-feedback help-block material-icons">
+                                                <i class="form-control-feedback help-block material-icons">
                                             <span class="color text-success"
                                                   ng-show="newAccountForm.newEmailInput.$valid">check</span>
                                             <span class="color"
                                                   ng-show="newAccountForm.newEmailInput.$error.email">error</span>
                                         </i>
-                                        <span class="material-input"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group"
-                                     ng-class="{'is-focused': newPasswordIsFocused,
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-class="{'is-focused': newPasswordIsFocused,
                                                 'is-empty' : newAccountForm.newPassword.$error.required}">
 
-                                    <label class="control-label required"
-                                           for="newPassword">
+                                            <label class="control-label required" for="newPassword">
 
                                         <span>Senha</span>
                                     </label>
-                                    <div class="relative clearfix">
-                                        <input id="newPassword"
-                                               class="form-control"
-                                               type="password"
-                                               name="newPassword"
-                                               ng-model="newPassword"
-                                               ng-focus="newPasswordIsFocused = true"
-                                               ng-blur="newPasswordIsFocused = false" required/>
+                                            <div class="relative clearfix">
+                                                <input id="newPassword" class="form-control" type="password" name="newPassword" ng-model="newPassword" ng-focus="newPasswordIsFocused = true"
+                                                    ng-blur="newPasswordIsFocused = false" required/>
 
-                                        <span class="material-input"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group"
-                                     ng-class="{'is-focused': newPasswordConfirmIsFocused,
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" ng-class="{'is-focused': newPasswordConfirmIsFocused,
                                                 'has-error' : newPasswordConfirm && newPasswordConfirm != newPassword,
                                                 'is-empty' : newAccountForm.newPasswordConfirm.$error.required}">
 
-                                    <label class="control-label required"
-                                           for="newPasswordConfirm">
+                                            <label class="control-label required" for="newPasswordConfirm">
 
                                         <span>Confirme sua senha</span>
                                     </label>
-                                    <div class="relative clearfix">
-                                        <input id="newPasswordConfirm"
-                                               class="form-control"
-                                               type="password"
-                                               name="newPasswordConfirm"
-                                               ng-model="newPasswordConfirm"
-                                               ng-focus="newPasswordConfirmIsFocused = true"
-                                               ng-blur="newPasswordConfirmIsFocused = false" required/>
+                                            <div class="relative clearfix">
+                                                <input id="newPasswordConfirm" class="form-control" type="password" name="newPasswordConfirm" ng-model="newPasswordConfirm"
+                                                    ng-focus="newPasswordConfirmIsFocused = true" ng-blur="newPasswordConfirmIsFocused = false"
+                                                    required/>
 
-                                        <i class="form-control-feedback help-block material-icons">
+                                                <i class="form-control-feedback help-block material-icons">
                                             <span class="color text-success"
                                                   ng-show="newPasswordConfirm && newPasswordConfirm == newPassword">check</span>
                                             <span class="color"
                                                   ng-show="newPasswordConfirm && newPasswordConfirm != newPassword">error</span>
                                         </i>
-                                        <span class="material-input"></span>
-                                    </div>
-                                </div>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -817,30 +741,20 @@
                                 </div>
                             </div>
 
-                            <div class="form-group mg-bt-0"
-                                 ng-class="{'is-focused': textModerationIsFocused }">
+                            <div class="form-group mg-bt-0" ng-class="{'is-focused': textModerationIsFocused }">
 
-                                <label class="control-label"
-                                       for="textModeration">
+                                <label class="control-label" for="textModeration">
 
                                     <span>Comentário (opcional)</span>
                                 </label>
 
                                 <div class="relative clearfix">
-                                    <textarea name="textModeration"
-                                              class="form-control"
-                                              ng-model="textModeration"
-                                              ng-focus="textModerationIsFocused = true"
-                                              ng-blur="textModerationIsFocused = true"
-                                              ng-attr-ng-trim="false"
-                                              maxlength="100"
-                                              ng-maxlength="100"></textarea>
+                                    <textarea name="textModeration" class="form-control" ng-model="textModeration" ng-focus="textModerationIsFocused = true"
+                                        ng-blur="textModerationIsFocused = true" ng-attr-ng-trim="false" maxlength="100" ng-maxlength="100"></textarea>
 
-                                    <span class="text-right mg-tp-5 help-block max-lenght-counter"
-                                          ng-show="textModeration">
+                                    <span class="text-right mg-tp-5 help-block max-lenght-counter" ng-show="textModeration">
 
-                                        <span class="text-bold">{{textRating.length}}</span>
-                                        de 100
+                                        <span class="text-bold">{{textRating.length}}</span>                                    de 100
                                     </span>
 
                                 </div>

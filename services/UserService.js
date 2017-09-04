@@ -25,6 +25,9 @@ module.exports = class UserService {
               email: data.email,
               cpf: data.cpf,
               name: data.name,
+              region: data.region,
+              site: data.site,
+              phone: data.phone
               }
             );
           }

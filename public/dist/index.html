@@ -19,5 +19,26 @@
 		 Loading...
 		</app>
 		<script type="text/javascript" src="vendor.js"></script>
+		<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+		<script>
+				function check() {
+						var sol = $("#solicitacaoPendente");
+						var solOK = $("#solicitacaoOK");        
+						var cpf = $("#profileCPF").val();
+						sol.hide();
+						solOK.hide();
+						$.get("/api/v1/aprove/", function (data) {
+								if (data && data.ad) {
+										if (data.ad.find(function (val) { return val.id == cpf }))
+												sol.show();
+										else
+												solOK.show();
+								}
+						});
+				}
+		</script>
 	</body>
  </html>

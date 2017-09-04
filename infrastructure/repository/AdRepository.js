@@ -25,7 +25,7 @@ module.exports = class AdRepository {
 
   getCategories() {
     return new Promise((resolve, reject) => {
-      db.all('SELECT distinct category FROM ad').then((data) => {
+      db.all('SELECT distinct category FROM cat').then((data) => {
         resolve(data);
       }).catch((err) => {
         reject(err);
@@ -73,9 +73,22 @@ module.exports = class AdRepository {
 
   insert(entityToSave) {
     return new Promise((resolve, reject) => {
-      const sql = 'INSERT INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?)';
+      const sql = 'INSERT OR REPLACE INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?)';
       db.run(sql, this.getParameters(entityToSave))
         .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+    });
+  }
+
+  updateProfile(entityToSave) {
+    return new Promise((resolve, reject) => {
+      const sql = 'update ad set id = ?, region = ?, phone = ?,email = ?,site = ? where id = ?';
+      db.run(sql, this.getParametersProfile(entityToSave, entityToSave.id))
+        .then(() => { 
+          console.log('saved'); resolve("OK"); 
+        })
+        .catch((err) => { 
+          console.log(err); reject(err) 
+        });
     });
   }
 
@@ -109,6 +122,19 @@ module.exports = class AdRepository {
     params.push(entity.description);
     params.push(entity.region);
     params.push(entity.category);
+    params.push(entity.phone);
+    params.push(entity.email);
+    params.push(entity.site);
+
+    if (id)
+      params.push(id);
+
+    return params;
+  }
+  getParametersProfile(entity, id) {
+    let params = [];
+    params.push(entity.id);
+    params.push(entity.region);
     params.push(entity.phone);
     params.push(entity.email);
     params.push(entity.site);

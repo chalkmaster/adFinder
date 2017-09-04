@@ -1,12 +1,32 @@
-<div class="absolute pd-bt-30 full-width clearfix">
+<input id="profileCPF"
+class="form-control"
+type="hidden"
+name="profileCPF"
+ng-model="currentUser.cpf"
+ng-blur="profileCPFIsFocused = false"/>
+
+<div id="solicitacaoPendente" class="absolute pd-bt-30 full-width clearfix" style="display:none;">
     <div class="col-xs-12 col-md-8 col-xlg-6">
         <h3 class="color text-primary">
             <span>Solicitações</span>
         </h3>
         <div class="alert color-warning">
             <span class="block title mg-bt-5">Solicitação de publicação</span>
-            <span class="block mg-bt-5">Solicitação Pendente</span></span>
-            <small class="block text-right">Atualizada 01/02/2017 - 9:35</small>
+            <span class="block mg-bt-5">Solicitação Pendente</span>
         </div>
     </div>
+</div>
+<div id="solicitacaoOK" class="absolute pd-bt-30 full-width clearfix" style="display:none;">
+        <div class="col-xs-12 col-md-8 col-xlg-6">
+            <h3 class="color text-primary">
+                <span>Solicitações</span>
+            </h3>
+            <div class="alert color-success">
+                <span class="block title mg-bt-5">Solicitação de publicação</span>
+                <span class="block mg-bt-5">Solicitação Liberada</span>
+            </div>
+        </div>
+    </div>
+<div class="btn-group full-width text-right">
+    <button  onclick="check()" class="btn" type="button">Checar</button>
 </div>
