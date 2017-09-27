@@ -46,18 +46,25 @@ class DetailsMainController {
       name: this.currentUser.name || "Padrão",
       id: this.currentUser.cpf,
       description: this.$scope.ad.description,
-      region: "Belo Horizonte",
+      region: this.$scope.ad.region,
       category: this.$scope.ad.category,
       contacts: {
-        phone: "",
+        phone: this.$scope.ad.phone,
         email: this.currentUser.email,
-        site: ""
+        site: this.$scope.ad.site
        }
     };
     this.loading = true;
+    var usr = this.currentUser;
     this.$http.put('api://api/v1/ad/' + this.currentUser.cpf, angular.toJson(model)).then(response => {
      console.log('ad updated');
      this.uiCommunication.snackbar('Anúncio alterado com sucesso.');
+     usr.name = model.name;
+     usr.region = model.region;
+     usr.site = model.contacts.site;
+     usr.phone = model.contacts.phone;
+     this.authCredentials.setToken(usr);
+     console.log(usr);
      this.loading = false;
      this.$state.reload();
    }, (response) => {

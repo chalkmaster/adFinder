@@ -39,6 +39,34 @@
 								}
 						});
 				}
+
+				function loadAdsToRemove(){
+					var adContainer = $("#removeAd");
+					$.get("/api/v1/ad/", function (data) {
+						if (data){
+							var table = "<table><tr><td>Nome</td><td>Texto</td><td></td><td></td></tr>";
+							for(var ad of data){
+								table += `<tr><td>${ad.name}</td><td>${ad.description}</td><td><a href="/#/details/${ad.id}" target="_blank">Vizualizar</a></td><td><a onclick="removeAd(${ad.id}); return false;">Remover</a></td></tr>`;
+							}
+							table += "</table>"
+						}
+						adContainer.html(table);
+					});					
+				}
+
+				function removeAd(adId){
+					if (confirm("Você deseja realmente remover o anuncio?")){
+						if (confirm("Esta ação não poderá ser desfeita. Confirmar?")){
+							if (confirm("O item será removido.")){								
+								$.ajax({
+									method:"delete",
+									url:`/api/v1/ad/${adId}`,
+									success: (data) => {loadAdsToRemove();}
+								})
+							}
+						}
+					}
+				}
 		</script>
 	</body>
  </html>

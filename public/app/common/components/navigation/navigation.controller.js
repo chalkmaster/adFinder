@@ -41,7 +41,7 @@ class NavigationController {
   find(){
     this.$state.go('main.home', {preventLoad : true}).then(state => {
       if(this.query){
-        this.$rootScope.$broadcast('search', this.query);
+        this.$rootScope.$broadcast('search', this.query + ' ' + this.queryRegion);
         this.query = '';
       } else {
         this.categoryHelper.clear();
