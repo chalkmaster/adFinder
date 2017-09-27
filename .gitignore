@@ -61,3 +61,6 @@ typings/
 public/dist/style.css
 public/dist/style.css.map
 public/dist/vendor.js
+
+# database
+*.sqlite
