@@ -60,5 +60,5 @@ typings/
 .env
 
 # database
-*.sqlite
-adFinder.sqlite
+# *.sqlite
+# adFinder.sqlite
