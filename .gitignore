@@ -64,3 +64,4 @@ public/dist/vendor.js
 
 # database
 *.sqlite
+adFinder.sqlite
