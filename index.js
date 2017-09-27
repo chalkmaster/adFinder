@@ -68,6 +68,34 @@ app.post('/api/v1/fileUpload/', (req, resp) => {
     let adFile = req.files.adFile;
     factory.buildMediaRepository().salveMediaFor(id, adFile.data);
 
+    resp.redirect('/#/profile/services');
+    resp.end();
+});
+
+app.get('/api/v1/media/ad/:id', (req, resp) => {
+    const id = req.params.id;
+
+    var media = factory.buildMediaRepository().retrieveMediaFor(id);
+
+    resp.json(media);
+    resp.end();
+});
+
+app.get('/api/v1/media/:id/:name', (req, resp) => {
+    const id = req.params.id;
+    const name = req.params.name;
+
+    var media = factory.buildMediaRepository().getMedia(id, name);
+    resp.writeHead(200, {'Content-Type': 'image/jpg' })
+    resp.end(media, 'binary');
+});
+
+app.get('/api/v1/media/remove/:id/:name', (req, resp) => {
+    const id = req.params.id;
+    const name = req.params.name;
+
+    var media = factory.buildMediaRepository().removeMedia(id, name);
+    resp.redirect('/#/profile/services');
     resp.end();
 });
 
@@ -243,7 +271,7 @@ app.put('/api/v1/ad/:id', (req, resp) => {
         })
         .catch((err) => {
             resp.statusCode = 422;
-            res.send(err);
+            resp.send(err);
         });
 });
 

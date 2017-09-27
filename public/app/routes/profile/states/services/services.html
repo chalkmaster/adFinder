@@ -6,13 +6,13 @@
         <button class="btn" data-ng-click="$ctrl.goToPublicPage()">
             ir para página pública
         </button>
-        
+
         <form action="" name="adForm">
             <h3 class="color text-primary">
                 <span>Criar anuncio</span>
             </h3>
             <h4>
-                <span>Seu anúncio só será exibido após aprovação por parte da administração, aguarde.</span>                            
+                <span>Seu anúncio só será exibido após aprovação por parte da administração, aguarde.</span>
             </h4>
             <div class="form-group" ng-class="{'is-focused': adCategoryIsFocused}">
                 <label class="control-label required" for="adCategory">
@@ -20,12 +20,8 @@
                 </label>
                 <div class="relative">
                     <div class="select-input" ng-class="{'disabled' : $ctrl.disabled}">
-                        <select id="adCategory"
-                                class="form-control"
-                                name="adCategory"
-                                ng-focus="adCategoryIsFocused = true"
-                                ng-blur="adCategoryIsFocused = false"
-                                ng-model="$ctrl.category" required>
+                        <select id="adCategory" class="form-control" name="adCategory" ng-focus="adCategoryIsFocused = true" ng-blur="adCategoryIsFocused = false"
+                            ng-model="$ctrl.category" required>
 
                               <option value="">--</option>
                               <option ng-repeat="obj in $ctrl.categories" value="{{obj.category}}">{{obj.category}}</option>
@@ -37,31 +33,20 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group"
-                 ng-class="{'is-focused': adDescriptionIsFocused }">
+            <div class="form-group" ng-class="{'is-focused': adDescriptionIsFocused }">
 
-                <label class="control-label required"
-                       for="adDescription">
+                <label class="control-label required" for="adDescription">
 
                     <span>Descrição</span>
                 </label>
 
                 <div class="relative clearfix">
-                    <textarea name="adDescription"
-                              class="form-control"
-                              ng-model="$ctrl.description"
-                              ng-focus="adDescriptionIsFocused = true"
-                              ng-blur="adDescriptionIsFocused = true"
-                              ng-attr-ng-trim="false"
-                              rows = "8"
-                              maxlength="1000"
-                              ng-maxlength="1000"></textarea>
+                    <textarea name="adDescription" class="form-control" ng-model="$ctrl.description" ng-focus="adDescriptionIsFocused = true"
+                        ng-blur="adDescriptionIsFocused = true" ng-attr-ng-trim="false" rows="8" maxlength="1000" ng-maxlength="1000"></textarea>
 
-                    <span class="text-right mg-tp-5 help-block max-lenght-counter"
-                          ng-show="$ctrl.description">
+                    <span class="text-right mg-tp-5 help-block max-lenght-counter" ng-show="$ctrl.description">
 
-                        <span class="text-bold">{{$ctrl.description.length}}</span>
-                        de 1000
+                        <span class="text-bold">{{$ctrl.description.length}}</span> de 1000
                     </span>
 
                 </div>
@@ -72,5 +57,16 @@
                 </button>
             </div>
         </form>
+        <div>
+            <h3 class="mg-tp-30 color text-primary">
+                <span>Administrar Imagens</span>
+            </h3>
+            <form action='/api/v1/fileUpload/' method='post' encType="multipart/form-data">
+                <input type="hidden" name="adId" id="adId" value="{{$ctrl.$scope.currentUser.cpf}}" />
+                <input type="file" name="adFile" id="adFile" />
+                <input type='submit' value='Upload' />
+            </form>
+            <div id="imgContainer" style="display: flex;"></div>
+        </div>
     </div>
 </div>

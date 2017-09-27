@@ -92,15 +92,18 @@
                 </div>
         </div>
     </div>
-    <hr class="mg-tp-30 mg-bt-30" ng-if="ad.images">
+    <hr class="mg-tp-30 mg-bt-30 showImg">
 </div>
 
-<div class="container-fluid" style="background-color: #efefef;" ng-if="ad.images">
+<div class="container-fluid showImg" style="background-color: #efefef;">
     <div class="container">
 
         <div class="row">
-            <div class="col-xs-12" style="height: 400px; background-color: rgba(0,0,0,0.2)">
-                <!-- FOTOS  -->
+            <div id="imgContainer" class="col-xs-12" style="display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            flex-wrap: wrap; background-color: rgba(0,0,0,0.2)">
+                
             </div>
         </div>
 

@@ -13,6 +13,10 @@ class ProfileServicesController {
       this.ads = results.ads;
       this.adExists = !!this.ads.filter((x) => x.id == this.$scope.currentUser.cpf);
     });
+    loadImages($scope.$parent.$ctrl.currentUser.cpf);
+  }
+  ngLoadImages() {
+    loadImages(this.$scope.currentUser.cpf);
   }
   loadData() {
     let dataToLoad = {};
@@ -25,7 +29,7 @@ class ProfileServicesController {
       name: this.$scope.currentUser.name || "Padrão",
       id: this.$scope.currentUser.cpf,
       description: this.description,
-      region: this.$scope.currentUser.region,
+      region: this.$scope.currentUser.region || "Belo Horizonte",
       category: this.category,
       contacts: {
         phone: this.$scope.currentUser.phone,
@@ -35,10 +39,10 @@ class ProfileServicesController {
     };
     this.$http.put('api://api/v1/ad/' + this.$scope.currentUser.cpf, angular.toJson(model)).then(response => {
       console.log('ad updated');
-      this.uiCommunication.snackbar('Anúncio alterado com sucesso.');
+      this.uiCommunication.snackbar('Anúncio salvo com sucesso.');
       this.resetForm();
     }, (response) => {
-      this.uiCommunication.snackbar('Não foi possível alterar o anúncio.');
+      this.uiCommunication.snackbar('Não foi possível salvar o anúncio.');
       if (response.data && response.data.error_description) {
         console.log('error');
       }

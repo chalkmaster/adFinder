@@ -33,4 +33,9 @@ module.exports = class MediaRepository{
     const fullPath = basePath + '/' + adId + '/' + mediaName;
     return fs.readFileSync(fullPath);    
   }
+
+  removeMedia(adId, mediaName){
+    const fullPath = basePath + '/' + adId + '/' + mediaName;
+    return fs.unlinkSync(fullPath);    
+  }
 }

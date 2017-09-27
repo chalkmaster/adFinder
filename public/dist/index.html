@@ -1,72 +1,99 @@
 <!DOCTYPE html>
- <html ng-app="app">
-	<head>
-	   <meta charset="utf-8">
-	   <title>Global Peace Venda Mais</title>
-	   <meta name="viewport" content="width=device-width, initial-scale=1">
-	   <meta name="mobile-web-app-capable" content="yes">
-	   <meta name="apple-mobile-web-app-capable" content="yes">
-	   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-	   <meta name="description" content="Global Peace Venda Mais">
+<html ng-app="app">
+
+<head>
+	<meta charset="utf-8">
+	<title>Global Peace Venda Mais</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="description" content="Global Peace Venda Mais">
 
 
-     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-	   <link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	<body ng-strict-di ng-cloak>
-		<app>
-		 Loading...
-		</app>
-		<script type="text/javascript" src="vendor.js"></script>
-		<script
-		src="https://code.jquery.com/jquery-3.2.1.min.js"
-		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous"></script>
-		<script>
-				function check() {
-						var sol = $("#solicitacaoPendente");
-						var solOK = $("#solicitacaoOK");        
-						var cpf = $("#profileCPF").val();
-						sol.hide();
-						solOK.hide();
-						$.get("/api/v1/aprove/", function (data) {
-								if (data && data.ad) {
-										if (data.ad.find(function (val) { return val.id == cpf }))
-												sol.show();
-										else
-												solOK.show();
-								}
-						});
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-strict-di ng-cloak>
+	<app>
+		Loading...
+	</app>
+	<script type="text/javascript" src="vendor.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	 crossorigin="anonymous"></script>
+	<script>
+		function check() {
+			var sol = $("#solicitacaoPendente");
+			var solOK = $("#solicitacaoOK");
+			var cpf = $("#profileCPF").val();
+			sol.hide();
+			solOK.hide();
+			$.get("/api/v1/aprove/", function (data) {
+				if (data && data.ad) {
+					if (data.ad.find(function (val) { return val.id == cpf }))
+						sol.show();
+					else
+						solOK.show();
 				}
+			});
+		}
 
-				function loadAdsToRemove(){
-					var adContainer = $("#removeAd");
-					$.get("/api/v1/ad/", function (data) {
-						if (data){
-							var table = "<table><tr><td>Nome</td><td>Texto</td><td></td><td></td></tr>";
-							for(var ad of data){
-								table += `<tr><td>${ad.name}</td><td>${ad.description}</td><td><a href="/#/details/${ad.id}" target="_blank">Vizualizar</a></td><td><a onclick="removeAd(${ad.id}); return false;">Remover</a></td></tr>`;
-							}
-							table += "</table>"
-						}
-						adContainer.html(table);
-					});					
+		function loadAdsToRemove() {
+			var adContainer = $("#removeAd");
+			$.get("/api/v1/ad/", function (data) {
+				if (data) {
+					var table = "<table><tr><td>Nome</td><td>Texto</td><td></td><td></td></tr>";
+					for (var ad of data) {
+						table += `<tr><td>${ad.name}</td><td>${ad.description}</td><td><a href="/#/details/${ad.id}" target="_blank">Vizualizar</a></td><td><a onclick="removeAd(${ad.id}); return false;">Remover</a></td></tr>`;
+					}
+					table += "</table>"
 				}
+				adContainer.html(table);
+			});
+		}
 
-				function removeAd(adId){
-					if (confirm("Você deseja realmente remover o anuncio?")){
-						if (confirm("Esta ação não poderá ser desfeita. Confirmar?")){
-							if (confirm("O item será removido.")){								
-								$.ajax({
-									method:"delete",
-									url:`/api/v1/ad/${adId}`,
-									success: (data) => {loadAdsToRemove();}
-								})
-							}
-						}
+		function removeAd(adId) {
+			if (confirm("Você deseja realmente remover o anuncio?")) {
+				if (confirm("Esta ação não poderá ser desfeita. Confirmar?")) {
+					if (confirm("O item será removido.")) {
+						$.ajax({
+							method: "delete",
+							url: `/api/v1/ad/${adId}`,
+							success: (data) => { loadAdsToRemove(); }
+						})
 					}
 				}
-		</script>
-	</body>
- </html>
+			}
+		}
+
+		function loadImages(id) {
+			var imgContainer = $("#imgContainer");
+			$.get(`/api/v1/media/ad/${id}`, function (data) {
+				if (data) {
+					imgContainer.html('');
+					for (var name of data) {
+						imgContainer.append(`<div style="margin:2rem;padding:2rem;max-width:40rem;height:auto; border: solid 1px #ccc;"><img style="width:100%;height:100%;" src="/api/v1/media/${id}/${name}" /><a href="/api/v1/media/remove/${id}/${name}">Remover Imagem</a></div>`);
+					}
+				}
+			});
+		}
+
+		function loadAdImages(id) {
+			var imgContainer = $("#imgContainer");
+			$.get(`/api/v1/media/ad/${id}`, function (data) {
+				if (data && data.length) {
+					imgContainer.html('');
+					for (var name of data) {
+						imgContainer.append(`<div style="margin:2rem;padding:2rem;max-width:40rem;height:auto;"><img style="width:100%;height:100%;" src="/api/v1/media/${id}/${name}" /></div>`);
+					}
+				} else {
+					$(".showImg").hide();
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

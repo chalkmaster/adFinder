@@ -13,6 +13,7 @@ class DetailsMainController {
     this.userIsLogged = authCredentials.isLogged();
     this.getCurrentUser();
     this.loadRatings();
+    loadAdImages(this.$scope.ad.id);
   }
   getCurrentUser() {
     let token = this.authCredentials.currentAccessToken();
@@ -72,6 +73,7 @@ class DetailsMainController {
        this.$scope.ad = new Object(this.entity);
        this.editing = false;
        this.loading = false;
+       loadAdImages(this.$scope.ad.id);
        if(response.data && response.data.error_description) {
         console.log('error');
        }
