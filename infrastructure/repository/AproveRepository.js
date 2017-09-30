@@ -1,46 +1,58 @@
-const db = require('sqlite');
-const dbName = './adFinder.sqlite';
+const mysql = require('mysql');
+const config = {
+  host     : '50.62.209.157',
+  port     : 3306,
+  user     : 'adfinder',
+  password : '1123581321',
+  database : 'vendamais'
+}
 
 module.exports = class AproveRepository {
   findAd() {
     return new Promise((resolve, reject) => {
-      db.open(dbName)
-        .then(() => {
-          db.all('SELECT ad.* FROM ad inner join aprove on ad.id = aprove.adId').then((data) => {
-            resolve(data);
-          }).catch((err) => {
+      const sql = 'SELECT ad.* FROM ad inner join aprove on ad.id = aprove.adId';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, (err, results, fields) =>{
+          if (err) 
             reject(err);
-          });
+          else
+            resolve(results);
+          cn.end();
         })
-        .catch((err) => { throw err; });
+      });
     });
   }
 
   findAll() {
     return new Promise((resolve, reject) => {
-      db.open(dbName)
-        .then(() => {
-          db.all('SELECT * FROM aprove').then((data) => {
-            resolve(data);
-          }).catch((err) => {
+      const sql = 'SELECT * FROM aprove';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, (err, results, fields) =>{
+          if (err) 
             reject(err);
-          });
+          else
+            resolve(results);
+          cn.end();
         })
-        .catch((err) => { throw err; });
+      });
     });
   }
 
   findRating() {
     return new Promise((resolve, reject) => {
-      db.open(dbName)
-        .then(() => {
-          db.all('SELECT * FROM rating WHERE show = 0').then((data) => {
-            resolve(data);
-          }).catch((err) => {
+      const sql = 'SELECT * FROM rating WHERE `show` = 0';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, (err, results, fields) =>{
+          if (err) 
             reject(err);
-          });
+          else
+            resolve(results);
+          cn.end();
         })
-        .catch((err) => { throw err; });
+      });
     });
   }
 
@@ -51,29 +63,47 @@ module.exports = class AproveRepository {
   aproveAd(adId) {
     return new Promise((resolve, reject) => {
       const sql = 'DELETE FROM aprove where adId = ?';
-      db.open(dbName).then(() => {
-        db.run(sql, [adId])
-          .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, [adId], (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }
 
   aproveRating(adId) {
     return new Promise((resolve, reject) => {
-      const sql = 'update rating set show = 1 where adId = ?';
-      db.open(dbName).then(() => {
-        db.run(sql, [adId])
-          .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      const sql = 'update rating set `show` = 1 where adId = ?';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, [adId], (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }
 
   desaproveRating(adId) {
     return new Promise((resolve, reject) => {
-      const sql = 'delete from rating where show = 0 and adId = ?';
-      db.open(dbName).then(() => {
-        db.run(sql, [adId])
-          .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      const sql = 'delete from rating where `show` = 0 and adId = ?';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, [adId], (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }
@@ -81,9 +111,15 @@ module.exports = class AproveRepository {
   desaproveAd(id) {
     return new Promise((resolve, reject) => {
       const sql = 'INSERT INTO aprove (adId) values (?)';
-      db.open(dbName).then(() => {
-        db.run(sql, [id])
-          .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, [id], (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }

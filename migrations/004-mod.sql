@@ -1,8 +1,8 @@
 -- up
 CREATE TABLE aprove (
-  adId TEXT
+  adId varchar(50)
 );
-ALTER TABLE rating ADD COLUMN show INTEGER;
+ALTER TABLE rating ADD COLUMN show INT;
 
 -- down
 drop table aprove;

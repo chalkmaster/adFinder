@@ -1,41 +1,57 @@
-const db = require('sqlite');
-const dbName = './adFinder.sqlite';
+const mysql = require('mysql');
+const config = {
+  host     : '50.62.209.157',
+  port     : 3306,
+  user     : 'adfinder',
+  password : '1123581321',
+  database : 'vendamais'
+}
 
 module.exports = class RatingRepository {
   findByAdId(id) {
     return new Promise((resolve, reject) => {
-      db.open(dbName)
-        .then(() => {
-          db.all('SELECT * FROM rating WHERE show > 0 and adId = ?', [id]).then((data) => {
-            resolve(data);
-          }).catch((err) => {
+      const sql = 'SELECT * FROM rating WHERE `show` > 0 and adId = ?';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, [id], (err, results, fields) =>{
+          if (err) 
             reject(err);
-          });
+          else
+            resolve(results);
+          cn.end();
         })
-        .catch((err) => { throw err; });
+      });
     });
   }
 
   countByAdId(id) {
     return new Promise((resolve, reject) => {
-      db.open(dbName)
-        .then(() => {
-          db.get('SELECT (select count(1) FROM rating WHERE liked > 0 and adId = ?) as liked, (select count(1) FROM rating WHERE liked <> 1 and adId = ?) as disliked', [id, id]).then((data) => {
-            resolve(data);
-          }).catch((err) => {
+      const sql = 'SELECT (select count(1) FROM rating WHERE liked > 0 and adId = ?) as liked, (select count(1) FROM rating WHERE liked <> 1 and adId = ?) as disliked';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, [id, id], (err, results, fields) =>{
+          if (err) 
             reject(err);
-          });
+          else
+            resolve(results && results.length ? results[0] : null);
+          cn.end();
         })
-        .catch((err) => { throw err; });
+      });
     });
   }
 
   insert(entityToSave) {
     return new Promise((resolve, reject) => {
-      const sql = 'INSERT INTO rating (adId, description, liked, show) values (?,?,?,0)';
-      db.open(dbName).then(() => {
-        db.run(sql, this.getParameters(entityToSave))
-          .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      const sql = 'INSERT INTO rating (adId, description, liked, `show`) values (?,?,?,0)';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, this.getParameters(entityToSave), (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }

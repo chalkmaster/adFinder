@@ -1,8 +1,8 @@
 -- up
 CREATE TABLE rating (
-  adId TEXT,
+  adId varchar(50),
   description TEXT,
-  liked INTEGER,
+  liked INTEGER
 );
 
 -- down

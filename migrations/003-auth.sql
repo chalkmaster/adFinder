@@ -1,6 +1,6 @@
 -- up
 CREATE TABLE user (
-  cpf TEXT,
+  cpf varchar(50),
   email TEXT,
   password INTEGER
 );

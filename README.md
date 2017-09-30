@@ -71,7 +71,21 @@ http://localhost:5000/search/:q
       }
   }
 ```
+http://www.hjort.co/2011/07/full-text-search-em-portugues-no.html
 
+SELECT titulo, descricao
+ FROM websites
+ WHERE MATCH (titulo, descricao) AGAINST ('SQL Magazine');
+
+
+ CREATE TABLE websites(
+          post_id mediumint(8) unsigned NOT NULL,
+          titulo varchar(100) NOT NULL,
+          descricao text, 
+          PRIMARY KEY (post_id),
+             FULLTEXT (titulo, descricao));
+
+             
 ## API AVALIAÇÂO
 -> listar de um anuncio: /GET/:id
 http://localhost:5000/api/v1/rating/{id}

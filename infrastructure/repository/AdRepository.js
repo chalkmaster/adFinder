@@ -1,102 +1,153 @@
-const db = require('sqlite');
-const dbName = './adFinder.sqlite';
+const mysql = require('mysql');
+const config = {
+  host     : '50.62.209.157',
+  port     : 3306,
+  user     : 'adfinder',
+  password : '1123581321',
+  database : 'vendamais'
+}
 
 module.exports = class AdRepository {
 
-  constructor() {
-    Promise.resolve().then(() =>
-      db.open(dbName, { cached: true })
-        .then(() => {
-          db.migrate();
-        })
-        .catch((err) => { throw err })
-    ).catch((err) => { throw err });
-  }
+  constructor() {  }
 
   findById(id) {
     return new Promise((resolve, reject) => {
-      db.get('SELECT * FROM ad WHERE id = ?', [id]).then((data) => {
-        resolve(data);
-      }).catch((err) => {
-        reject(err);
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query('SELECT * FROM ad WHERE id = ?', [id], (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results && results.length ? results[0] : null);
+          cn.end();
+        })
       });
     });
   }
 
   getCategories() {
     return new Promise((resolve, reject) => {
-      db.all('SELECT distinct category FROM cat').then((data) => {
-        resolve(data);
-      }).catch((err) => {
-        reject(err);
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query('SELECT distinct category FROM cat', (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }
 
   count() {
     return new Promise((resolve, reject) => {
-      db.get('SELECT count(1) as qtd FROM ad').then((data) => {
-        resolve(data);
-      }).catch((err) => {
-        reject(err);
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query('SELECT count(1) as qtd FROM ad', (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results && results.length ? results[0] : null);
+          cn.end();
+        })
       });
     });
   }
 
   search(expression) {
     return new Promise((resolve, reject) => {
-      db.all('SELECT * FROM ad WHERE ad MATCH ? and not exists (select * from aprove where adId = ad.id)', [expression]).then((data) => {
-        resolve(data);
-      }).catch((err) => {
-        reject(err);
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query('SELECT * FROM ad WHERE ad MATCH (name, description, region, category, phone, email, site) AGAINST (?) and not exists (select * from aprove where adId = ad.id)', [expression], (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }
 
   findAll(expression) {
-    return new Promise((resolve, reject) => {
-      db.all('SELECT * FROM ad Where not exists (select * from aprove where adId = ad.id)').then((data) => {
-        resolve(data);
-      }).catch((err) => {
-        reject(err);
+    return new Promise((resolve, reject) => {      
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query('SELECT * FROM ad Where not exists (select * from aprove where adId = ad.id)', (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
       });
     });
   }
 
   update(entityToSave) {
     return new Promise((resolve, reject) => {
-      const sql = 'UPDATE ad SET id = ?,name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ? WHERE id = ?';
-      db.run(sql, this.getParameters(entityToSave, entityToSave.id))
-        .then(() => { resolve(); }).catch((err) => { reject(err) });
+      const sql = 'UPDATE ad SET name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ? WHERE id = ?';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, this.getParameters(entityToSave, entityToSave.id).slice(1,9), (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
+      });
     });
   }
 
   insert(entityToSave) {
     return new Promise((resolve, reject) => {
-      const sql = 'INSERT OR REPLACE INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?)';
-      db.run(sql, this.getParameters(entityToSave))
-        .then(() => { console.log('saved'); resolve("OK"); }).catch((err) => { console.log(err); reject(err) });
+      const sql = 'Insert INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ?';
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        const updatePar = this.getParameters(entityToSave).slice(1, 8);
+        cn.query(sql, this.getParameters(entityToSave).concat(updatePar), (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
+      });
     });
   }
 
   updateProfile(entityToSave) {
     return new Promise((resolve, reject) => {
       const sql = 'update ad set id = ?, region = ?, phone = ?,email = ?,site = ? where id = ?';
-      db.run(sql, this.getParametersProfile(entityToSave, entityToSave.id))
-        .then(() => { 
-          console.log('saved'); resolve("OK"); 
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, this.getParametersProfile(entityToSave, entityToSave.id), (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
         })
-        .catch((err) => { 
-          console.log(err); reject(err) 
-        });
+      });
     });
   }
 
   delete(entityToDelete) {
     return new Promise((resolve, reject) => {
       const sql = 'DELETE FROM ad WHERE id = ?';
-      db.run(sql, entityToDelete.id)
-        .then(() => { resolve(); }).catch((err) => { reject(err) });
+      const cn = mysql.createConnection(config);
+      cn.connect((err) => {
+        cn.query(sql, entityToDelete.id, (err, results, fields) =>{
+          if (err) 
+            reject(err);
+          else
+            resolve(results);
+          cn.end();
+        })
+      });
     });
   }
 
