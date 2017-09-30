@@ -51,6 +51,7 @@
     "grunt-cli": "^1.2.0",
     "guid": "0.0.12",
     "mocha": "^3.4.2",
+    "mysql": "^2.14.1",
     "node-cache": "^4.1.1",
     "nodemailer": "^4.1.0",
     "sqlite": "^2.8.0",
