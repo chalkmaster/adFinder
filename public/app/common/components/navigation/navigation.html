@@ -17,6 +17,7 @@
                             ng-blur="mainSearchFocus = false;"
                             placeholder="O que você deseja encontrar?"
                             />
+                        <span>Em qual região da sua cidade?</span>
                         <input id="inputMainRegion"
                             class="form-control color text-primary-white"
                             type="text"
@@ -25,7 +26,6 @@
                             ng-keydown="$event.keyCode  == 13 ? $ctrl.find() : null"
                             ng-focus="mainSearchFocus = true;"
                             ng-blur="mainSearchFocus = false;"
-                            placeholder="Em qual região da sua cidade?"
                             />
 
                         <i class="material-icons color text-disabled-white">search</i>
