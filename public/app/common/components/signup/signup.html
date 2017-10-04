@@ -125,6 +125,8 @@
                                            class="form-control"
                                            type="password"
                                            name="newPassword"
+                                           pattern=".{6,}"
+                                           title="informe ao menos 6 caracteres"
                                            ng-model="newPassword"
                                            ng-focus="newPasswordIsFocused = true"
                                            ng-blur="newPasswordIsFocused = false" required/>
@@ -147,6 +149,8 @@
                                            class="form-control"
                                            type="password"
                                            name="newPasswordConfirm"
+                                           pattern=".{6,}"
+                                           title="informe ao menos 6 caracteres"
                                            ng-model="newPasswordConfirm"
                                            ng-focus="newPasswordConfirmIsFocused = true"
                                            ng-blur="newPasswordConfirmIsFocused = false" required/>
