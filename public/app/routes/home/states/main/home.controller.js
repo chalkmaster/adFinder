@@ -1,15 +1,37 @@
 class HomeMainController {
-  constructor($rootScope, $state, adsResource, ratingResource, categoryHelper, $stateParams) {
+  constructor($rootScope, $state, adsResource, ratingResource, categoryHelper, $stateParams, $interval,$timeout) {
     this.name = 'Home Main Screen';
     this.$state = $state;
     this.adsResource = adsResource;
     this.categoryHelper = categoryHelper;
     this.ratingResource = ratingResource;
+    this.$interval = $interval;
+    this.$timeout = $timeout;
     $rootScope.$on('search', this.filter.bind(this));
     $rootScope.$on('loadList', this.load.bind(this));
     if(!$stateParams.preventLoad) {
       this.load();
     }
+    this.swapMainBanner();
+    this.swapSecondaryBanner();
+  }
+  swapMainBanner(){
+    var that = this;
+    this.$interval(function() {
+      that.$timeout(()=>{
+        angular.element(document.querySelectorAll('#mainF')).triggerHandler('click');
+      }
+      );
+    }, 8000);
+  }
+  swapSecondaryBanner(){
+    var that = this;    
+    this.$interval(function() {
+      that.$timeout(()=>{
+        angular.element(document.querySelectorAll('#secF')).triggerHandler('click');
+      }
+      );
+    }, 10000);
   }
   load(){
     this.loading = true;
@@ -52,6 +74,6 @@ class HomeMainController {
   }
 }
 
-HomeMainController.$inject = ['$rootScope', '$state', 'ads.resource', 'ratings.resource', 'categoryHelper', '$stateParams'];
+HomeMainController.$inject = ['$rootScope', '$state', 'ads.resource', 'ratings.resource', 'categoryHelper', '$stateParams', '$interval', '$timeout'];
 
 export default HomeMainController;
