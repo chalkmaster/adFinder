@@ -14,16 +14,19 @@
                             ng-model="$ctrl.query"
                             ng-keydown="$event.keyCode  == 13 ? $ctrl.find() : null"
                             ng-focus="mainSearchFocus = true;"
-                            ng-blur="mainSearchFocus = false;"/>
-                            <span>Informe uma região</span>
-                            <input id="inputMainRegion"
+                            ng-blur="mainSearchFocus = false;"
+                            placeholder="O que você deseja encontrar?"
+                            />
+                        <input id="inputMainRegion"
                             class="form-control color text-primary-white"
                             type="text"
                             name="inputMainRegion"
                             ng-model="$ctrl.queryRegion"
                             ng-keydown="$event.keyCode  == 13 ? $ctrl.find() : null"
                             ng-focus="mainSearchFocus = true;"
-                            ng-blur="mainSearchFocus = false;"/>
+                            ng-blur="mainSearchFocus = false;"
+                            placeholder="Em qual região da sua cidade?"
+                            />
 
                         <i class="material-icons color text-disabled-white">search</i>
                         <button type="button" class="btn type-flat icon-24 color-white" ng-click="$ctrl.find()">
