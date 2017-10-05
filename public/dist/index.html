@@ -28,6 +28,10 @@
 			var sol = $("#solicitacaoPendente");
 			var solOK = $("#solicitacaoOK");
 			var cpf = $("#profileCPF").val();
+			if (!cpf){
+				sol.show();
+				return;
+			}
 			sol.hide();
 			solOK.hide();
 			$.get("/api/v1/aprove/", function (data) {
@@ -35,7 +39,14 @@
 					if (data.ad.find(function (val) { return val.id == cpf }))
 						sol.show();
 					else
-						solOK.show();
+					{
+						$.get("/api/v1/ad/" + cpf, function (dataAD) {
+							if (dataAD && dataAD.length && dataAD[0].description)
+								solOK.show();
+							else
+								sol.show();
+						});
+					}
 				}
 			});
 		}
