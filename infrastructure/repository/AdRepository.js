@@ -122,10 +122,11 @@ module.exports = class AdRepository {
 
   updateProfile(entityToSave) {
     return new Promise((resolve, reject) => {
-      const sql = 'update ad set id = ?, region = ?, phone = ?,email = ?,site = ? where id = ?';
+      const sql = 'Insert INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ?';
       const cn = mysql.createConnection(config);
       cn.connect((err) => {
-        cn.query(sql, this.getParametersProfile(entityToSave, entityToSave.id), (err, results, fields) =>{
+        const updatePar = this.getParameters(entityToSave).slice(1, 8);
+        cn.query(sql, this.getParameters(entityToSave).concat(updatePar), (err, results, fields) =>{
           if (err) 
             reject(err);
           else
