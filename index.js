@@ -317,8 +317,10 @@ app.post('/api/v1/profile/update/', (req, resp) => {
     let adToUpdate = {};
     const id = body.id;
     adToUpdate.id = id;
+    adToUpdate.name = body.name;
     adToUpdate.region = body.region;
     adToUpdate.phone = body.phone;
+    adToUpdate.email = body.email;
     adToUpdate.site = body.site;
     factory.buildAdService()
         .updateProfile(adToUpdate)
