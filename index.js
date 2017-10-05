@@ -188,6 +188,21 @@ app.put('/api/v1/rating/desaprove/:id', (req, resp) => {
         });
 });
 
+app.put('/api/v1/ad/desaprove/:id', (req, resp) => {
+    const id = req.params.id;
+    factory.buildAdService()
+        .desaprove(id)
+        .then(() => {
+            resp.statusCode = 200;
+            resp.end();
+        })
+        .catch((err) => {
+            resp.send(err);
+            resp.end();
+        });
+});
+
+
 //==== auth
 app.post('/api/v1/user/', (req, resp) => {
     let newUser = req.body;
@@ -221,6 +236,24 @@ app.post('/api/v1/auth/', (req, resp) => {
             if (!cache.get(data.token))
                 cache.set(data.token, data.cpf, 3600);
 
+            resp.send(data);
+            resp.end();
+        })
+        .catch((err) => {
+            if (err == "invalid")
+                resp.statusCode = 401;
+            else
+                resp.statusCode = 422;
+            resp.send(err);
+            resp.end();
+        });
+});
+
+app.get('/api/v1/user/:id', (req, resp) => {
+    const id = req.params.id;
+    factory.buildUserService()
+        .getByEmail(id)
+        .then((data) => {
             resp.send(data);
             resp.end();
         })

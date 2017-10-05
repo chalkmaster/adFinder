@@ -38,6 +38,24 @@ module.exports = class UserService {
     });
   }
 
+  getByEmail(email){
+    return new Promise((resolve, reject) => {
+      this.findByEmail(email).then((data) => {
+        if (data){
+            resolve({
+              email: data.email,
+              cpf: data.cpf,
+              name: data.name,
+              region: data.region,
+              site: data.site,
+              phone: data.phone
+              }
+            );
+        }
+      }).catch((err) => {reject(err)});
+    });
+  }
+
   findByEmail(email) {
     return new Promise((resolve, reject) => {
       this.userRepository.findByEmail(email).then((data) => {

@@ -89,10 +89,10 @@
                     <div class="card-footer" ng-hide="hideContent">
                         <div class="right">
                             <div class="btn-group">
-                                <button class="btn type-flat icon-24" ng-click="showModerationDialog = true">
+                                <button class="btn type-flat icon-24" ng-click="$ctrl.desaprove()">
                                     <i class="material-icons">close</i>
                                 </button>
-                                <button class="btn type-flat icon-24" data-ui-sref="main.profile.moderations.aprove({id: ad.id})">
+                                <button class="btn type-flat icon-24" ng-click="$ctrl.aprove()">
                                     <i class="material-icons">check</i>
                                 </button>
                             </div>

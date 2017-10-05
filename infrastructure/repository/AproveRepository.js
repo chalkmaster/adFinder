@@ -10,7 +10,7 @@ const config = {
 module.exports = class AproveRepository {
   findAd() {
     return new Promise((resolve, reject) => {
-      const sql = 'SELECT ad.* FROM ad inner join aprove on ad.id = aprove.adId';
+      const sql = "SELECT ad.* FROM ad inner join aprove on ad.id = aprove.adId where ad.description <> ''";
       const cn = mysql.createConnection(config);
       cn.connect((err) => {
         cn.query(sql, (err, results, fields) =>{

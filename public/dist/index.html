@@ -60,7 +60,7 @@
 					if (confirm("O item será removido.")) {
 						$.ajax({
 							method: "delete",
-							url: `/api/v1/ad/${adId}`,
+							url: `/api/v1/ad/desaprove/${adId}`,
 							success: (data) => { loadAdsToRemove(); }
 						})
 					}

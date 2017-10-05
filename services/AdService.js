@@ -67,6 +67,14 @@ module.exports = class AdService {
     });
   }
 
+  desaprove(id) {
+    return new Promise((resolve, reject) => {
+      this.aproveRepository.desaproveAd(id).then(() => {
+        resolve("ok");
+      }).catch((err) => { reject(err) });
+    });
+  }
+
   insert(ad) {
     return new Promise((resolve, reject) => {
       this.adRepository.insert(ad).then(() => {
