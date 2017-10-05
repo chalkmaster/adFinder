@@ -1,5 +1,6 @@
 class ProfileController {
-  constructor(aproveResource) {
+  constructor($scope, aproveResource) {
+    this.$scope = $scope;
     this.name = 'Profile Screen';
     this.aproveResource = aproveResource;
     this.load();
@@ -11,30 +12,26 @@ class ProfileController {
     }) 
   }
 
-  disaproveAd() {
+  desaproveAd(id) {
     this.loading = true;
-    this.resource.aproveAd({ id: this.$scope.adId }).$promise.then(response => {
+    this.aproveResource.desaproveAd({ id: id }).$promise.then(response => {
       this.loading = false;
-      this.close();
+      this.load();
     }).catch(error => {
       this.loading = false;
-      this.close();
+      this.load();
     });
   }
 
-  aproveAd(){
-    if(this.$scope.moderation == "1") {
+  aproveAd(id){
       this.loading = true;
-      this.resource.aproveAd({ id: this.$scope.adId }).$promise.then(response => {
+      this.aproveResource.aproveAd({ id: id }).$promise.then(response => {
         this.loading = false;
-        this.close();
+        this.load();
       }).catch(error => {
         this.loading = false;
-        this.close();
+        this.load();
       });
-    } else {
-      this.close();
-    }
   }
 
   aproveRating(rating) {
@@ -43,6 +40,6 @@ class ProfileController {
 
 }
 
-ProfileController.$inject = ['aprove.resource'];
+ProfileController.$inject = ['$scope', 'aprove.resource'];
 
 export default ProfileController;

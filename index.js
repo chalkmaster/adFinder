@@ -160,7 +160,6 @@ app.put('/api/v1/rating/aprove/:id', (req, resp) => {
 });
 
 app.get('/api/v1/aprove/', (req, resp) => {
-    console.log('oi');
     factory.buildRatingService()
         .getToAprove()
         .then((data) => {
@@ -175,7 +174,10 @@ app.get('/api/v1/aprove/', (req, resp) => {
 });
 
 app.put('/api/v1/rating/desaprove/:id', (req, resp) => {
-    const id = req.params.id;
+    let id = req.params.id;
+    if (id.length === 10)
+        id = `0${id}`;
+
     factory.buildRatingService()
         .desaprove(id)
         .then(() => {
@@ -189,7 +191,9 @@ app.put('/api/v1/rating/desaprove/:id', (req, resp) => {
 });
 
 app.put('/api/v1/ad/desaprove/:id', (req, resp) => {
-    const id = req.params.id;
+    let id = req.params.id;
+    if (id.length === 10)
+        id = `0${id}`;
     factory.buildAdService()
         .desaprove(id)
         .then(() => {
@@ -380,7 +384,9 @@ app.delete('/api/v1/ad/:id', (req, resp) => {
 });
 
 app.put('/api/v1/ad/aprove/:id', (req, resp) => {
-    const id = req.params.id;
+    let id = req.params.id;
+    if (id.length === 10)
+        id = `0${id}`;
     factory.buildAdService()
         .aprove(id)
         .then(() => {

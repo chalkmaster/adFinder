@@ -59,7 +59,7 @@
 				if (confirm("Esta ação não poderá ser desfeita. Confirmar?")) {
 					if (confirm("O item será removido.")) {
 						$.ajax({
-							method: "delete",
+							method: "put",
 							url: `/api/v1/ad/desaprove/${adId}`,
 							success: (data) => { loadAdsToRemove(); }
 						})

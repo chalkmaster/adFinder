@@ -11,8 +11,8 @@ export default ['$resource', ($resource) => {
             url: 'api://api/v1/ad/aprove/:id'
         },
         desaproveAd: {
-            method: 'PUT',
-            url: 'api://api/v1/ad/desaprove/:id'
+            method: 'DELETE',
+            url: 'api://api/v1/ad/:id'
         }
     });
   }];

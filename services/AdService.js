@@ -103,7 +103,6 @@ module.exports = class AdService {
         reject(errorList);
         return;
       }
-
       this.adRepository.update(ad).then((data) => {
         resolve(data);
       }).catch((err) => { reject(err) });
