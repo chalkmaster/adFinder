@@ -122,11 +122,11 @@ module.exports = class AdRepository {
 
   updateProfile(entityToSave) {
     return new Promise((resolve, reject) => {
-      const sql = 'Insert INTO ad (id,name,description,region,category,phone,email,site) values (?,?,?,?,?,?,?,?) ON DUPLICATE KEY UPDATE name = ?,description = ?,region = ?,category = ?,phone = ?,email = ?,site = ?';
+      const sql = 'Insert INTO ad (id,name,region,phone,email,site) values (?,?,?,?,?,?) ON DUPLICATE KEY UPDATE name = ?,region = ?,phone = ?,email = ?,site = ?';
       const cn = mysql.createConnection(config);
       cn.connect((err) => {
-        const updatePar = this.getParameters(entityToSave).slice(1, 8);
-        cn.query(sql, this.getParameters(entityToSave).concat(updatePar), (err, results, fields) =>{
+        const updatePar = this.getParametersProfile(entityToSave).slice(1, 6);
+        cn.query(sql, this.getParametersProfile(entityToSave).concat(updatePar), (err, results, fields) =>{
           if (err) 
             reject(err);
           else
@@ -187,6 +187,7 @@ module.exports = class AdRepository {
   getParametersProfile(entity, id) {
     let params = [];
     params.push(entity.id);
+    params.push(entity.name);    
     params.push(entity.region);
     params.push(entity.phone);
     params.push(entity.email);
