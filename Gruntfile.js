@@ -87,13 +87,13 @@ module.exports = function(grunt) {
     env: {
       dev: {
         NODE_ENV: "development",
-        //API_URL: "http://mercadoglobalpeace.com.br/"
-        API_URL: "http://localhost:5000/"
+        API_URL: "http://mercadoglobalpeace.com.br/"
+        //API_URL: "http://localhost:5000/"
       },
       prod: {
         NODE_ENV: "production",
-        //API_URL: "http://mercadoglobalpeace.com.br/"
-        API_URL: "http://localhost:5000/"
+        API_URL: "http://mercadoglobalpeace.com.br/"
+        //API_URL: "http://localhost:5000/"
       }
     },
     sass: {
