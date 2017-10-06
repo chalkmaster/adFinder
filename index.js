@@ -42,7 +42,7 @@ app.post('/api/v1/recover/', (req, resp) => {
                     if (error) {
                         console.log(error);
                     } else {
-                        console.log('Email sent: ' + info.response);                        
+                        console.log('Email sent: ' + info.response);
                     }
                     resp.redirect("/sent.html");
                 });
@@ -66,19 +66,21 @@ app.post('/api/v1/fileUpload/', (req, resp) => {
         return res.status(400).send('No files were uploaded.');
 
     let adFile = req.files.adFile;
-    factory.buildMediaRepository().salveMediaFor(id, adFile.data);
-
-    resp.redirect('/#/profile/services');
-    resp.end();
+    const callback = () => {
+        resp.redirect('/#/profile/services');
+        resp.end();
+    }
+    factory.buildMediaRepository().salveMediaFor(id, adFile.data, callback);
 });
 
 app.get('/api/v1/media/ad/:id', (req, resp) => {
     const id = req.params.id;
 
-    var media = factory.buildMediaRepository().retrieveMediaFor(id);
-
-    resp.json(media);
-    resp.end();
+    const callback = function (list) {
+        resp.json(list);
+        resp.end();
+    }
+    factory.buildMediaRepository().retrieveMediaFor(id, callback);
 });
 
 app.get('/api/v1/media/:id/:name', (req, resp) => {
@@ -86,7 +88,7 @@ app.get('/api/v1/media/:id/:name', (req, resp) => {
     const name = req.params.name;
 
     var media = factory.buildMediaRepository().getMedia(id, name);
-    resp.writeHead(200, {'Content-Type': 'image/jpg' })
+    resp.writeHead(200, { 'Content-Type': 'image/jpg' })
     resp.end(media, 'binary');
 });
 
@@ -214,14 +216,15 @@ app.post('/api/v1/user/', (req, resp) => {
         .insert(newUser)
         .then(() => {
             factory.buildAdService()
-            .insert({id:newUser.cpf, 
-                name:newUser.name,
-                 email:newUser.email,
-                 description: '',
-                 region: '',
-                 category:'',
-                phone: '',
-                site: ''
+                .insert({
+                    id: newUser.cpf,
+                    name: newUser.name,
+                    email: newUser.email,
+                    description: '',
+                    region: '',
+                    category: '',
+                    phone: '',
+                    site: ''
                 });
             resp.end();
         })
