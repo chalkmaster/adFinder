@@ -17,6 +17,7 @@ class SigninController {
       this.uiCommunication.snackbar('Login realizado com sucesso.');
       this.$scope.close();
     }).catch(() => {
+      this.loading = false;
       console.log('auth failure');
       this.$scope.error = 'Falha ao realizar login.';
     });
