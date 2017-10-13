@@ -57,16 +57,5 @@
                 </button>
             </div>
         </form>
-        <div>
-            <h3 class="mg-tp-30 color text-primary">
-                <span>Administrar Imagens</span>
-            </h3>
-            <form action='/api/v1/fileUpload/' method='post' encType="multipart/form-data">
-                <input type="hidden" name="adId" id="adId" value="{{$ctrl.$scope.currentUser.cpf}}" />
-                <input type="file" name="adFile" id="adFile" />
-                <input type='submit' value='Upload' />
-            </form>
-            <div id="imgContainer" style="display: flex;"></div>
-        </div>
     </div>
 </div>

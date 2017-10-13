@@ -1,0 +1,21 @@
+<div class="absolute pd-bt-30 full-width clearfix">
+    <div class="col-xs-12 col-md-8 col-xlg-6">
+        <h3 class="mg-tp-30 color text-primary">
+            <span>Gerenciar suas images</span>
+        </h3>
+        <form action='/api/v1/fileUpload/' method='post' encType="multipart/form-data">
+            <input type="hidden" name="adId" id="adId" value="{{$ctrl.$scope.currentUser.cpf}}" />
+            <span>Selecione uma imagem, e não se esqueça de clicar no botão "SALVAR IMAGEM" para que ela possa aparecer como parte de seu anúnico!</span>
+            <br />
+            <br />
+            <input type="file" name="adFile" id="adFile" />
+            <br />
+            <br />
+            <button class="btn" type='submit'>Salvar Imagem</button>
+        </form>
+        <hr />
+        <div id="imgContainer" style="display: flex;">
+            <span>Nenhuma Imagem</span>
+        </div>
+    </div>
+</div>

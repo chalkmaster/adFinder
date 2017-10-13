@@ -85,7 +85,7 @@
 				if (data) {
 					imgContainer.html('');
 					for (var name of data) {
-						imgContainer.append(`<div style="margin:2rem;padding:2rem;max-width:40rem;height:auto; border: solid 1px #ccc;"><img style="width:100%;height:100%;" src="http://vendamaisgloblalpeace.com.br/cdn/${id}/${name}" /><a href="/api/v1/media/remove/${id}/${name}">Remover Imagem</a></div>`);
+						imgContainer.append(`<div style="margin:2rem;padding:2rem;max-width:40rem;height:auto; border: solid 1px #ccc;"><img style="width:100%;height:100%;" src="http://vendamaisgloblalpeace.com.br/cdn/${id}/${name}" /><a class="btn" href="/api/v1/media/remove/${id}/${name}">Remover Imagem</a></div>`);
 					}
 				}
 			});

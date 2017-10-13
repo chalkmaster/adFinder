@@ -7,6 +7,7 @@ import profileAccountState from './states/account';
 import profileModerationsState from './states/moderations';
 import profileRequestsState from './states/requests';
 import profileServicesState from './states/services';
+import profileImagesState from './states/images';
 
 import categoryResource from './states/services/resource';
 import aproveResource from './states/moderations/resource';
@@ -35,7 +36,8 @@ let profileModule = angular.module('routes.profile', [
           template: '<aprove></aprove>',
         }))
         .state('main.profile.requests', profileRequestsState)
-        .state('main.profile.services', profileServicesState);
+        .state('main.profile.services', profileServicesState)
+        .state('main.profile.images', profileImagesState);
     }
   ])
 

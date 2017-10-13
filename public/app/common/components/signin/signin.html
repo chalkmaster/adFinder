@@ -1,0 +1,82 @@
+<div class="generic-backdrop color text-secondary-black active">
+    <close class="absolute-total-size" ng-click="close()"></close>
+    <div class="container">
+        <div class="row">
+            <close class="absolute-total-size" ng-click="close()"></close>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4" style="top: 90px;">
+                <div class="card mg-0-force">
+                    <div class="card-header">
+                        <div class="left">
+                            <i class="material-icons sz-48 hidden-xs-only-force">account_circle</i><!--
+                            --><div class="texts">
+                                <span class="headline color text-primary">Acessar Conta</span>
+                            </div>
+                        </div>                        
+                        <div class="right">
+                            <button type="button" class="btn type-flat icon-24" ng-click="close()">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body pd-rt-15 pd-bt-15 pd-lt-15" ng-class="{'loading': $ctrl.loading}">
+                        <div class="alert color-error mg-bt-15" ng-show="error">
+                            <span translate>{{error}}</span>
+                        </div>
+                        <div class="space-between center mg-bt-15">
+                            <i class="material-icons color text-secondary-black pd-rt-15">person</i>
+                            <div class="form-group mg-bt-0 full-width" ng-class="{ 'is-focused' : inputUserIsFocused }">
+                                <div class="relative clearfix">
+                                    <input id="inputUser"
+                                           class="form-control"
+                                           type="text"
+                                           name="inputUser"
+                                           placeholder="usuário ou e-mail"
+                                           ng-model="$ctrl.email"
+                                           ng-focus="inputUserIsFocused = true"
+                                           ng-blur="inputUserIsFocused = false"/>
+
+                                    <span class="material-input"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-between center">
+                            <i class="material-icons color text-secondary-black pd-rt-15">lock</i>
+                            <div class="form-group mg-bt-0 full-width" ng-class="{ 'is-focused' : inputPasswordIsFocused }">
+                                <div class="relative clearfix">
+                                    <input id="inputPassword"
+                                           class="form-control"
+                                           type="password"
+                                           name="inputPassword"
+                                           placeholder="senha"
+                                           ng-model="$ctrl.password"
+                                           ng-focus="inputPasswordIsFocused = true"
+                                           ng-blur="inputPasswordIsFocused = false"/>
+
+                                    <span class="material-input"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-part pd-15 text-right">
+                        <button type="button" class="btn full-width" ng-disabled="!$ctrl.password || $ctrl.loading" ng-click="$ctrl.signIn()">
+                            Entrar
+                        </button>
+                        <button type="button"
+                                class="btn type-flat mg-tp-15"
+                                ng-disabled="$ctrl.loading" onclick="location.href='/recover.html';">
+                            <small class="text-capitalize">esqueci minha senha</small>
+                        </button>
+                        <button type="button"
+                                class="btn type-flat mg-tp-15 pull-left"
+                                ng-click="$ctrl.openRegister()"
+                                ng-disabled="$ctrl.loading">
+                            <small class="text-capitalize">criar conta</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-class LoginController {
+class SigninController {
     constructor($rootScope, $uibModal, $scope, authService, uiCommunication) {
       this.$rootScope = $rootScope;
       this.$scope = $scope;
@@ -24,15 +24,12 @@ class LoginController {
   openRegister(){
     this.$uibModal.open({ template : '<signup></signup>' });
   }
-  openSignin(){
-    this.$uibModal.open({ template : '<signin></signin>' });
-  }
   dismissFormOnLogin(){
     this.$scope.close();
   }
 }
 
-LoginController.$inject = ['$rootScope', '$uibModal', '$scope', 'authService', 'uiCommunication'];
+SigninController.$inject = ['$rootScope', '$uibModal', '$scope', 'authService', 'uiCommunication'];
 
 
-export default LoginController;
+export default SigninController;

@@ -67,7 +67,7 @@ app.post('/api/v1/fileUpload/', (req, resp) => {
 
     let adFile = req.files.adFile;
     const callback = () => {
-        resp.redirect('/#/profile/services');
+        resp.redirect('/#/profile/images');
         resp.end();
     }
     factory.buildMediaRepository().salveMediaFor(id, adFile.data, callback);
