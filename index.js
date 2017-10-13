@@ -97,7 +97,7 @@ app.get('/api/v1/media/remove/:id/:name', (req, resp) => {
     const name = req.params.name;
 
     var media = factory.buildMediaRepository().removeMedia(id, name);
-    resp.redirect('/#/profile/services');
+    resp.redirect('/#/profile/images');
     resp.end();
 });
 
