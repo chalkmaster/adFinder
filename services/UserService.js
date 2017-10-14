@@ -16,7 +16,7 @@ module.exports = class UserService {
         if (data && data.password){
           if (data.password == pass){
             var session = uuid();
-            if (data.email.indexOf("@globalpeace.com.br") > -1)
+            if (data.email === "admin@globalpeace.com.br")
               session = `1${session}`;
             else
               session = `0${session}`;            
