@@ -12,7 +12,7 @@ export default ['$resource', ($resource) => {
         },
         desaproveAd: {
             method: 'DELETE',
-            url: 'api://api/v1/ad/:id'
+            url: 'api://api/v1/ad/:id/:reason'
         }
     });
   }];

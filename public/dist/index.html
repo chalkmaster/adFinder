@@ -27,9 +27,10 @@
 		function check() {
 			var sol = $("#solicitacaoPendente");
 			var solOK = $("#solicitacaoOK");
+			var nosol = $('#noSol');
 			var cpf = $("#profileCPF").val();
 			if (!cpf){
-				sol.show();
+				nosol.show();
 				return;
 			}
 			sol.hide();
@@ -41,10 +42,10 @@
 					else
 					{
 						$.get("/api/v1/ad/" + cpf, function (dataAD) {
-							if (dataAD && dataAD.length && dataAD[0].description)
+							if (dataAD && dataAD.description)
 								solOK.show();
 							else
-								sol.show();
+								nosol.show();
 						});
 					}
 				}
@@ -103,7 +104,7 @@
 					$(".showImg").hide();
 				}
 			});
-		}
+		}	
 	</script>
 </body>
 

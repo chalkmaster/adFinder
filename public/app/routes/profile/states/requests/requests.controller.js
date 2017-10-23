@@ -3,6 +3,7 @@ class ProfileRequestsController {
     this.name = 'Profile Screen';
     this.$scope = $scope;
     this.$scope.currentUser = $scope.$parent.$ctrl.currentUser;
+    this.currentUser = this.$scope.currentUser;
   }
 }
 

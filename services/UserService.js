@@ -56,6 +56,24 @@ module.exports = class UserService {
     });
   }
 
+  getByCpf(cpf){
+    return new Promise((resolve, reject) => {
+      this.userRepository.findByCpf(cpf).then((data) => {
+        if (data){
+          resolve({
+            email: data.email,
+            cpf: data.cpf,
+            name: data.name,
+            region: data.region,
+            site: data.site,
+            phone: data.phone
+            }
+          );
+      }
+      }).catch((err) => { reject(err) });
+    });
+  }
+
   findByEmail(email) {
     return new Promise((resolve, reject) => {
       this.userRepository.findByEmail(email).then((data) => {

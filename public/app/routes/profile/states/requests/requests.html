@@ -1,9 +1,4 @@
-<input id="profileCPF"
-class="form-control"
-type="hidden"
-name="profileCPF"
-ng-model="currentUser.cpf"
-ng-blur="profileCPFIsFocused = false"/>
+<input id="profileCPF" class="form-control" type="hidden" name="profileCPF" value="{{$ctrl.currentUser.cpf}}"/>
 
 <div id="solicitacaoPendente" class="absolute pd-bt-30 full-width clearfix" style="display:none;">
     <div class="col-xs-12 col-md-8 col-xlg-6">
@@ -27,6 +22,18 @@ ng-blur="profileCPFIsFocused = false"/>
             </div>
         </div>
     </div>
+    <div id="noSol" class="absolute pd-bt-30 full-width clearfix" style="display:none;">
+            <div class="col-xs-12 col-md-8 col-xlg-6">
+                <h3 class="color text-primary">
+                    <span>Solicitações</span>
+                </h3>
+                <div class="alert color-success">
+                    <span class="block title mg-bt-5">Você ainda não criou seu anúncio</span>
+                    <span class="block mg-bt-5">Acesse a aba "Meus produtos e serviços" e crie já o seu</span>
+                </div>
+            </div>
+        </div>    
+    
 <div class="btn-group full-width text-right">
     <button  onclick="check()" class="btn" type="button">Checar</button>
 </div>

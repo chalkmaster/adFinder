@@ -192,15 +192,36 @@ app.put('/api/v1/rating/desaprove/:id', (req, resp) => {
         });
 });
 
-app.put('/api/v1/ad/desaprove/:id', (req, resp) => {
+app.put('/api/v1/ad/desaprove/:id/:reason', (req, resp) => {
     let id = req.params.id;
+    let reason = req.params.reason || 'Está em desacordo com os termos de serviço';
     if (id.length === 10)
         id = `0${id}`;
     factory.buildAdService()
         .desaprove(id)
         .then(() => {
-            resp.statusCode = 200;
-            resp.end();
+            factory.buildUserService().getByCpf(id)
+            .then((data) => {
+                const mailOptions = {
+                    from: 'cadastro@globalpeace.com.br',
+                    to: data.email,
+                    subject: 'Seu anuncio foi recusado.',
+                    text: `Seu anúncion não foi aprovado. Providencie os ajustes ou entre em contato. Motivo: "${reason}"`
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                    resp.statusCode = 200;
+                    resp.end();
+                });
+            })
+            .catch((err) => {
+                resp.send(err);
+                resp.end();
+            });
         })
         .catch((err) => {
             resp.send(err);
@@ -381,9 +402,30 @@ app.get('/api/v1/ad/', (req, resp) => {
         });
 });
 
-app.delete('/api/v1/ad/:id', (req, resp) => {
+app.delete('/api/v1/ad/:id/:reason', (req, resp) => {
     const id = req.params.id;
-    factory.buildAdService().delete({ 'id': id }).then(() => {
+    let reason = req.params.reason || 'Está em desacordo com os termos de serviço';
+    factory.buildUserService().getByCpf(id)
+    .then((data) => {
+        const mailOptions = {
+            from: 'cadastro@globalpeace.com.br',
+            to: data.email,
+            subject: 'Seu anuncio foi recusado.',
+            text: `Seu anúncion não foi aprovado. Providencie os ajustes ou entre em contato. Motivo: "${reason}"`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+            resp.statusCode = 200;
+            resp.end();
+        });
+        factory.buildAdService().delete({ 'id': id });
+    })
+    .catch((err) => {
+        resp.send(err);
         resp.end();
     });
 });

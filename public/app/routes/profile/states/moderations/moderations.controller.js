@@ -14,7 +14,8 @@ class ProfileController {
 
   desaproveAd(id) {
     this.loading = true;
-    this.aproveResource.desaproveAd({ id: id }).$promise.then(response => {
+    let r = prompt('Informe um motivo', 'Está em desacordo com os termos de serviço');
+    this.aproveResource.desaproveAd({ id: id, reason: r }).$promise.then(response => {
       this.loading = false;
       this.load();
     }).catch(error => {
@@ -37,6 +38,20 @@ class ProfileController {
   aproveRating(rating) {
 
   }
+
+  loadAdImagesToAprove(id, dest) {
+    var imgContainer = $("#"+dest);
+    $.get(`/api/v1/media/ad/${id}`, function (data) {
+      if (data && data.length) {
+        imgContainer.html('');
+        for (var name of data) {
+          imgContainer.append(`<div style="margin:2rem;padding:2rem;max-width:40rem;height:auto;"><img style="width:100%;height:100%;" src="http://vendamaisgloblalpeace.com.br/cdn/${id}/${name}" /></div>`);
+        }
+      } else {
+        $(".showImg").hide();
+      }
+    });
+  }	
 
 }
 

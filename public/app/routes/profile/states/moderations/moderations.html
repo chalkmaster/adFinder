@@ -85,6 +85,13 @@
                                 <span class="block">{{ad.description}}</span>
                             </div>
                         </div>
+                        <div class="row">
+                                <div class="col-xs-12 mg-bt-15">
+                                    <span class="block"><b>Imagens</b></span>
+                                    <button class="btn" ng-click="$ctrl.loadAdImagesToAprove(ad.id,'img' + ad.id);">Carregar Imagens</button>
+                                    <div id="img{{ad.id}}"></div>
+                                </div>
+                            </div>                        
                     </div>  
                     <div class="card-footer" ng-hide="hideContent">
                         <div class="right">
